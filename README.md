@@ -25,25 +25,25 @@
          <td>팀원</td>
          <td>설동혁</td>
          <td>BACK-END</td>
-         <td>https://github.iamsirseol</td>
+         <td>https://github.com/iamsirseol</td>
       </tr>
       <tr>
          <td>팀원</td>
          <td>류준열</td>
          <td>FRONT-END</td>
-         <td>https://github.ryu9663</td>
+         <td>https://github.com/ryu9663</td>
       </tr>
       <tr>
          <td>팀원</td>
          <td>양예솔</td>
          <td>BACK-END</td>
-         <td>https://github.yy1234928</td>
+         <td>https://github.com/yy1234928</td>
       </tr>
       <tr>
          <td>팀장</td>
          <td>이윤환</td>
          <td>FRONT-END</td>
-         <td>https://github.leeyhunhwan</td>
+         <td>https://github.com/leeyhunhwan</td>
       </tr>
    </tbody>
 </table
