@@ -10,3 +10,40 @@
 <hr />
 <h2>Team</h2>
 <hr />
+팀 이름() 소개
+<table>
+   <thead>
+      <tr>
+         <th>역할</th>
+         <th>이름</th>
+         <th>담당분야</th>
+         <th>Github 주소</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>팀원</td>
+         <td>설동혁</td>
+         <td>BACK-END</td>
+         <td>https://github.iamsirseol</td>
+      </tr>
+      <tr>
+         <td>팀원</td>
+         <td>류준열</td>
+         <td>FRONT-END</td>
+         <td>https://github.ryu9663</td>
+      </tr>
+      <tr>
+         <td>팀원</td>
+         <td>양예솔</td>
+         <td>BACK-END</td>
+         <td>https://github.yy1234928</td>
+      </tr>
+      <tr>
+         <td>팀장</td>
+         <td>이윤환</td>
+         <td>FRONT-END</td>
+         <td>https://github.leeyhunhwan</td>
+      </tr>
+   </tbody>
+</table
