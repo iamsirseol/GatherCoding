@@ -4,7 +4,12 @@
    (우리 프로젝트 설명란/ 혹은 구현 됐을때의 시행 영상이나 짤막한 .gif)
 </blockquote>
 
-<h2>Tech Stack</h2>
+<h2>서비스 기획 의도</h2>
+대개발의 시대에서 살아남기 위해서는 뭉쳐야만 살 수 있다.
+위드코로나의 시대 위험하지 않게 뭉칩시다.
+
+<h2>Tech Stack(architecture)</h2>
+
 <hr />
 <h2>Flow Chart</h2>
 <hr />
