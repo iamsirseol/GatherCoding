@@ -9,6 +9,8 @@
 위드코로나의 시대 위험하지 않게 뭉칩시다.
 
 <h2>Tech Stack(architecture)</h2>
+<img width="856" alt="architecture" src="https://user-images.githubusercontent.com/75051059/141121203-5da6667a-6768-4d81-a221-4fdeebab1ffe.png">
+
 
 <hr />
 <h2>Flow Chart</h2>
