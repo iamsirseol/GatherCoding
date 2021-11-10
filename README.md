@@ -1,7 +1,9 @@
-<h1>33기 project11팀 잘부탁드립니다.</h1> <hr />
+<h1>:two_men_holding_hands:GatherCoding:two_women_holding_hands:</h1> <hr />
 
 <blockquote>
-   (우리 프로젝트 설명란/ 혹은 구현 됐을때의 시행 영상이나 짤막한 .gif)
+   GatherCoding
+   우리 지역에 개발, 코딩 공부 하고 싶은 사람 선착순 4명
+   죄송합니다....저는 도저히 설명하는 말을 적지 못하겠어요..
 </blockquote>
 
 <h2>서비스 기획 의도</h2>
