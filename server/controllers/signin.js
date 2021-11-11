@@ -1,6 +1,7 @@
 const { user } = require("../models");
 
 module.exports = async (req, res) => {
+    get: 
     const existUser = await user.findOne({
         where: { email: req.body.email, password: req.body.password }
     });
@@ -11,3 +12,4 @@ module.exports = async (req, res) => {
         res.status(200).send('ok');
     }
 }
+
