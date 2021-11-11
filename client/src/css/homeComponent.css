@@ -1,18 +1,25 @@
-* {
+/* * {
     box-sizing: border-box;
     text-decoration: none;
     /* border : 1px gray solid; */
     
-  }
+  /* }  */
+
+  
 .page {
     /* background : url('https://user-images.githubusercontent.com/75051059/141219381-c64490bf-907d-4929-8b1b-ad7891604a58.png'); */
     position : relative;
     height : 100vh;
 }
-button {
+/* 버튼 호버 */
+
+button:hover {
+    
     cursor: pointer;
-    border : 0px;
+    background-color: rgba(0,0,0,0.1);
 }
+
+
 .body {
     display : flex;
     flex-direction: row;
@@ -40,31 +47,13 @@ header .header-right{
     position : fixed;
     right: 10px;
 }
-sidebar {
-    display: flex;
-    flex-direction: column;
-    width: 100px;
-    position: absolute;
-    left: 0;
-    /* top: 30px; */
-    padding-top: 50px;
-    /* background-color: lightblue; */
-    height : 100%;
-}
-sidebar button {
-    width : 80px;
-    height : 40px;
-    border-radius: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top : 10px;
-}
+
 button:hover {
     /* background-color: blanchedalmond; */
 }
 
 .room-list {
-    /* width: 100%; */
+    
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
@@ -84,12 +73,8 @@ button:hover {
     align-content: center;
     border-radius: 10px;
     /* background-color: rgb(188, 255, 80); */
-    border : 0px;
+    border : 1px gray solid;
     padding : 10px;
     width : 400px;
 }
 
-.room-list .room:hover{
-    /* background-color: rgb(210, 247, 142); */
-    
-}
