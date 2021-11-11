@@ -3,8 +3,8 @@ import React,{useState} from 'react'
 import './css/reset.css';
 import './css/homePage.css';
 import Home from './pages/home';
-import Header from './pages/Header'
-import Sidebar from './pages/Sidebar'
+import Header from './components/Header'
+import Sidebar from './components/Sidebar'
 
 function App() {
   const [login,setLogin] = useState(true)
