@@ -15,7 +15,7 @@
 <h2>Flow Chart</h2>
 <hr />
 <h2>Team</h2>
-<hr />
+
 팀 이름() 소개
 <table>
    <thead>
