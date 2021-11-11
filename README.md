@@ -1,7 +1,6 @@
 <h1>:two_men_holding_hands:GatherCoding:two_women_holding_hands:</h1> <hr />
 
-/* <blockquote>
-</blockquote> */
+
 
 <h2>서비스 기획 의도</h2>
 대개발의 시대에서 살아남기 위해서는 뭉쳐야만 살 수 있다.
