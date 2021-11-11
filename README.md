@@ -18,7 +18,7 @@
 <hr />
 <h2>Team</h2>
 
-팀 이름() 소개
+팀 소개
 <table>
    <thead>
       <tr>
