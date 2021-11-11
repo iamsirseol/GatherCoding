@@ -13,6 +13,7 @@
 
 <hr />
 <h2>Flow Chart</h2>
+<img src="https://user-images.githubusercontent.com/75051059/141137748-aa682003-6a6a-431e-b328-5e672ed25a45.png">
 <hr />
 <h2>Team</h2>
 
