@@ -1,0 +1,28 @@
+# compiled output
+/node_modules
+/dist
+
+# dotenv
+.env
+.env.prod
+
+# pem
+*.pem
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+
+# IDEs and editors
+/.idea
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
