@@ -1,8 +1,8 @@
 import React from 'react'
 import '../css/homeComponent.css'
-import Header from '../pages/Header'
-import Sidebar from '../pages/Sidebar'
-import { groups, userInfo } from './dummy'
+// import Header from './Header'
+// import Sidebar from './Sidebar'
+import { groups, userInfo } from '../components/dummy'
 function HomeComponent() {
     return (
         <div className = 'page'>

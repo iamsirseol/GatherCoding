@@ -1,4 +1,4 @@
-import HomeComponent from "./components/HomeComponent";
+import HomeComponent from './pages/HomeComponent';
 import React,{useState} from 'react'
 import './css/reset.css';
 import './css/homePage.css';
