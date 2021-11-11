@@ -11,7 +11,8 @@
 위드코로나의 시대 위험하지 않게 뭉칩시다.
 
 <h2>Tech Stack(architecture)</h2>
-<img width="856" alt="architecture" src="https://user-images.githubusercontent.com/75051059/141121203-5da6667a-6768-4d81-a221-4fdeebab1ffe.png">
+<img src ="https://user-images.githubusercontent.com/75051059/141217047-508c0826-3a1f-4b24-93c3-666a56851d3a.png"/>
+
 
 
 <hr />
