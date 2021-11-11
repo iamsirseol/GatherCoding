@@ -1,10 +1,7 @@
 <h1>:two_men_holding_hands:GatherCoding:two_women_holding_hands:</h1> <hr />
 
-<blockquote>
-   GatherCoding
-   우리 지역에 개발, 코딩 공부 하고 싶은 사람 선착순 4명
-   죄송합니다....저는 도저히 설명하는 말을 적지 못하겠어요..
-</blockquote>
+/* <blockquote>
+</blockquote> */
 
 <h2>서비스 기획 의도</h2>
 대개발의 시대에서 살아남기 위해서는 뭉쳐야만 살 수 있다.
