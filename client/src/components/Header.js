@@ -1,7 +1,21 @@
 import React from 'react'
 import '../css/header.css'
-function Header({isLogin, logoutHandler}) {
+import { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
+
+function Header({isLogin, logoutHandler, showLoginModalHandler, isShowLoginModal}) {
     // console.log(logoutHandler)
+
+    const toggleLoginButton = () => { // 로그인 일때랑 아닐때 불러오는 함수 변경
+        if(isLogin){
+            return logoutHandler()
+        }else{
+            return showLoginModalHandler()
+        }
+    }
+
     return (
         <header>
                 
@@ -9,7 +23,7 @@ function Header({isLogin, logoutHandler}) {
                     
                 <div className = 'header-right'>
                     <button>{isLogin ? '개인정보' : '회원가입' }</button>
-                    <button onClick = {logoutHandler}>{isLogin ? '로그아웃' : '로그인' }</button>
+                    <button onClick = {toggleLoginButton}>{isLogin ? '로그아웃' : '로그인' }</button>
                 </div>        
         </header>
     )
