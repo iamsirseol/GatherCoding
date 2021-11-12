@@ -7,7 +7,7 @@ const app = express()
 const port = process.env.HTTP_PORT || 3000;
 
 const indexRouter = require('./routes/index');
-const linksRouter = require('./routes/links');
+// const linksRouter = require('./routes/links');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -21,7 +21,7 @@ app.use(
 app.use(cookieParser());
 
 app.use('/', indexRouter);
-app.use('/links', linksRouter);
+// app.use('/links', linksRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
