@@ -13,10 +13,7 @@ import { isLoginHandler } from './redux/actions/actions';
 
 function App() {
   
-  // const [isLogin,setisLogin] = useState(true)
-  // function logoutHandler(){
-  //   setisLogin(false)
-  // }
+
   const isLogin = useSelector(state => state.isLoginReducer.isLogin)
   
 
