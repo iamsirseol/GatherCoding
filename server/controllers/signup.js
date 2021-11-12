@@ -1,33 +1,38 @@
 const { user } = require('../models');
+const token = require('./token/index');
 
 module.exports = {
     post: async (req, res) => {
         const request = req.body;
-        console.log(request);
+        // console.log(request);
         const { username, email, password, image, blog, user_address } = request;
         // const jane = await User.create({ firstName: "Jane", lastName: "Doe" });
-        const data = await user.findOne({ username, email, password, image, blog, user_address });
+        const data = await user.findOne({ where: { email, password } });
+        // console.log(data);
         if (!data) {
-          const userinfo = await user.create({ username, email, password, image, blog, user_address });
-          if (userinfo.username !== null && userinfo.email !== null && userinfo.password !== null && userinfo.image !== null && userinfo.blog !== null && userinfo.user_address !== null) {
-              res.status(201).json({ data: accesstoken, message: 'ok' });
+          if (!username && !email && !password && !image && !blog && !user_address) {
+            // console.log({ username, email, password, image, blog, user_address } );
+            const userinfo = await user.create({ username, email, password, image, blog, user_address });
+            // console.log(userinfo);
+            const accessToken = token.generateAccessToken(userinfo.dataValues);  
+            res.status(201).json({ data: { accessToken: accessToken }, message: 'ok' });
           }
-          if (userinfo.username === null) {
+          if (!username) {
             res.status(422).json({ data: null, message: 'You should enter username'});
           }
-          if (userinfo.email === null) {
+          if (!email) {
             res.status(422).json({ data: null, message: 'You should enter email'});
           }
-          if (userinfo.password === null) {
+          if (!password) {
             res.status(422).json({ data: null, message: 'You should enter password'});
           }
-          if (userinfo.image === null) {
+          if (!image) {
             res.status(422).json({ data: null, message: 'You should enter image'});
           }
-          if (userinfo.blog === null) {
+          if (!blog) {
             res.status(422).json({ data: null, message: 'You should enter blog'});
           }
-          if (userinfo.user_address === null) {
+          if (!user_address) {
             res.status(422).json({ data: null, message: 'You should enter user_address'});
           }  
         } else {
