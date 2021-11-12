@@ -1,6 +1,6 @@
 import React from 'react';
 
-function App() {
+function Home() {
   return (
     <div className="home-container">
       <div className="home-view">
@@ -19,4 +19,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
