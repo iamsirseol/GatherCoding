@@ -1,10 +1,27 @@
+// require("dotenv").config();
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.HTTP_PORT || 4000;
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+const indexRouter = require('./routes/index');
+// const linksRouter = require('./routes/links');
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(
+  cors({
+    origin: ["https://localhost:4000"],
+    credentials: true,
+    methods: ["GET", "POST", "OPTIONS", "DELETE"],
+  })
+);
+app.use(cookieParser());
+
+app.use('/', indexRouter);
+// app.use('/links', linksRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

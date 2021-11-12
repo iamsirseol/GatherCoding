@@ -4,7 +4,7 @@
 .home-view > img{display: block; margin: 0 auto; width: 70%;}
 /* Home page typewriter */
 .typewriter{margin: 0 auto; width: min-content;}
-.typewriter h2{overflow: hidden; border-right: 2px solid #f08080; white-space: nowrap; letter-spacing: 1.5px; animation: typing 2.5s steps(30) 2s 1 normal both, blink-caret .5s steps(30) infinite normal; color: #fff; font-size: 40px; text-align: center; }
+.typewriter h2{overflow: hidden; border-right: 2px solid #f08080; white-space: nowrap; letter-spacing: 1.5px; animation: typing 2.5s steps(30) 2s 1 normal both, blink-caret .5s steps(30) infinite normal; color: #fff; font-size: 40px; text-align: center;}
 /* animation: name duration timing-function delay iteration-count direction fill-mode; */
 @keyframes typing{
   from{width: 0}
