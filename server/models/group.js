@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     gather_location: DataTypes.STRING,
     leader: DataTypes.INTEGER,
     location_address: DataTypes.STRING
+
   })
   // class group extends Model {
   //   /**
@@ -21,6 +22,13 @@ module.exports = (sequelize, DataTypes) => {
   //     // define association here
   //   }
   // };
+
+  });
+
+  group.associate = (models) => {
+    
+  }
+
   // group.init({
   //   title: DataTypes.STRING,
   //   describe: DataTypes.STRING,
