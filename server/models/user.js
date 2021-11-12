@@ -4,10 +4,14 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class user extends Model {
-    // static associate(models) {
-    //   this.belongsToMany(models.group, {through: user_group, foreignKey: group_id});
-    //   this.belongsTo(models.group, {});
-    // }
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
   };
   user.init({
     username: DataTypes.STRING,
@@ -15,9 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     image: DataTypes.STRING,
     blog: DataTypes.STRING,
-    current_location: DataTypes.STRING,
-    createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE
+    current_location: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'user',
