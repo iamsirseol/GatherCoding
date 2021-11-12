@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import { 
-    IS_LOGIN, IS_SHOW_LOGIN_MODAL
+    IS_LOGIN, 
+    IS_SHOW_LOGIN_MODAL,
+    IS_SHOW_SIGNUP_MODAL,
 } from '../actions/actions';
 import { initialState } from './initialState';
 
@@ -9,6 +11,7 @@ import { initialState } from './initialState';
 const rootReducer = combineReducers({
     isLoginReducer,
     isShowLoginModalReducer,
+    isShowSignUpModalReducer,
 })
 
 function isLoginReducer(state = initialState.isLogin, action) {
@@ -26,6 +29,16 @@ function isShowLoginModalReducer(state = initialState.isShowLoginModal, action){
         case IS_SHOW_LOGIN_MODAL:
           return Object.assign({}, {
             isShowLoginModal: action.payload.isShowLoginModal
+          });
+        default: return state;
+      }
+}
+
+function isShowSignUpModalReducer(state = initialState.isShowSignUpModal, action){
+    switch (action.type) {
+        case IS_SHOW_SIGNUP_MODAL:
+          return Object.assign({}, {
+            isShowSignUpModal: action.payload.isShowSignUpModal
           });
         default: return state;
       }
