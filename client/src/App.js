@@ -6,12 +6,13 @@ import './css/homePage.css';
 import Home from './pages/Home';
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
-import { useSelector, useDispatch } from 'react-redux';
 //리덕스
+import { useSelector, useDispatch } from 'react-redux';
 import { isLoginHandler } from './redux/actions/actions';
 
 
 function App() {
+
   const isLogin = useSelector(state => state.isLoginReducer.isLogin)
   const dispatch = useDispatch()
   const logoutHandler = () => { dispatch(isLoginHandler(false)) };
