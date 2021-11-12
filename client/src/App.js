@@ -6,13 +6,19 @@ import './css/homePage.css';
 import Home from './pages/Home';
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
+
 import LoginModal from './components/LoginModal'
 import { useSelector, useDispatch } from 'react-redux';
 //리덕스
 import { isLoginHandler, isShowLoginModalHandler } from './redux/actions/actions';
 
+//리덕스
+import { useSelector, useDispatch } from 'react-redux';
+import { isLoginHandler } from './redux/actions/actions';
+
 
 function App() {
+
   const isLogin = useSelector(state => state.isLoginReducer.isLogin)
   const isShowLoginModal = useSelector(state => state.isShowLoginModalReducer.isShowLoginModal)
 
