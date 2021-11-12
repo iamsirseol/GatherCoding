@@ -4,5 +4,11 @@ export const initialState = {
     },
     isLoading : {
         isLoading : false
+    },
+    isShowLoginModal: {
+        isShowLoginModal : false
+    },
+    isShowSignUpModal: {
+        isShowSignUpModal: false
     }
 }
