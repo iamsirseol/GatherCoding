@@ -1,9 +1,11 @@
-import React from 'react'
-import '../css/homeComponent.css'
-import Header from '../pages/Header'
-import Sidebar from '../pages/Sidebar'
-import { groups, userInfo } from './dummy'
-function HomeComponent() {
+//라이브러리
+import React from 'react';
+import axios from 'axios';
+
+import '../css/homeLogined.css';
+import { groups, userInfo } from '../components/dummy';
+
+function HomeLogined() {
     return (
         <div className = 'page'>
             
@@ -32,4 +34,4 @@ function HomeComponent() {
     )
 }
 
-export default HomeComponent
+export default HomeLogined

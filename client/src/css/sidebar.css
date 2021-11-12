@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     width: 100px;
-    position: absolute;
+    position: fixed;
     left: 0;
     /* top: 30px; */
     padding-top: 50px;
@@ -17,4 +17,10 @@
     margin-right: auto;
     margin-top : 10px;
     border :1px solid gray;
+    cursor: pointer;
+}
+.sidebar button:hover {
+    
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.1);
 }
