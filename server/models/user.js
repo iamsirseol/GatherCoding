@@ -5,19 +5,11 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class user extends Model {
 
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
+    // static associate(models) {
+    //   this.belongsToMany(models.group, {through: user_group, foreignKey: group_id});
+    //   this.belongsTo(models.group, {});
+    // }
   };
-
-    // 클래스 형태 사용할 지 group처럼 사용할지 선택
-  
-
   user.init({
     username: DataTypes.STRING,
     email: DataTypes.STRING,

@@ -2,43 +2,26 @@
 const {
   Model
 } = require('sequelize');
+const user_group = require('./user_group');
 module.exports = (sequelize, DataTypes) => {
-  const group = sequelize.define('group', {
+  class group extends Model {
+
+    // static associate(models) {
+    //   this.belongsToMany(models.user, {through: user_group, foreignKey: user_id});
+    //   this.hasOne(models.user, {foreignKey: id});
+    // }
+  };
+
+  group.init({
     title: DataTypes.STRING,
     describe: DataTypes.STRING,
     population: DataTypes.INTEGER,
     gather_location: DataTypes.STRING,
     leader: DataTypes.INTEGER,
     location_address: DataTypes.STRING
-
-  })
-  // class group extends Model {
-  //   /**
-  //    * Helper method for defining associations.
-  //    * This method is not a part of Sequelize lifecycle.
-  //    * The `models/index` file will call this method automatically.
-  //    */
-  //   static associate(models) {
-  //     // define association here
-  //   }
-  // };
-
+  }, {
+    sequelize,
+    modelName: 'group',
   });
-
-  group.associate = (models) => {
-    
-  }
-
-  // group.init({
-  //   title: DataTypes.STRING,
-  //   describe: DataTypes.STRING,
-  //   population: DataTypes.INTEGER,
-  //   gather_location: DataTypes.STRING,
-  //   leader: DataTypes.INTEGER,
-  //   location_address: DataTypes.STRING
-  // }, {
-  //   sequelize,
-  //   modelName: 'group',
-  // });
   return group;
 };
