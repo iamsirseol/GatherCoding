@@ -12,11 +12,7 @@ import { isLoginHandler } from './redux/actions/actions';
 
 
 function App() {
-  
-
   const isLogin = useSelector(state => state.isLoginReducer.isLogin)
-  
-
   const dispatch = useDispatch()
   const logoutHandler = () => { dispatch(isLoginHandler(false)) };
   console.log(isLogin)
@@ -25,8 +21,6 @@ function App() {
       <Header isLogin={isLogin} logoutHandler={logoutHandler}/>
       <Sidebar />
       {isLogin ? <HomeLogined /> : <Home />}
-      {console.log(isLogin)} 
-      
     </div>
   );
 }
