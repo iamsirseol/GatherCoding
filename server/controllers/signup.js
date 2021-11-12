@@ -5,14 +5,14 @@ module.exports = {
     post: async (req, res) => {
         const request = req.body;
         // console.log(request);
-        const { username, email, password, image, blog, user_address } = request;
+        const { username, email, password, image, blog, current_location } = request;
         // const jane = await User.create({ firstName: "Jane", lastName: "Doe" });
         const data = await user.findOne({ where: { email, password } });
         // console.log(data);
         if (!data) {
-          if (!username && !email && !password && !image && !blog && !user_address) {
+          if (!username && !email && !password && !image && !blog && !current_location) {
             // console.log({ username, email, password, image, blog, user_address } );
-            const userinfo = await user.create({ username, email, password, image, blog, user_address });
+            const userinfo = await user.create({ username, email, password, image, blog, current_location });
             // console.log(userinfo);
             const accessToken = token.generateAccessToken(userinfo.dataValues);  
             res.status(201).json({ data: { accessToken: accessToken }, message: 'ok' });
@@ -32,7 +32,7 @@ module.exports = {
           if (!blog) {
             res.status(422).json({ data: null, message: 'You should enter blog'});
           }
-          if (!user_address) {
+          if (!current_location) {
             res.status(422).json({ data: null, message: 'You should enter user_address'});
           }  
         } else {
