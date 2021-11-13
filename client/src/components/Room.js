@@ -9,7 +9,7 @@ function Room() {
 
     {groups.filter(el=>el.location_address.split(' ')[1] === city)
 
-    {groups.filter(el=>el.location_address === userInfo.user_address)
+
 
     .map((group,idx) => {
         return (
