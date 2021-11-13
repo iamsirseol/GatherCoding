@@ -10,22 +10,43 @@ module.exports = {
         console.log(req.body);
         const authorizationCode = req.body.authorizationCode;
         return await axios.post(`https://github.com/login/oauth/access_token?client_id=${clientID}&client_secret=${clientSecret}&code=${authorizationCode}`)
-        .then((result) => {
-            // const accessToken = result.data;
-            // console.log(authorizationCode);
-            console.log(result.data);
-            const token = result.data.split('&')[0].split('=')[1];
-            if (token === 'bad_verification_code') {
+            .then((result) => {
+                // const accessToken = result.data;
+                // console.log(authorizationCode);
+                console.log(result.data);
+                const token = result.data.split('&')[0].split('=')[1];
+                if (token === 'bad_verification_code') {
+                    res.status(400).json('Bad Request');
+                } else {
+                    axios.get('https://api.github.com/user', { headers: { authorization: `token ${token}` } })
+                        .then((result) => {
+                            console.log(result);
+                            const username = result.login;
+                            const email = result.email;
+                            const password = null;
+                            const image = result.avatar_url;
+                            const blog = result.html_url;
+                            const current_location = null;
+                            user.findOne({ where: { email }})
+                            .then((result) => {
+                                if(!result) {
+                                    user.create({ username, email, password, image, blog, current_location })
+                                    .then((userinfo) => {
+                                        console.log(userinfo);
+                                    })
+                                    res.status(201).json({ accessToken: token });
+                                } else {
+                                    res.status(409).json({ data:null, message:'This user already exists in the database'});
+                                }
+                            });
+                        })
+                }
+            })
+            .catch(() => {
                 res.status(400).json('Bad Request');
-            } else {
-                res.status(200).send({accessToken: token});
-            }
-        })
-        .catch(() => {
-            res.status(400).json('Bad Request');
-        })
+            })
     },
     get: (req, res) => {
         res.send("Hello World");
-    }    
+    }
 };

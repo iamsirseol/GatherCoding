@@ -15,15 +15,15 @@ module.exports = {
         type: Sequelize.STRING
       },
       password: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       image: {
-        type: Sequelize.BLOB
+        type: Sequelize.STRING
       },
       blog: {
         type: Sequelize.STRING
       },
-      user_address: {
+      current_location: {
         type: Sequelize.STRING
       },
       createdAt: {

@@ -10,5 +10,10 @@ export const initialState = {
     },
     isShowSignUpModal: {
         isShowSignUpModal: false
+    },
+    location : {
+        region : '',
+        city : ''
     }
+
 }
