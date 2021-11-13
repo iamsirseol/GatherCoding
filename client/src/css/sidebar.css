@@ -1,0 +1,26 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    position: fixed;
+    left: 0;
+    /* top: 30px; */
+    padding-top: 50px;
+    /* background-color: lightblue; */
+    height : 100%;
+}
+.sidebar button {
+    width : 80px;
+    height : 40px;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top : 10px;
+    border :1px solid gray;
+    cursor: pointer;
+}
+.sidebar button:hover {
+    
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.1);
+}
