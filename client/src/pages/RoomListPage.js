@@ -1,20 +1,18 @@
 
 import React,{ useEffect } from 'react'
-import { groups , userInfo } from '../components/dummy'
 import RoomList from '../components/RoomList';
 import { useSelector, useDispatch } from 'react-redux';
 import dotenv from "dotenv";
 import axios from 'axios';
 import '../css/roomListPage.css'
 
-import React from 'react'
 import { groups , userInfo } from '../components/dummy'
-import RoomList from '../components/RoomList';
+
 import '../css/roomListPage.css'
 
 
 
-import { useSelector, useDispatch } from 'react-redux';
+
 
 
 
@@ -48,21 +46,12 @@ function RoomListPage() {
     function onGeoError(){
         alert("위치권한을 확인해주세요");
     }
-    // const loc = async (e) => {
-    //     e.preventDefault()
-    //     navigator.geolocation.getCurrentPosition(onGeoOk,onGeoError)
-    // };
+  
     useEffect(()=>{
         // if(!region||!city){
             navigator.geolocation.getCurrentPosition(onGeoOk,onGeoError)
         // }
     },[region,city])
-    
-
-function RoomListPage() {
-    const isLogin = useSelector(state => state.isLoginReducer.isLogin)//로긴상태
-
-
     
     
     return (
@@ -77,9 +66,6 @@ function RoomListPage() {
 
                             <select className = 'roomListPage-loc'><option>{region}</option></select>
                             <select className = 'roomListPage-loc'><option>{city}</option></select>                        
-
-                                <select className = 'roomListPage-loc'><option>{userInfo.user_address.split(' ')[0]}</option></select>
-                                <select className = 'roomListPage-loc'><option>{userInfo.user_address.split(' ')[1]}</option></select>
 
                             </div>
                             <button className = 'roomListPage-current-location btn'>현재위치</button>
@@ -97,5 +83,5 @@ function RoomListPage() {
         ) 
         : <Home /> 
 )}
-
-export default RoomListPage
+        
+export default RoomListPage;
