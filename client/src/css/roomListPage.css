@@ -1,0 +1,112 @@
+.roomListPage-page {
+    /* background : url('https://user-images.githubusercontent.com/75051059/141219381-c64490bf-907d-4929-8b1b-ad7891604a58.png'); */
+    position : relative;
+    height : 100vh;
+    /* background-color: aquamarine; */
+    margin-left: 100px;
+    /* left:100px; */
+    /* top : 150px; */
+}
+
+
+
+.roomListPage-body {
+    
+    display : flex;
+    flex-direction: row;   
+}
+.roomListPage-body .roomListPage-main {
+    
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    /* !주석해제하면 방들 세로정렬됨 - 반응형 */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* ! */
+    /* background-color: cornflowerblue; */
+    
+}
+/*버튼 모각코만들기 */
+.roomListPage-main .roomListPage-create-meeting {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding : 5px;
+    /* background-color: darkgreen; */
+}
+.roomListPage-main > button {
+    /* background-color: darkgoldenrod; */
+
+}
+.roomListPage-main .roomListPage-room-location {
+    
+    padding : 30px ;
+    font-size: larger;
+    text-align: center;
+    /* background-color: aqua; */
+    width : 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    height : 100px;
+    border : 1px gray solid;
+    
+}
+.roomListPage-room-list {
+    /* background-color: crimson; */
+}
+
+.roomListPage-room-location .roomListPage-room-location-locbox {
+    
+    top : 10px;
+    display: flex;
+    margin : auto;
+    justify-content: space-evenly;
+    width: 300px;
+    height : 30px;
+    
+}
+.roomListPage-loc:hover{
+    cursor: pointer;
+    /* background-color: rgba(0,0,0,0.1); */
+}
+.roomListPage-loc {
+    
+    width : 100px;
+    margin: auto;
+
+}
+/* 현재위치 */
+.roomListPage-room-location > button{
+    width : 80px;
+    /* background-color: rgb(96, 221, 221); */
+    margin-top : 5px;
+    margin-left:auto;
+    margin-right:auto;
+    
+}
+
+.roomListPage-room-list .roomListPage-room{
+    margin: 20px;
+    /* justify-content: center; */
+    /* align-content: center; */
+    border-radius: 10px;
+    /* background-color: rgb(188, 255, 80); */
+    border : 1px gray solid;
+    padding : 10px;
+    width : 400px;
+}
+/* 버튼 호버 */
+button {
+    border : 1px gray solid;
+}
+
+button:hover {
+    
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.1);
+}
+
