@@ -1,9 +1,9 @@
 import React from 'react'
-import { groups , userInfo } from '../components/dummy'
-import { useSelector, useDispatch } from 'react-redux';
+import { groups } from '../components/dummy'
+import { useSelector} from 'react-redux';
 // import '../css/homeLogined.css';
 function Room() {
-    const {region,city} = useSelector(state=>state.locationReducer)
+    const {city} = useSelector(state=>state.locationReducer)
     return (
     <>
     {groups.filter(el=>el.location_address.split(' ')[1] === city)
