@@ -1,17 +1,16 @@
-/* * {
-    box-sizing: border-box;
-    text-decoration: none;
-    /* border : 1px gray solid; */
-    
-  /* }  */
+*{
+    /* border:1px grid solid !important; */
+}
 
   
-.page {
+.homeLogined-page {
     /* background : url('https://user-images.githubusercontent.com/75051059/141219381-c64490bf-907d-4929-8b1b-ad7891604a58.png'); */
     position : relative;
     height : 100vh;
     /* background-color: aquamarine; */
     margin-left: 100px;
+    /* left:100px; */
+    /* top : 150px; */
 }
 /* 버튼 호버 */
 
@@ -22,57 +21,47 @@ button:hover {
 }
 
 
-.body {
+.homeLogined-body {
     display : flex;
     flex-direction: row;
 }
-header {
-    padding : 10px;
-    position :fixed;
-    width : 100%;
-    /* background-color: rgb(39, 173, 95); */
-    display: flex;
-    z-index: 2;
-}
-header .page-logo {
-    border-radius: 1px;
-    width : 80px;
-    height : 30px;
-}
-header .logo img {
-    border-radius: 1px;
-    width : 80px;
-    height : 30px;
-}
-header .header-right{
-    /* background-color: red; */
-    position : fixed;
-    right: 10px;
-}
 
-button:hover {
-    /* background-color: blanchedalmond; */
-}
-
-.room-list {
+.homeLogined-room-list {
     
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
-    display: flex;
-    flex-direction: column;
+    /* !주석해제하면 방들 세로정렬됨 - 반응형*/
+    /* display: flex; */
+    /* flex-direction: column; */
     
 }
 
-.room-list .room-location {
+.homeLogined-room-list .homeLogined-room-location {
+    padding : 30px ;
     font-size: larger;
     text-align: center;
+    /* background-color: aqua; */
+    width : 600px;
+    height : 100px;
+    margin-left: auto;
+    margin-right: auto;
 }
-
-.room-list .room {
+.homeLogined-room-box {
+    /* display:flex;
+    flex-direction: column;
+    border:1px gray solid;
+    position: absolute;
+    top : 160px;
+    background-color: greenyellow;
+    font-size: larger;
+    text-align: center; */
+}
+/* *{border:1px gray solid;} */
+.homeLogined-room-list .homeLogined-room {
     margin: 20px;
-    justify-content: center;
-    align-content: center;
+    /* justify-content: center; */
+    /* align-content: center; */
     border-radius: 10px;
     /* background-color: rgb(188, 255, 80); */
     border : 1px gray solid;
