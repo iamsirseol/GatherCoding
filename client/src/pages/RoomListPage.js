@@ -6,14 +6,13 @@ import dotenv from "dotenv";
 import axios from 'axios';
 import '../css/roomListPage.css'
 
-import React from 'react'
 import { groups , userInfo } from '../components/dummy'
-import RoomList from '../components/RoomList';
+
 import '../css/roomListPage.css'
 
 
 
-import { useSelector, useDispatch } from 'react-redux';
+
 
 
 
@@ -54,12 +53,6 @@ function RoomListPage() {
         // }
     },[region,city])
     
-
-function RoomListPage() {
-    const isLogin = useSelector(state => state.isLoginReducer.isLogin)//로긴상태
-
-
-    
     
     return (
         {isLogin} ? 
@@ -73,9 +66,6 @@ function RoomListPage() {
 
                             <select className = 'roomListPage-loc'><option>{region}</option></select>
                             <select className = 'roomListPage-loc'><option>{city}</option></select>                        
-
-                                <select className = 'roomListPage-loc'><option>{userInfo.user_address.split(' ')[0]}</option></select>
-                                <select className = 'roomListPage-loc'><option>{userInfo.user_address.split(' ')[1]}</option></select>
 
                             </div>
                             <button className = 'roomListPage-current-location btn'>현재위치</button>
@@ -93,5 +83,5 @@ function RoomListPage() {
         ) 
         : <Home /> 
 )}
-        }
+        
 export default RoomListPage;
