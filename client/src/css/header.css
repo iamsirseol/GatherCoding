@@ -1,5 +1,7 @@
 header {
-    padding : 10px;
+    
+    border : 1px gray solid;
+    padding : 5px;
     position :fixed;
     width : 100%;
     /* background-color: rgb(39, 173, 95); */
@@ -12,8 +14,11 @@ header .page-logo {
     height : 30px;
     cursor: pointer;
 }
-header .page-logo:hover {
-    
+
+img:hover {
+    border : 1px gray solid;
+    cursor: pointer;
+   
 }
 header .logo img {
     border-radius: 1px;

@@ -1,38 +1,46 @@
 import React from 'react'
-// * 사이드바, 헤더 사용시 복붙하기
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
-import { useSelector, useDispatch } from 'react-redux';
-import { isLoginHandler } from '../redux/actions/actions';
-import { isShowLoginModalHandler } from '../redux/actions/actions';
+import { groups , userInfo } from '../components/dummy'
 import RoomList from '../components/RoomList';
-import UsersLocation from '../components/UsersLocation';
+import '../css/roomListPage.css'
+
+
+
+import { useSelector, useDispatch } from 'react-redux';
+
+
 import Home from './Home';
 
-// *
 function RoomListPage() {
-    //* 헤더 사용시 주석까지 복붙
-    const isLogin = useSelector(state => state.isLoginReducer.isLogin)
-    const isShowLoginModal = useSelector(state => state.isShowLoginModalReducer.isShowLoginModal)
-    const showLoginModalHandler = (e) => { dispatch(isShowLoginModalHandler(true))};
-    const dispatch = useDispatch()
-    const logoutHandler = () => { dispatch(isLoginHandler(false)) };
-    //*
+    const isLogin = useSelector(state => state.isLoginReducer.isLogin)//로긴상태
+
+    
+    
     return (
-        <div>
-            {/* //* 헤더, 사이드바 사용시 복붙 */}
-            {/* <Header isLogin={isLogin} logoutHandler={logoutHandler} showLoginModalHandler={showLoginModalHandler} isShowLoginModal={isShowLoginModal}/> */}
-            {/* <Sidebar />             */}
-            {isLogin ? 
-            <>
-                <UsersLocation />
-                <RoomList />
-            </>    
-             : <Home />
-            }
-            
+        {isLogin} ? 
+        (
+        <div className = 'roomListPage-page'>
+            <div className = 'roomListPage-body'>
+                <div className = 'roomListPage-main'>
+                    <form className='roomListPage-room-location'>
+                        {/* {userInfo.user_address} */}
+                            <div className='roomListPage-room-location-locbox'>
+                                <select className = 'roomListPage-loc'><option>{userInfo.user_address.split(' ')[0]}</option></select>
+                                <select className = 'roomListPage-loc'><option>{userInfo.user_address.split(' ')[1]}</option></select>
+                            </div>
+                            <button className = 'roomListPage-current-location btn'>현재위치</button>
+                    </form>
+                    <div className='roomListPage-create-meeting'>
+                        <button className='roomListPage-create-meeting btn'>모각코 만들기</button>
+                    </div>    
+                    <div className = 'roomListPage-room-list'>
+                        <RoomList />
+                    </div>                            
+                </div>
+                
+            </div>
         </div>
-    )
-}
+        ) 
+        : <Home /> 
+)}
 
 export default RoomListPage
