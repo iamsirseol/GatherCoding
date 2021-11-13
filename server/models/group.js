@@ -2,14 +2,13 @@
 const {
   Model
 } = require('sequelize');
-const user_group = require('./user_group');
 module.exports = (sequelize, DataTypes) => {
   class group extends Model {
 
-    // static associate(models) {
-    //   this.belongsToMany(models.user, {through: user_group, foreignKey: user_id});
-    //   this.hasOne(models.user, {foreignKey: id});
-    // }
+    static associate(models) {
+      this.belongsToMany(models.user, {through: "user_group", foreignKey: "user_id", onDelete: "cascade"});
+      this.hasOne(models.user, {foreignKey: "id", onDelete: "cascade"});
+    }
   };
 
   group.init({
@@ -23,4 +22,5 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'group',
   });
+  return group;
 };

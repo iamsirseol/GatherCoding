@@ -4,10 +4,10 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class user extends Model {
-    // static associate(models) {
-    //   this.belongsToMany(models.group, {through: user_group, foreignKey: group_id});
-    //   this.belongsTo(models.group, {});
-    // }
+    static associate(models) {
+      this.belongsToMany(models.group, {through: "user_group", foreignKey: "group_id"});
+      this.hasOne(models.group, {foreignKey: "leader", sourceKey: "id", onDelete: "cascade"});
+    }
   };
   user.init({
     username: DataTypes.STRING,
@@ -16,8 +16,6 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.BLOB,
     blog: DataTypes.STRING,
     user_address: DataTypes.STRING,
-    createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'user',

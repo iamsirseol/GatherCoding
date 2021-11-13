@@ -7,8 +7,8 @@ module.exports = {
     },
 
     isAuthorized: (req) => {
-        const authorization = req.headers.cookie;
-        // const authorization = req.headers.authorizationCode;
+        // const authorization = req.headers.cookie;
+        const authorization = req.headers.authorizationCode;
 
         if (!authorization) {
             return 'unauthorized'

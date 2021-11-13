@@ -5,10 +5,10 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class user_group extends Model {
 
-    // static associate(models) {
-    //   this.belongsTo(models.user, {foreignKey: id});
-    //   this.belongsTo(models.group, {foreignKey: id});
-    // }
+    static associate(models) {
+      this.belongsTo(models.user, {foreignKey: "id"});
+      this.belongsTo(models.group, {foreignKey: "id"});
+    }
   };
 
   user_group.init({
