@@ -1,6 +1,5 @@
 
 import React,{ useEffect } from 'react'
-import { groups , userInfo } from '../components/dummy'
 import RoomList from '../components/RoomList';
 import { useSelector, useDispatch } from 'react-redux';
 import dotenv from "dotenv";
@@ -48,10 +47,7 @@ function RoomListPage() {
     function onGeoError(){
         alert("위치권한을 확인해주세요");
     }
-    // const loc = async (e) => {
-    //     e.preventDefault()
-    //     navigator.geolocation.getCurrentPosition(onGeoOk,onGeoError)
-    // };
+  
     useEffect(()=>{
         // if(!region||!city){
             navigator.geolocation.getCurrentPosition(onGeoOk,onGeoError)
@@ -97,5 +93,5 @@ function RoomListPage() {
         ) 
         : <Home /> 
 )}
-
-export default RoomListPage
+        }
+export default RoomListPage;
