@@ -60,30 +60,7 @@ module.exports = {
         // await amidala.addProfile(queen, { through: { selfGranted: false } });
 
 
-        // const jane = await User.create({ 
-        //     username: 'Jane',
-        //     password: '4567'
-        // });
-        // const mogako = await Group.create({
-        //     title: 'mogako',
-        //     city: 'Seoul'
-        // });
-        // await jane.addGroup(mogako)
-        // .then((result) => {
-        //     console.log('success');
-        // })
-        // const jane_group = Group.findAll({
-        //     include: [{
-        //         model: User,
-        //         where: {
-        //             username: 'Jane'
-        //         }
-        //     }],
-        // })
-        // .then((result) => {
-        //     console.log(result);
-        //     res.send(result);
-        // })
+        
         const data = user.findAll();
         console.log(data);
         res.send('success')
