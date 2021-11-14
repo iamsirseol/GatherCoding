@@ -4,8 +4,19 @@ import axios from 'axios';
 
 import '../css/homeLogined.css';
 import { groups, userInfo } from '../components/dummy';
+import RoomList from '../components/RoomList';
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import Room from '../components/Room';
+import { isShowLoginModalHandler } from '../redux/actions/actions';
+
 
 function HomeLogined() {
+             // * 로긴모달에 필요한 부분
+             const dispatch = useDispatch()
+             const isLogin = useSelector(state => state.isLoginReducer.isLogin)
+             const showLoginModalHandler = () => { dispatch(isShowLoginModalHandler(true))};
+             // *   
     return (
         <div className = 'homeLogined-page'>
             
@@ -18,19 +29,20 @@ function HomeLogined() {
                     <div className = 'homeLogined-room-location'>
                         {userInfo.username}님이 참가하고 계신 모각코 모임입니다.
                     </div>
-                    {/* <div className = 'homeLogined-room-box'> */}
+                    <div className = '.common-room-component-list'>
                         {userInfo.joinGroup
-                            .map((group,idx) => {
+                        .map((group,idx) => {
                             return (
-                                <button className = 'homeLogined-room' key = {idx}>
-                                    <div>방 이름 : {group.title}</div>
-                                    <div>인원 : {group.currentPopulation}/{group.population}</div>
-                                    <div>코딩 장소 : {group.gather_location}</div>
-                                    <div>리더 : {group.leader}</div>
-                                </button>
+                                <div className = 'common-room-box' key = {idx} >
+                                {isLogin ? <Link to = '/roominfo'><Room group = {group} idx = {idx}/></Link>
+                                : <Room onClick = {isShowLoginModalHandler}group = {group} idx = {idx}/>
+                            }
+                                </div>
                             )
                         })}
-                    {/* </div> */}
+                        
+
+                    </div>
                 </div>
             </div>
         </div>
