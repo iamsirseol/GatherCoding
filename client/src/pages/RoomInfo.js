@@ -46,10 +46,7 @@ function RoomInfo() {
                 return (<div key = {i}>
                       <UserList image={image} username={username} blog={blog}/>
                     </div>
-            
             )
-                
-                
             })}
             
         </div>    
