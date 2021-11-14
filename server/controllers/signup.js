@@ -33,7 +33,7 @@ module.exports = {
             res.status(422).json({ data: null, message: 'You should enter blog'});
           }
           if (!current_location) {
-            res.status(422).json({ data: null, message: 'You should enter user_address'});
+            res.status(422).json({ data: null, message: 'You should enter current_location'});
           }  
         } else {
           res.status(409).json({ data: null, message: 'This user already exists in the database'})
