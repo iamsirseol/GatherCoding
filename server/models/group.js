@@ -48,7 +48,10 @@ module.exports = class Group extends Sequelize.Model {
             UserId: {
                 type: Sequelize.INTEGER
             },
-            location: {
+            region: {
+                type: Sequelize.STRING(255)
+            },
+            city: {
                 type: Sequelize.STRING(255)
             }
         }, {
