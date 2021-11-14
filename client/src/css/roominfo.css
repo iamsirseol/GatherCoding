@@ -1,0 +1,90 @@
+/* *{
+    box-sizing: border-box;
+    text-decoration: none;
+    border : 1px gray solid;
+} */
+.roominfo-page {
+    display: flex;
+    flex-direction: column;
+    background: yellowgreen;
+    position : relative;
+    top:50px;
+    height : 100vh;
+    margin-left:100px;
+    
+    
+}
+.roominfo-page .roominfo-map {
+    background: yellow;
+    /* position : sticky; */
+    top : 50px;
+    width:100%;
+    height : 35%;
+    
+}
+.roominfo-page .roominfo-info-div {
+    background: red;
+    
+    height : 55%;
+    display: flex;
+    flex-direction: column;
+}
+.roominfo-page .roominfo-info-div .roominfo-meeting-time {
+    background: violet;
+    width : 400px;
+    height: 40px;
+    margin-top: 20px;
+    padding-top:8px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.roominfo-page .roominfo-info-div .roominfo-info-outer {
+    width : 400px;
+    height: 250px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.roominfo-page .roominfo-info-div .roominfo-info-inner {
+    background: wheat;
+    width : 300px;
+    height: 200px;
+    margin: auto;
+    overflow-y: auto;
+    
+}
+
+.roominfo-page .roominfo-info-div .roominfo-info-person {
+    background: turquoise;
+    width:100px;
+    height:40px;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding-top:8px;
+    text-align: center;
+}
+
+.roominfo-page .roominfo-change-room-info {
+    background: whitesmoke;
+    width: 130px;
+    height: 40px;
+    margin:auto;
+}
+
+.roominfo-change-room-info button {
+    width : 100%;
+    height: 100%;
+}
+
+
+.roominfo-user-list {
+    background: rgb(115, 214, 245);
+    position : relative;
+    top:50px;
+    height:100vh;
+    margin-left:100px;
+}
