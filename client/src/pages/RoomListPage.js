@@ -1,38 +1,87 @@
-import React from 'react'
-// * 사이드바, 헤더 사용시 복붙하기
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
-import { useSelector, useDispatch } from 'react-redux';
-import { isLoginHandler } from '../redux/actions/actions';
-import { isShowLoginModalHandler } from '../redux/actions/actions';
+
+import React,{ useEffect } from 'react'
 import RoomList from '../components/RoomList';
-import UsersLocation from '../components/UsersLocation';
+import { useSelector, useDispatch } from 'react-redux';
+import dotenv from "dotenv";
+import axios from 'axios';
+import '../css/roomListPage.css'
+
+import { groups , userInfo } from '../components/dummy'
+
+import '../css/roomListPage.css'
+
+
+
+
+
+
+
 import Home from './Home';
+import { changeCity, changeRegion } from '../redux/actions/actions';
 
-// *
+
+
+dotenv.config();
 function RoomListPage() {
-    //* 헤더 사용시 주석까지 복붙
-    const isLogin = useSelector(state => state.isLoginReducer.isLogin)
-    const isShowLoginModal = useSelector(state => state.isShowLoginModalReducer.isShowLoginModal)
-    const showLoginModalHandler = (e) => { dispatch(isShowLoginModalHandler(true))};
-    const dispatch = useDispatch()
-    const logoutHandler = () => { dispatch(isLoginHandler(false)) };
-    //*
+    
+    const dispatch = useDispatch();
+    const isLogin = useSelector(state => state.isLoginReducer.isLogin)//로긴상태
+    const {region,city} = useSelector(state=>state.locationReducer)
+    console.log(region,city)
+    // const changeCityHandler = () => { dispatch(changeCity())}
+    function onGeoOk(position){
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        
+        axios.get(`https://dapi.kakao.com/v2/local/geo/coord2address.json?x=${lon}&y=${lat}&input_coord=WGS84`
+        ,{headers:{Authorization:`KakaoAK ${process.env.REACT_APP_REST_API}`}}
+        )
+        .then(res=>{
+            console.log(res.data.documents)
+            dispatch(changeRegion(res.data.documents[0].address.region_1depth_name))
+            dispatch(changeCity(res.data.documents[0].address.region_2depth_name)) 
+        }
+        ).catch(e=>console.log(e))
+    }
+    function onGeoError(){
+        alert("위치권한을 확인해주세요");
+    }
+  
+    useEffect(()=>{
+        // if(!region||!city){
+            navigator.geolocation.getCurrentPosition(onGeoOk,onGeoError)
+        // }
+    },[region,city])
+    
+    
     return (
-        <div>
-            {/* //* 헤더, 사이드바 사용시 복붙 */}
-            {/* <Header isLogin={isLogin} logoutHandler={logoutHandler} showLoginModalHandler={showLoginModalHandler} isShowLoginModal={isShowLoginModal}/> */}
-            {/* <Sidebar />             */}
-            {isLogin ? 
-            <>
-                <UsersLocation />
-                <RoomList />
-            </>    
-             : <Home />
-            }
-            
-        </div>
-    )
-}
+        {isLogin} ? 
+        (
+        <div className = 'roomListPage-page'>
+            <div className = 'roomListPage-body'>
+                <div className = 'roomListPage-main'>
+                    <form className='roomListPage-room-location'>
+                        {/* {userInfo.user_address} */}
+                            <div className='roomListPage-room-location-locbox'>
 
-export default RoomListPage
+                            <select className = 'roomListPage-loc'><option>{region}</option></select>
+                            <select className = 'roomListPage-loc'><option>{city}</option></select>                        
+
+                            </div>
+                            <button className = 'roomListPage-current-location btn'>현재위치</button>
+                    </form>
+                    <div className='roomListPage-create-meeting'>
+                        <button className='roomListPage-create-meeting btn'>모각코 만들기</button>
+                    </div>    
+                    <div className = 'roomListPage-room-list'>
+                        <RoomList />
+                    </div>                            
+                </div>
+                
+            </div>
+        </div>
+        ) 
+        : <Home /> 
+)}
+        
+export default RoomListPage;

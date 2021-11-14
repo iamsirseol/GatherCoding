@@ -2,28 +2,27 @@ import React from 'react'
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from "axios";
-import { isLoginHandler, isShowLoginModalHandler } from '../redux/actions/actions';
+import {isShowSignUpModalHandler } from '../redux/actions/actions';
 
 import '../css/signUpModal.css'
 
-function LoginModal() {
+function SignUpModal() {
+    const [signUpId, setsignUpId] = useState('');
+    const [signUpPw, setsignUpPw] = useState('')
+
     const dispatch = useDispatch()
+    const closesignUpModalHandler = () => { dispatch(isShowSignUpModalHandler(false))};
 
-    const [loginId, setLoginId] = useState('');
-    const [loginPw, setLoginPw] = useState('')
-
-    const closeLoginModalHandler = () => { dispatch(isShowLoginModalHandler(false))};
-
-    // for onChange input value id
+    // for onChange input value id create로 이름 바꾸자. 일단 pr 먼저
     function changeIdValue (e) {
       e.preventDefault();
-      setLoginId(e.target.value);
+      setsignUpId(e.target.value);
     }
 
     // for onChange input value pw
     function changePwValue (e) {
       e.preventDefault();
-      setLoginPw(e.target.value);
+      setsignUpPw(e.target.value);
     }
 
 
@@ -32,8 +31,8 @@ function LoginModal() {
 
         const body = {
             // key는 내가 임의로 만든거에여, 백엔드 분들이랑 맞추자
-            email: loginId,
-            password: loginPw,
+            email: signUpId,
+            password: signUpPw,
             headrs: {
                 'contente-type': 'application/json'
             }
@@ -56,9 +55,9 @@ function LoginModal() {
     
     return (
         <div className="login-modal">
-            <div className='login-modal-background' onClick={closeLoginModalHandler}></div>
+            <div className='login-modal-background' onClick={closesignUpModalHandler}></div>
             <div className="login-modal-container">
-                <button className="login_close_btn" onClick={closeLoginModalHandler}>
+                <button className="login_close_btn" onClick={closesignUpModalHandler}>
                     <span>
                         <i></i>
                         <i></i>
@@ -67,8 +66,8 @@ function LoginModal() {
                 <h2>Login</h2>
                 <div className="login-modal-form">
                     <form onSubmit={loginRequest}>
-                        <input className="login-id" type="text" placeholder="ID" value={loginId} onChange={(e) => changeIdValue(e)} />
-                        <input className="login-password" type="password" placeholder="PW" value={loginPw} onChange={(e) => changePwValue(e)} />
+                        <input className="login-id" type="text" placeholder="ID" value={signUpId} onChange={(e) => changeIdValue(e)} />
+                        <input className="login-password" type="password" placeholder="PW" value={signUpPw} onChange={(e) => changePwValue(e)} />
                         <button type="submit" className="login-btn">로그인하기</button>
                     </form>
                     <div className="social-login">
@@ -82,4 +81,4 @@ function LoginModal() {
     )
 }
 
-export default LoginModal
+export default SignUpModal

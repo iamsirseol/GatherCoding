@@ -1,13 +1,16 @@
 .sidebar {
+    border : 1px gray solid;
     display: flex;
     flex-direction: column;
     width: 100px;
     position: fixed;
     left: 0;
     /* top: 30px; */
-    padding-top: 50px;
+    padding-left : 7px;
+    top: 50px;
     /* background-color: lightblue; */
     height : 100%;
+
 }
 .sidebar button {
     width : 80px;

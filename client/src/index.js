@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';//store사용할 수 있게 해주sms 라이브러리
 import store from './redux/store/store';
 
+
 //콘솔창에서 현재 전역store를 확인할 수 있음
 console.log(store.getState())
 
