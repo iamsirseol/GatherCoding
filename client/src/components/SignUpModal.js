@@ -2,46 +2,69 @@ import React from 'react'
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from "axios";
-import { isLoginHandler, isShowLoginModalHandler } from '../redux/actions/actions';
+import {isShowSignUpModalHandler } from '../redux/actions/actions';
 
 import '../css/signUpModal.css'
 
-function LoginModal() {
+function SignUpModal() {
+    const [signUpId, setSignUpId] = useState(''); //
+    const [signUpPw, setSignUpPw] = useState(''); //
+    const [checkPw, setCheckPw] = useState(''); 
+    const [signUpNickname, setSignUpNickname] = useState(''); //
+    const [signUpUrl, setsignUpUrl] = useState(''); 
+    const [signUpImage, setSignUpImage] = useState('');
+    const [signUpImageName, setSignUpImageName] = useState('');
+
     const dispatch = useDispatch()
+    const closeSignUpModalHandler = () => { dispatch(isShowSignUpModalHandler(false))};
 
-    const [loginId, setLoginId] = useState('');
-    const [loginPw, setLoginPw] = useState('')
-
-    const closeLoginModalHandler = () => { dispatch(isShowLoginModalHandler(false))};
-
-    // for onChange input value id
+    // for onChange input value id create로 이름 바꾸자. 일단 pr 먼저
     function changeIdValue (e) {
       e.preventDefault();
-      setLoginId(e.target.value);
+      setSignUpId(e.target.value);
     }
-
     // for onChange input value pw
     function changePwValue (e) {
       e.preventDefault();
-      setLoginPw(e.target.value);
+      setSignUpPw(e.target.value);
+    }
+    function checkPwValue (e) {
+        e.preventDefault();
+        setCheckPw(e.target.value);
+    }
+    function changeNicknameValue (e) {
+        e.preventDefault();
+        setSignUpNickname(e.target.value);
+    }
+    function changeUrlValue (e) {
+        e.preventDefault();
+        setsignUpUrl(e.target.value);
+    }
+    function changeFile(e) {
+        e.preventDefault();
+        setSignUpImage(e.target.file)
+        setSignUpImageName(e.target.value)
     }
 
-
-    function loginRequest(e){ // 로그인 요청 함수
+    function signUpRequest(e){ // 회원가입 요청 함수
         e.preventDefault();
+        const formData = new FormData();
+        formData.append('sign-up-email', signUpId)
+        formData.append('sign-up-email', signUpPw)
+        formData.append('sign-up-email', signUpNickname)
+        formData.append('sign-up-email', signUpUrl)
+        formData.append('image', signUpImage);
 
-        const body = {
-            // key는 내가 임의로 만든거에여, 백엔드 분들이랑 맞추자
-            email: loginId,
-            password: loginPw,
-            headrs: {
-                'contente-type': 'application/json'
-            }
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            },
+            withCredentials: true
         }
 
-        axios.post(`https://localhost:4000/signin`, body)
+        axios.post(`https://localhost:4000/signUp`, formData, config)
             .then(res => {
-                if(res.status === 200){ // 잘받아오면
+                if(res.status === 201){ // 잘받아오면
                     // dispatch()
                     // const accessToken = 받아온값
                     // accssToken을 요청해서 받아온 값을 dispatch 해서 정보로 담아둬야 댐 그리고 로그인 핸들러를 이용해서 로그인상태로 돌려 둠 그리고 로그인 모달 창도 끔
@@ -55,23 +78,28 @@ function LoginModal() {
     }
     
     return (
-        <div className="login-modal">
-            <div className='login-modal-background' onClick={closeLoginModalHandler}></div>
-            <div className="login-modal-container">
-                <button className="login_close_btn" onClick={closeLoginModalHandler}>
+        <div className="-modal">
+            <div className='sign-up-modal-background' onClick={closeSignUpModalHandler}></div>
+            <div className="sign-up-modal-container">
+                <button className="sign-up_close_btn" onClick={closeSignUpModalHandler}>
                     <span>
                         <i></i>
                         <i></i>
                     </span>
                 </button>
-                <h2>Login</h2>
-                <div className="login-modal-form">
-                    <form onSubmit={loginRequest}>
-                        <input className="login-id" type="text" placeholder="ID" value={loginId} onChange={(e) => changeIdValue(e)} />
-                        <input className="login-password" type="password" placeholder="PW" value={loginPw} onChange={(e) => changePwValue(e)} />
-                        <button type="submit" className="login-btn">로그인하기</button>
+                <h2>Sign Up</h2>
+                <div className="sign-up-modal-form">
+                    <form onSubmit={signUpRequest}>
+                        <input className="sign-up-id" type="text" placeholder="email 입력" value={signUpId} onChange={(e) => changeIdValue(e)} /><a>중복 확인</a>
+                        <input className="sign-up-password" type="password" placeholder="비밀번호" value={signUpPw} onChange={(e) => changePwValue(e)} />
+                        {/* 대문자 Capslock, 유효성 검사가 뜨는 디스패치...? */}
+                        <input className="check-password" type="password" placeholder="비밀번호 확인" value={checkPw}onChange={(e) => checkPwValue(e)} />
+                        <input className="sign-up-nickname" type="text" placeholder="닉네임" value={signUpNickname} onChange={(e) => changeNicknameValue(e)} />
+                        <input className="sign-up-url" type="text" placeholder="깃허브 주소" value={signUpUrl} onChange={(e) => changeUrlValue(e)} />
+                        <p>프로필 이미지</p><input type="file" name="file" file={signUpImage} value={signUpImageName} onChange={changeFile}/>
+                        <button type="submit" className="sign-up-btn">회원가입하기</button>
                     </form>
-                    <div className="social-login">
+                    <div className="social-sign-up">
                         <button>깃허브로 가입하기</button>
                         {/* <button><img src="img/icon_social_login(kakao).png" />카카오로 가입하기</button> */}
                     </div>
@@ -82,4 +110,4 @@ function LoginModal() {
     )
 }
 
-export default LoginModal
+export default SignUpModal

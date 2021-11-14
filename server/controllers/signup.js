@@ -1,4 +1,5 @@
-const { user } = require('../models');
+const user = require('../models/user');
+const group = require('../models/group');
 const token = require('./token/index');
 
 module.exports = {
@@ -10,31 +11,15 @@ module.exports = {
         const data = await user.findOne({ where: { email, password } });
         // console.log(data);
         if (!data) {
-          if (!username && !email && !password && !image && !blog && !current_location) {
+          if (username && email && password && image && blog && current_location) {
             // console.log({ username, email, password, image, blog, user_address } );
             const userinfo = await user.create({ username, email, password, image, blog, current_location });
             // console.log(userinfo);
             const accessToken = token.generateAccessToken(userinfo.dataValues);  
             res.status(201).json({ data: { accessToken: accessToken }, message: 'ok' });
+          } else {
+            res.status(422).json({ data: null, message: 'You should enter all the required information'});
           }
-          if (!username) {
-            res.status(422).json({ data: null, message: 'You should enter username'});
-          }
-          if (!email) {
-            res.status(422).json({ data: null, message: 'You should enter email'});
-          }
-          if (!password) {
-            res.status(422).json({ data: null, message: 'You should enter password'});
-          }
-          if (!image) {
-            res.status(422).json({ data: null, message: 'You should enter image'});
-          }
-          if (!blog) {
-            res.status(422).json({ data: null, message: 'You should enter blog'});
-          }
-          if (!current_location) {
-            res.status(422).json({ data: null, message: 'You should enter current_location'});
-          }  
         } else {
           res.status(409).json({ data: null, message: 'This user already exists in the database'})
         }

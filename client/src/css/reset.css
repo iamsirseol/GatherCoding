@@ -1,4 +1,6 @@
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,button{margin:0;padding:0;font-family: Noto Sans}
+*{box-sizing: border-box;text-decoration: none;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,button{margin:0;padding:0;font-family: Noto Sans;
+    }
 fieldset,img{border:0 none}
 dl,ul,ol,menu,li{list-style:none}
 blockquote, q{quotes: none}
@@ -13,3 +15,6 @@ a{color:#222;text-decoration:none}
 a:hover{color:#5c26ff;text-decoration:underline}
 a:active{background-color:transparent}
 address,caption,cite,code,dfn,em,var{font-style:normal;font-weight:normal}
+
+/* !지우지말기 */
+/* *{border : 1px gray solid};  */
