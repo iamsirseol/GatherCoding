@@ -1,9 +1,8 @@
 const { user } = require('../models');
 module.exports = {
     post: (req, res) => {
-        res.send("Hello World");
-    },
-    get: (req, res) => {
-        res.send("Hello World");
-    }    
+        const tokenData = req.data.data.accessToken;
+
+        res.status(205).send("로그아웃이 되었습니다.")
+    }
 };

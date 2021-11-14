@@ -45,7 +45,7 @@ export const userInfo = {
     username : '류준열',
     email : 'ryu9663@korea.com',
     image : 'https://t1.daumcdn.net/cfile/tistory/99AE233E5F8CDE7319',
-    blog : 'www.naver.com',
+    blog : 'https://github.com/codestates/GatherCoding',
     user_address : '충북 청주시',
     joinGroup : [
         {

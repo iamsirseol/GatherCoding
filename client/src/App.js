@@ -8,7 +8,8 @@ import Home from './pages/Home';
 // import Header from './components/Header'
 // import Sidebar from './components/Sidebar'
 
-// import LoginModal from './components/LoginModal'
+import LoginModal from './components/LoginModal'
+import SignUpModal from './components/SignUpModal'
 // import { useSelector, useDispatch } from 'react-redux';
 //리덕스
 // import { isLoginHandler, isShowLoginModalHandler } from './redux/actions/actions';
@@ -16,8 +17,6 @@ import Home from './pages/Home';
 
 
 import { useSelector, useDispatch } from 'react-redux';
-import { isLoginHandler } from './redux/actions/actions';
-import { isShowLoginModalHandler } from './redux/actions/actions';
 // *
 //리덕스
 
@@ -27,14 +26,12 @@ import RoomListPage from './pages/RoomListPage';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 
-
 function App() {
   //* 헤더 사용시 주석까지 복붙
   const isLogin = useSelector(state => state.isLoginReducer.isLogin)
   const isShowLoginModal = useSelector(state => state.isShowLoginModalReducer.isShowLoginModal)
-  const showLoginModalHandler = (e) => { dispatch(isShowLoginModalHandler(true))};
+  const isShowSignUpModal = useSelector(state => state.isShowSignUpModalReducer.isShowSignUpModal)
   const dispatch = useDispatch()
-  const logoutHandler = () => { dispatch(isLoginHandler(false)) };
   //*
   
   
@@ -46,7 +43,7 @@ function App() {
   // console.log(isShowLoginModal)
   return (
     <div>
-      <Header isLogin={isLogin} logoutHandler={logoutHandler} showLoginModalHandler={showLoginModalHandler} isShowLoginModal={isShowLoginModal}/>
+      <Header />
       <Sidebar />
       {/* {isLogin ? <HomeLogined /> : <Home />} */}
       {/* {isShowLoginModal ? <LoginModal /> : null} */}
@@ -55,8 +52,10 @@ function App() {
       {/* {console.log(isShowLoginModal)} */}
       <Switch>
         <Route exact path = '/'><FirstPage /></Route>
-        <Route path = '/list'><RoomListPage /></Route>
-      </Switch>  
+        
+      </Switch>
+      {isShowLoginModal ? <LoginModal /> : null}
+      {isShowSignUpModal ? <SignUpModal /> : null}
     </div>
     // 위에 Link로 사용할 수 있게 페이지나 컴포넌트로 만들어두기
   );

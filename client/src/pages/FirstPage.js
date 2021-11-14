@@ -5,23 +5,19 @@ import LoginModal from '../components/LoginModal';
 import { useSelector, useDispatch } from 'react-redux';
 import { isLoginHandler } from '../redux/actions/actions';
 import { isShowLoginModalHandler } from '../redux/actions/actions';
+import RoomListPage from './RoomListPage';
 
 
 function FirstPage() {
     //* 헤더 사용시 주석까지 복붙
     const isLogin = useSelector(state => state.isLoginReducer.isLogin)
-    const isShowLoginModal = useSelector(state => state.isShowLoginModalReducer.isShowLoginModal)
-    const showLoginModalHandler = (e) => { dispatch(isShowLoginModalHandler(true))};
-    const dispatch = useDispatch()
-    const logoutHandler = () => { dispatch(isLoginHandler(false)) };
     //*
     return (
         <div>
             
-            {isLogin ? <HomeLogined /> : <Home />}
+            <Home />
+            {isLogin ? <HomeLogined /> : <RoomListPage />}
             
-            {isShowLoginModal ? <LoginModal /> : null}
-            {console.log(isShowLoginModal)} 
         </div>
     )
 }
