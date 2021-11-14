@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from "axios";
 import {isShowSignUpModalHandler } from '../redux/actions/actions';
+import ImageUpload from './ImageUpload'
 
 import '../css/signUpModal.css'
 
@@ -13,7 +14,6 @@ function SignUpModal() {
     const [signUpNickname, setSignUpNickname] = useState(''); //
     const [signUpUrl, setsignUpUrl] = useState(''); 
     const [signUpImage, setSignUpImage] = useState('');
-    const [signUpImageName, setSignUpImageName] = useState('');
 
     const dispatch = useDispatch()
     const closeSignUpModalHandler = () => { dispatch(isShowSignUpModalHandler(false))};
@@ -39,11 +39,6 @@ function SignUpModal() {
     function changeUrlValue (e) {
         e.preventDefault();
         setsignUpUrl(e.target.value);
-    }
-    function changeFile(e) {
-        e.preventDefault();
-        setSignUpImage(e.target.file)
-        setSignUpImageName(e.target.value)
     }
 
     function signUpRequest(e){ // 회원가입 요청 함수
@@ -96,7 +91,7 @@ function SignUpModal() {
                         <input className="check-password" type="password" placeholder="비밀번호 확인" value={checkPw}onChange={(e) => checkPwValue(e)} />
                         <input className="sign-up-nickname" type="text" placeholder="닉네임" value={signUpNickname} onChange={(e) => changeNicknameValue(e)} />
                         <input className="sign-up-url" type="text" placeholder="깃허브 주소" value={signUpUrl} onChange={(e) => changeUrlValue(e)} />
-                        <p>프로필 이미지</p><input type="file" name="file" file={signUpImage} value={signUpImageName} onChange={changeFile}/>
+                        <p>프로필 이미지</p><ImageUpload />
                         <button type="submit" className="sign-up-btn">회원가입하기</button>
                     </form>
                     <div className="social-sign-up">
