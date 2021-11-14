@@ -1,4 +1,4 @@
-const { user } = require('../models');
+const  user  = require('../models/user');
 const token = require('./token/index');
 
 module.exports = {
@@ -10,7 +10,7 @@ module.exports = {
         const data = await user.findOne({ where: { email, password } });
         // console.log(data);
         if (!data) {
-          if (!username && !email && !password && !image && !blog && !current_location) {
+          if (username && email && password && image && blog && current_location) {
             // console.log({ username, email, password, image, blog, user_address } );
             const userinfo = await user.create({ username, email, password, image, blog, current_location });
             // console.log(userinfo);
