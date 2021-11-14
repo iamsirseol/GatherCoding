@@ -63,7 +63,7 @@ module.exports = {
         });
         const mogako = await Group.create({
             title: 'mogako',
-            location: 'Seoul'
+            city: 'Seoul'
         });
         await jane.addGroup(mogako)
         .then((result) => {
