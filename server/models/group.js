@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       this.belongsToMany(models.user, {through: "user_group", foreignKey: "user_id", onDelete: "cascade"});
-      this.hasOne(models.user, {foreignKey: "id", onDelete: "cascade"});
+      this.belongsTo(models.user, {foreignKey: "id", onDelete: "cascade"});
     }
   };
 
