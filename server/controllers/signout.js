@@ -1,4 +1,4 @@
-const { user } = require('../models');
+const user = require('../models/user');
 module.exports = {
     post: (req, res) => {
         const tokenData = req.data.data.accessToken;

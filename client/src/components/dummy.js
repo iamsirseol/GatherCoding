@@ -38,6 +38,22 @@ export const groups = [
         gather_location : '제천 시민회관',
         leader : '류준열',
         location_address : '충북 제천시' 
+    },
+    {
+        title : '제천 고등학생 코딩연합??',
+        population : 3,
+        currentPopulation : 1,
+        gather_location : '제천 제일고',
+        leader : '짱구',
+        location_address : '충북 제천시' 
+    },
+    {
+        title : '제천 코딩학원??',
+        population : 3,
+        currentPopulation : 1,
+        gather_location : '제천 시립도서관',
+        leader : '설동혁',
+        location_address : '충북 제천시' 
     }
 ]
 
