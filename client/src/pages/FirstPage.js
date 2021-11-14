@@ -16,7 +16,8 @@ function FirstPage() {
         <div>
             
             <Home />
-            {isLogin ? <HomeLogined /> : <RoomListPage />}
+            {/* {isLogin ? <HomeLogined /> : <RoomListPage />} */}
+            <RoomListPage />
             
         </div>
     )
