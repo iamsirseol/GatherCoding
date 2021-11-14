@@ -46,7 +46,8 @@
 //     }    
 // };
 
-const { User, Group } = require('../models');
+const user = require('../models/user');
+const group = require('../models/group');
 
 module.exports = {
     post: (req, res) => {
@@ -57,31 +58,34 @@ module.exports = {
         // const amidala = await User.create({ username: 'p4dm3', points: 1000 });
         // const queen = await Profile.create({ name: 'Queen' });
         // await amidala.addProfile(queen, { through: { selfGranted: false } });
-        const jane = await User.create({ 
-            username: 'Jane',
-            password: '4567'
-        });
-        const mogako = await Group.create({
-            title: 'mogako',
-            city: 'Seoul'
-        });
-        await jane.addGroup(mogako)
-        .then((result) => {
-            console.log('success');
-        })
-        const jane_group = Group.findAll({
-            include: [{
-                model: User,
-                where: {
-                    username: 'Jane'
-                }
-            }],
-        })
-        .then((result) => {
-            console.log(result);
-            res.send(result);
-        })
 
-        // res.send('success')
+
+        // const jane = await User.create({ 
+        //     username: 'Jane',
+        //     password: '4567'
+        // });
+        // const mogako = await Group.create({
+        //     title: 'mogako',
+        //     city: 'Seoul'
+        // });
+        // await jane.addGroup(mogako)
+        // .then((result) => {
+        //     console.log('success');
+        // })
+        // const jane_group = Group.findAll({
+        //     include: [{
+        //         model: User,
+        //         where: {
+        //             username: 'Jane'
+        //         }
+        //     }],
+        // })
+        // .then((result) => {
+        //     console.log(result);
+        //     res.send(result);
+        // })
+        const data = user.findAll();
+        console.log(data);
+        res.send('success')
     }
 };

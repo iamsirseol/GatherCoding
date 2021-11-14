@@ -1,4 +1,5 @@
 const user = require('../models/user');
+const group = require('../models/group');
 const token = require('./token/index');
 
 module.exports = {

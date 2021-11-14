@@ -8,20 +8,28 @@ module.exports = {
     get: (req, res) => {
         const region = req.query.region;
         const city = req.query.city;
-        
-        group.findAll({
-            where: {
-                region: region,
-                city: city
-            }
-        })
-        .then((result) => {
-            res.status(200).json(result);
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(404).json({ data: null, message: 'error' });
-        })
-       
+        if (!region || !city) {
+            res.status(400).json({ data: null, message: 'you should enter all the required information' });
+        } else {
+            group.findAll({
+                where: {
+                    region: region,
+                    city: city
+                }
+            })
+                .then((result) => {
+                    if (result.length === 0) {
+                        res.status(200).json({ data: null, message: 'no room in this location' })
+                    } else {
+                        res.status(200).json({ data: result, message: 'ok' });
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                    res.status(404).json({ data: null, message: 'error' });
+                })
+        }
+
+
     }
 };
