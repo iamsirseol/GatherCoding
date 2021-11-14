@@ -52,7 +52,7 @@ function App() {
       {/* {console.log(isShowLoginModal)} */}
       <Switch>
         <Route exact path = '/'><FirstPage /></Route>
-        <Route path = '/list'><RoomListPage /></Route>
+        {/* <Route path = '/list'><RoomListPage /></Route> */}
       </Switch>
       {isShowLoginModal ? <LoginModal /> : null}
       {isShowSignUpModal ? <SignUpModal /> : null}

@@ -5,6 +5,7 @@ import LoginModal from '../components/LoginModal';
 import { useSelector, useDispatch } from 'react-redux';
 import { isLoginHandler } from '../redux/actions/actions';
 import { isShowLoginModalHandler } from '../redux/actions/actions';
+import RoomListPage from './RoomListPage';
 
 
 function FirstPage() {
@@ -13,7 +14,10 @@ function FirstPage() {
     //*
     return (
         <div>
-            {isLogin ? <HomeLogined /> : <Home />}
+            
+            <Home />
+            {isLogin ? <HomeLogined /> : <RoomListPage />}
+            
         </div>
     )
 }
