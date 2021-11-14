@@ -1,15 +1,15 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import { userInfo } from './dummy';
+import { userInfo } from './dummy';// * DB들어오면 지우기
 import { useSelector, useDispatch } from 'react-redux';
-import { isLoginHandler, isShowLoginModalHandler, isShowSignUpModalHandler } from '../redux/actions/actions'
+import { isShowLoginModalHandler } from '../redux/actions/actions'
 import '../css/sidebar.css'
 function Sidebar() {
+    // * 로긴모달에 필요한 부분
     const dispatch = useDispatch()
     const isLogin = useSelector(state => state.isLoginReducer.isLogin)
     const showLoginModalHandler = () => { dispatch(isShowLoginModalHandler(true))};
-    const logoutHandler = () => { dispatch(isLoginHandler(false)) };
-    const showSignUpHandler = () => { dispatch(isShowSignUpModalHandler(true)) };
+    // *
     return (
         <div className = 'sidebar'>
                     <Link to = '/'><button>홈화면</button></Link>

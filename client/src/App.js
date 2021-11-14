@@ -25,6 +25,8 @@ import FirstPage from './pages/FirstPage';
 
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import RoomInfo from './pages/RoomInfo';
+
 
 
 function App() {
@@ -54,6 +56,7 @@ function App() {
       <Switch>
         <Route exact path = '/'><FirstPage /></Route>
         <Route path = '/myroom'><HomeLogined /></Route>
+        <Route path = '/roominfo'><RoomInfo /></Route>
         
       </Switch>
       {isShowLoginModal ? <LoginModal /> : null}
