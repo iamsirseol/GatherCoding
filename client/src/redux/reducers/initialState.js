@@ -3,7 +3,7 @@ export const initialState = {
         isLogin : true
     },
     isLoading : {
-        isLoading : false
+        isLoading : true
     },
     isShowLoginModal: {
         isShowLoginModal : false
@@ -13,7 +13,10 @@ export const initialState = {
     },
     location : {
         region : '',
-        city : ''
+        city : '',
+        lan:'',
+        lon:''
     }
+
 
 }

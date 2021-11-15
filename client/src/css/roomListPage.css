@@ -2,11 +2,11 @@
     /* background : url('https://user-images.githubusercontent.com/75051059/141219381-c64490bf-907d-4929-8b1b-ad7891604a58.png'); */
     /* background-color: aquamarine; */
     position : relative;
-    top:50px;
+    /* top:50px; */
     height : 100vh;
     margin-left: 100px;
     /* left:100px; */
-    /* top : 150px; */
+    
 }
 
 
@@ -17,8 +17,8 @@
     flex-direction: row;   
 }
 .roomListPage-body .roomListPage-main {
-    
-    margin-top: 50px;
+    /* ! 초록색 바탕이랑 간격 */
+    /* margin-top: 50px; */
     margin-left: auto;
     margin-right: auto;
     /* !주석해제하면 방들 세로정렬됨 - 반응형 */

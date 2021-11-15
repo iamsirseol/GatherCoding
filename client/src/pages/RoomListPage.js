@@ -23,6 +23,7 @@ import Room from '../components/Room';
 
 
 
+
 dotenv.config();
 function RoomListPage() {
     
@@ -30,41 +31,46 @@ function RoomListPage() {
     const showLoginModalHandler = () => { dispatch(isShowLoginModalHandler(true))};
     const isLogin = useSelector(state => state.isLoginReducer.isLogin)//로긴상태
     const {region,city} = useSelector(state=>state.locationReducer)
-    console.log(region,city)
+    // console.log(region,city)
     // const changeCityHandler = () => { dispatch(changeCity())}
-    function onGeoOk(position){
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
+    // !
+    // function onGeoOk(position){
+    //     const lat = position.coords.latitude;
+    //     const lon = position.coords.longitude;
         
-        axios.get(`https://dapi.kakao.com/v2/local/geo/coord2address.json?x=${lon}&y=${lat}&input_coord=WGS84`
-        ,{headers:{Authorization:`KakaoAK ${process.env.REACT_APP_REST_API}`}}
-        )
-        .then(res=>{
-            console.log(res.data.documents)
-            dispatch(changeRegion(res.data.documents[0].address.region_1depth_name))
-            dispatch(changeCity(res.data.documents[0].address.region_2depth_name)) 
-        }
-        ).catch(e=>console.log(e))
-    }
-    function onGeoError(){
-        alert("위치권한을 확인해주세요");
-    }
+    //     axios.get(`https://dapi.kakao.com/v2/local/geo/coord2address.json?x=${lon}&y=${lat}&input_coord=WGS84`
+    //     ,{headers:{Authorization:`KakaoAK ${process.env.REACT_APP_REST_API}`}}
+    //     )
+    //     .then(res=>{
+            
+            
+            
+    //         // console.log(res.data.documents)
+    //         dispatch(changeRegion(res.data.documents[0].address.region_1depth_name))
+    //         dispatch(changeCity(res.data.documents[0].address.region_2depth_name)) 
+            
+    //     }
+    //     ).catch(e=>console.log(e))
+    // }
+    // function onGeoError(){
+    //     alert("위치권한을 확인해주세요");
+    // }
   
-    useEffect(()=>{
-        // if(!region||!city){
-            navigator.geolocation.getCurrentPosition(onGeoOk,onGeoError)
-        // }
-    },[region,city])
-    
+    // useEffect(()=>{
+        
+    //     // if(!region||!city){
+    //         navigator.geolocation.getCurrentPosition(onGeoOk,onGeoError)
+    //     // }
+    // },[region,city])
+    // !
     
     return (
-        {isLogin} ? 
-        (
         <div className = 'roomListPage-page'>
             <div className = 'roomListPage-body'>
                 <div className = 'roomListPage-main'>
                     <div className='roomListPage-room-location'>
-                        {/* {userInfo.user_address} */}
+                        
+                        
                           <div className='roomListPage-room-location-locbox'>
                             {region} {city} 에서 참여 가능한 모임방들
                           </div>
@@ -92,7 +98,8 @@ function RoomListPage() {
             </div>
         </div>
         ) 
-        : <Home /> 
-)}
+        
+        
+}
         
 export default RoomListPage;
