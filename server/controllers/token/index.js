@@ -12,6 +12,5 @@ module.exports = {
         } else {
             return jwt.verify(token, process.env.ACCESS_SECRET);
         }
-        // 픽미업 형님들은 여기서 try catch // 사용함 공부해 볼 것
     }
 }
