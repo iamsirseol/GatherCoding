@@ -13,7 +13,7 @@ module.exports = {
             include: [{
                 model: user,
                 where: {
-                    email: email
+                    email: userEmail
                 }
             }]
         })

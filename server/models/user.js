@@ -44,7 +44,10 @@ module.exports = class User extends Sequelize.Model {
             blog: {
                 type: Sequelize.STRING(255)
             },
-            current_location: {
+            current_region: {
+                type: Sequelize.STRING(255)
+            },
+            current_city: {
                 type: Sequelize.STRING(255)
             }
         }, {
