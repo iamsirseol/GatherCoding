@@ -11,6 +11,7 @@ import Home from './pages/Home';
 
 import LoginModal from './components/LoginModal'
 import SignUpModal from './components/SignUpModal'
+import MyInfo from './pages/MyInfo'
 // import { useSelector, useDispatch } from 'react-redux';
 //리덕스
 // import { isLoginHandler, isShowLoginModalHandler } from './redux/actions/actions';
@@ -27,7 +28,7 @@ import FirstPage from './pages/FirstPage';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import RoomInfo from './pages/RoomInfo';
-import { changeCity, changeLat, changeLon, changeRegion, isLoadingHandler } from './redux/actions/actions';
+import { changeCity, changeLat, changeLon, changeRegion, isLoadingHandler, isLoginHandler } from './redux/actions/actions';
 import CreateRoom from './components/CreateRoom';
 
 
@@ -44,6 +45,22 @@ function App() {
   const {region,city,lat,lon} = useSelector((state=>state.locationReducer),shallowEqual)
 
   const dispatch = useDispatch()
+
+  // const realLoginHandler = (boolean) => { // 로그인 상태 기능
+  //   dispatch(isLoginHandler(boolean))
+  // }
+
+  useEffect(() => {
+    
+  }, [isLogin, isShowLoginModal])
+
+  // const loginedId 
+
+
+
+  // function(){ // 로그인 및 로그인 유지 기능 구현 해야 댐
+
+  // }
   
   function onGeoOk(position){
     const lat = position.coords.latitude;
@@ -96,6 +113,7 @@ function App() {
         <Route exact path = '/'><FirstPage /></Route>
         <Route path = '/myroom'><HomeLogined /></Route>
         <Route path = '/roominfo'><RoomInfo /></Route>
+        <Route path = '/myinfo'><MyInfo /></Route>
         
       </Switch>
       {console.log('모각코만들기모달',isShowCreateRoomModal)}
