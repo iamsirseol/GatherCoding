@@ -6,6 +6,8 @@ import {
     IS_LOADING,
     IS_SHOW_LOGIN_MODAL,
     IS_SHOW_SIGNUP_MODAL,
+    CHANGE_LON,
+    CHANGE_LAT,
     
 } from '../actions/actions';
 import { initialState } from './initialState';
@@ -66,6 +68,14 @@ function locationReducer(state = initialState.location, action){
             ...state,...action.payload
           }
         case CHANGE_CITY :
+          return {
+            ...state,...action.payload
+          }
+        case CHANGE_LAT:
+          return {
+            ...state,...action.payload
+          }
+        case CHANGE_LON :
           return {
             ...state,...action.payload
           }

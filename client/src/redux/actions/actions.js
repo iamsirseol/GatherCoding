@@ -55,6 +55,7 @@ export function changeCity (city) {
         }
     }
 }
+//
 export function changeLat(lat){
     return {
         type : CHANGE_LAT,
@@ -71,3 +72,4 @@ export function changeLon(lon){
         }
     }
 }
+//

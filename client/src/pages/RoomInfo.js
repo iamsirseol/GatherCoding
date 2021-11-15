@@ -5,6 +5,7 @@ import { userInfo } from '../components/dummy'
 import Map from '../components/Map';
 
 import UserList from '../components/UserList';
+import MapContainer from '../components/MapContainer';
 
 
 function RoomInfo() {
@@ -14,7 +15,7 @@ function RoomInfo() {
     <div>
         <div className = 'roominfo-page'>
             <div className = 'roominfo-map'>
-                <Map />
+                <MapContainer />
             </div>
             <div className='roominfo-info-div'>
                 <div className = 'roominfo-meeting-time'>
@@ -39,7 +40,7 @@ function RoomInfo() {
             <div className='roominfo-change-room-info'><button>모각코 방 정보 변경</button></div>
         </div>
         <div className='roominfo-user-list'>
-            {console.log(userInfo)}
+            {/* {console.log(userInfo)} */}
             {userInfo.map((user,i)=>{
                 const {image,username,blog} = user;
                 console.log(image,username,blog);
