@@ -27,7 +27,8 @@ import FirstPage from './pages/FirstPage';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import RoomInfo from './pages/RoomInfo';
-import { changeCity, changeRegion, isLoadingHandler } from './redux/actions/actions';
+import { changeCity, changeLat, changeLon, changeRegion, isLoadingHandler } from './redux/actions/actions';
+
 
 
 
@@ -38,13 +39,16 @@ function App() {
   const isShowSignUpModal = useSelector(state => state.isShowSignUpModalReducer.isShowSignUpModal)
   const isLoading = useSelector(state => state.isLoadingReducer.isLoading)
   //shallowEqual : 이전값이 바뀌었을경우에만 렌더링함. useSelector에서 한번에 두 값 가져올때 사용
-  const {region,city,lan,lon} = useSelector((state=>state.locationReducer),shallowEqual)
+  const {region,city,lat,lon} = useSelector((state=>state.locationReducer),shallowEqual)
 
   const dispatch = useDispatch()
   
   function onGeoOk(position){
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
+    console.log(typeof lat,lon )
+    dispatch(changeLon(lon))
+    dispatch(changeLat(lat))
     console.log('axios진입전')
     axios.get(`https://dapi.kakao.com/v2/local/geo/coord2address.json?x=${lon}&y=${lat}&input_coord=WGS84`
     ,{headers:{Authorization:`KakaoAK ${process.env.REACT_APP_REST_API}`}}

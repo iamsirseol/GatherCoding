@@ -14,8 +14,8 @@ export const initialState = {
     location : {
         region : '',
         city : '',
-        lan:'',
-        lon:''
+        lat:0,
+        lon:0
     }
 
 
