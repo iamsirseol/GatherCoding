@@ -50,15 +50,13 @@ const user = require('../models/user');
 const group = require('../models/group');
 
 module.exports = {
-    post: (req, res) => {
-
-        res.send("Hello World");
-    },
-    get: async (req, res) => {
+    post: async (req, res) => {
         // const amidala = await User.create({ username: 'p4dm3', points: 1000 });
         // const queen = await Profile.create({ name: 'Queen' });
         // await amidala.addProfile(queen, { through: { selfGranted: false } });
 
+        const region = req.body.region;
+        const city = req.body.city;
 
         // const jane = await User.create({
         //     username: 'Jane',
@@ -85,7 +83,25 @@ module.exports = {
         //     res.send(result);
         // })
         const data = user.findAll();
+        const data = await group.findAll({
+            where: {
+                region: region,
+                city: city
+            }
+        })
         console.log(data);
+        if (data) {
+            if (data.length === 0) {
+                // console.log(data.keys);
+                res.status(200).json({ data: data, message: 'no room in this location' });
+            } else {
+                res.status(200).json({ data: data, message: 'ok' });
+            }
+        } else {
+            res.status(404).json({ data: null, message: 'page not found' });
+        }
+    },
+    get: async (req, res) => {
         res.send('success')
     }
 };
