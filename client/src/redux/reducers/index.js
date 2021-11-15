@@ -3,6 +3,7 @@ import {
   CHANGE_CITY,
   CHANGE_REGION,
     IS_LOGIN, 
+    IS_LOADING,
     IS_SHOW_LOGIN_MODAL,
     IS_SHOW_SIGNUP_MODAL,
     
@@ -13,6 +14,7 @@ import { initialState } from './initialState';
 // * rootReducer : 여러 리듀서들을 하나로 합친다. rootReducer는 store에 전달된다.
 const rootReducer = combineReducers({
     isLoginReducer,
+    isLoadingReducer,
     isShowLoginModalReducer,
     isShowSignUpModalReducer,
     locationReducer,
@@ -26,6 +28,15 @@ function isLoginReducer(state = initialState.isLogin, action) {
             });
         default : return state;
     }
+}
+function isLoadingReducer(state = initialState.isLoading, action) {
+    switch (action.type) {
+      case IS_LOADING : 
+        return Object.assign({},{
+          isLoading : action.payload.isLoading
+        });
+        default : return state
+      }
 }
 
 function isShowLoginModalReducer(state = initialState.isShowLoginModal, action){

@@ -1,8 +1,11 @@
 export const IS_LOGIN = 'IS_LOGIN';
+export const IS_LOADING = 'IS_LOADING';
 export const IS_SHOW_LOGIN_MODAL = "IS_SHOW_LOGIN_MODAL";
 export const IS_SHOW_SIGNUP_MODAL = "IS_SHOW_SIGNUP_MODAL";
 export const CHANGE_CITY = "CHANGE_CITY";
 export const CHANGE_REGION = "CHANGE_REGION";
+export const CHANGE_LAT = 'CHANGE_LAT';
+export const CHANGE_LON = 'CHANGE_LON';
 
 export function isLoginHandler (boolean) {
     return {
@@ -12,6 +15,14 @@ export function isLoginHandler (boolean) {
         }
     }
 };
+export function isLoadingHandler (boolean) {
+    return {
+        type : IS_LOADING,
+        payload : {
+            isLoading : boolean
+        }
+    }
+}
 export function isShowLoginModalHandler (boolean) {
     return {
         type : IS_SHOW_LOGIN_MODAL,
@@ -41,6 +52,22 @@ export function changeCity (city) {
         type : CHANGE_CITY,
         payload : {
             city
+        }
+    }
+}
+export function changeLat(lat){
+    return {
+        type : CHANGE_LAT,
+        payload : {
+            lat
+        }
+    }
+}
+export function changeLon(lon){
+    return {
+        type : CHANGE_LON,
+        payload : {
+            lon
         }
     }
 }
