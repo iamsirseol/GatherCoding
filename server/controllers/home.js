@@ -60,7 +60,7 @@ module.exports = {
         // await amidala.addProfile(queen, { through: { selfGranted: false } });
 
 
-        // const jane = await User.create({ 
+        // const jane = await User.create({
         //     username: 'Jane',
         //     password: '4567'
         // });
