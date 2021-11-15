@@ -2,8 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import '../css/roominfo.css';
 import { userInfo } from '../components/dummy'
-import Map from '../components/Map';
-
 import UserList from '../components/UserList';
 import MapContainer from '../components/MapContainer';
 
@@ -49,8 +47,9 @@ function RoomInfo() {
                     </div>
             )
             })}
-            
-        </div>    
+            <button className = 'roominfo-exit-room'>모각코 나가기</button>     
+        </div>
+           
     </div>
     )
 }

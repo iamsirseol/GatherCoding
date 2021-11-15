@@ -7,6 +7,7 @@ import { isLoginHandler } from '../redux/actions/actions';
 import { isShowLoginModalHandler } from '../redux/actions/actions';
 import RoomListPage from './RoomListPage';
 import Loading from '../components/Loading';
+import CreateRoom from '../components/CreateRoom';
 
 
 function FirstPage() {
@@ -21,7 +22,7 @@ function FirstPage() {
             {/* {isLogin ? <HomeLogined /> : <RoomListPage />} */}
             {isLoading ? <Loading /> : <RoomListPage />}
             {/* <Loading /> */}
-            
+            {/* {<CreateRoom />} */}
             
         </div>
     )
