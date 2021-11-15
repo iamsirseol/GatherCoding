@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../css/header.css'
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
@@ -6,9 +6,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { isLoginHandler, isShowLoginModalHandler, isShowSignUpModalHandler } from '../redux/actions/actions'
 
 
-function Header({}) {
+function Header() {
     // const isLogin = useSelector(state => state.isLoginReducer.isLogin)
-    // const isShowLoginModal = useSelector(state => state.isShowLoginModalReducer.isShowLoginModal)
+    const isShowLoginModal = useSelector(state => state.isShowLoginModalReducer.isShowLoginModal)
     // const showLoginModalHandler = (e) => { dispatch(isShowLoginModalHandler(true))};
     const dispatch = useDispatch()
     // const logoutHandler = () => { dispatch(isLoginHandler(false)) };
@@ -28,6 +28,10 @@ function Header({}) {
     //     }
     // } // 다시 지워도 되는지 확인할것
 
+    useEffect(() => {
+        // showLoginModalHandler()
+    },[isShowLoginModal])
+
     return (
         <header>
             <Link to = '/'><img className = 'page-logo' src = 'https://user-images.githubusercontent.com/75051059/141219381-c64490bf-907d-4929-8b1b-ad7891604a58.png'/></Link>    
@@ -39,7 +43,7 @@ function Header({}) {
                 </>
                 :<>
                     <button onClick = {showSignUpHandler}>회원가입</button>
-                    <button onClick = {showLoginModalHandler}>로그인</button>
+                    <button onClick={(e) => showLoginModalHandler(e)} className="check-button">로그인</button>
                 </>
                 }
             </div>        
