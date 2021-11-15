@@ -58,6 +58,31 @@ module.exports = {
         const region = req.body.region;
         const city = req.body.city;
 
+        // const jane = await User.create({
+        //     username: 'Jane',
+        //     password: '4567'
+        // });
+        // const mogako = await Group.create({
+        //     title: 'mogako',
+        //     city: 'Seoul'
+        // });
+        // await jane.addGroup(mogako)
+        // .then((result) => {
+        //     console.log('success');
+        // })
+        // const jane_group = Group.findAll({
+        //     include: [{
+        //         model: User,
+        //         where: {
+        //             username: 'Jane'
+        //         }
+        //     }],
+        // })
+        // .then((result) => {
+        //     console.log(result);
+        //     res.send(result);
+        // })
+        const data = user.findAll();
         const data = await group.findAll({
             where: {
                 region: region,

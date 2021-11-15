@@ -8,9 +8,9 @@ const roomEntryController = require('../controllers/room-entry');
 const deleteRoomController = require('../controllers/delete-room');
 
 router.get('/local-room-list',localRoomListController.get);
-router.post('/my-room-list', myRoomListController.post);
-router.get('/new-room', newRoomController.get);
-router.post('/room-entry', roomEntryController.post);
+router.get('/my-room-list', myRoomListController.get);
+router.post('/new-room', newRoomController.post);
+router.get('/room-entry', roomEntryController.get);
 router.delete('/delete-room', deleteRoomController.delete);
 
 module.exports = router;
