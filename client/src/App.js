@@ -22,9 +22,12 @@ import { useSelector, useDispatch } from 'react-redux';
 
 
 import FirstPage from './pages/FirstPage';
-import RoomListPage from './pages/RoomListPage';
+
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import RoomInfo from './pages/RoomInfo';
+
+
 
 function App() {
   //* 헤더 사용시 주석까지 복붙
@@ -52,7 +55,9 @@ function App() {
       {/* {console.log(isShowLoginModal)} */}
       <Switch>
         <Route exact path = '/'><FirstPage /></Route>
-        <Route path = '/list'><RoomListPage /></Route>
+        <Route path = '/myroom'><HomeLogined /></Route>
+        <Route path = '/roominfo'><RoomInfo /></Route>
+        
       </Switch>
       {isShowLoginModal ? <LoginModal /> : null}
       {isShowSignUpModal ? <SignUpModal /> : null}

@@ -34,8 +34,8 @@ function Header({}) {
             <div className = 'header-right'>
                 {isLogin ? 
                 <>  
-                    <Link to = '/list'><button>개인정보</button></Link>
-                    <button onClick = {logoutHandler}>로그아웃</button>
+                    <Link to = '/myinfo'><button>개인정보</button></Link>
+                    <Link to = '/'><button onClick = {logoutHandler}>로그아웃</button></Link>
                 </>
                 :<>
                     <button onClick = {showSignUpHandler}>회원가입</button>
