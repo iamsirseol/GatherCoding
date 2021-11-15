@@ -11,7 +11,7 @@
 `GatherCoding` 은 사용자들이 클릭만으로 모각코 모임을 만들고, 참여할 수 있는 플랫폼을 목표로 한다.
 
 
-<h2>Tech Stack(architecture)</h2>
+<h2>Tech Stack</h2>
 <img src ="https://user-images.githubusercontent.com/75051059/141217047-508c0826-3a1f-4b24-93c3-666a56851d3a.png"/>
 
 
