@@ -4,9 +4,8 @@ import axios from "axios";
 
 import '../css/imageUpload.css'
 
-function ImageUpload(){
+function ImageUpload({signUpImage, setSignUpImage}){
 
-    const [signUpImage, setSignUpImage] = useState('');
     const inputValue = useRef(null);
 
     function inputFileHandler(inputValue, setSignUpImage) {
@@ -27,7 +26,7 @@ function ImageUpload(){
 
     return (
         <div className="image-upload-box">
-            <input className="input-blind" ref={inputValue} type="file" onChange={(e) => inputFileHandler(inputValue, setSignUpImage)}/>
+            <input name="image" className="input-blind" ref={inputValue} type="file" onChange={(e) => inputFileHandler(inputValue, setSignUpImage)}/>
             {signUpImage ? <div className="img_preview" onClick={(e) => inputBtn(e, inputValue)} style={{ backgroundImage: `url('${URL.createObjectURL(signUpImage) }')`}}
           ></div>: <div className="img_preview" onClick={(e) => inputBtn(e, inputValue)}></div>}
           <p>프로필 이미지</p>
