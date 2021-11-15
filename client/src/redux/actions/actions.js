@@ -7,6 +7,8 @@ export const CHANGE_REGION = "CHANGE_REGION";
 export const CHANGE_LAT = 'CHANGE_LAT';
 export const CHANGE_LON = 'CHANGE_LON';
 export const IS_SHOW_CREATE_ROOM_MODAL = "IS_SHOW_CREATE_ROOM_MODAL";
+export const IS_SHOW_IS_SIGNUP_MODAL = "IS_SHOW_IS_SIGNUP_MODAL"
+
 export function isLoginHandler (boolean) {
     return {
         type : IS_LOGIN,
@@ -63,7 +65,7 @@ export function changeCity (city) {
         }
     }
 }
-//
+
 export function changeLat(lat){
     return {
         type : CHANGE_LAT,
@@ -81,3 +83,11 @@ export function changeLon(lon){
     }
 }
 //
+export function isShowIsSignUpModalHandler (boolean) {
+    return {
+        type : IS_SHOW_IS_SIGNUP_MODAL,
+        payload : {
+            isShowIsSignUpModal : boolean
+        }
+    }
+};

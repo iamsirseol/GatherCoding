@@ -19,6 +19,10 @@ export const initialState = {
         city : '',
         lat:0,
         lon:0
+        city : ''
+    },
+    isShowIsSignUpModal : {
+        isShowIsSignUpModal: false
     }
 
 

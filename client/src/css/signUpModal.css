@@ -16,6 +16,7 @@
 .sign-up-modal-form form .sign-up-url{width: 100%; border: none; border-bottom: 2px solid rgb(77, 77, 77);  box-sizing: border-box; padding: 8px 8px 6px; margin-top: 10px}
 .sign-up-modal-form form .sign-up-btn{display: block; margin: 15px auto; background: rgb(255, 74, 42); width: 100%; padding: 10px; color: #fff;}
 .sign-up-modal-form form .sign-up-btn:hover{background: rgb(156, 31, 9)}
+.sign-up-modal-form form .sign-up-btn:disabled{background: #222222; cursor:unset;}
 .sign-up-modal-form .social-sign-up{}
 .sign-up-modal-form .social-sign-up button{width: 100%; background: #444444; padding: 10px; color: #fff;}
 .sign-up-modal-form .social-sign-up button:hover{background: #222222;}

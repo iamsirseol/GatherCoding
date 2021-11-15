@@ -41,8 +41,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/rooms', roomsRouter);
 
+sequelize.sync({ force: false, alter: true })
 
-sequelize.sync({ force: false })
 .then(() => {
   console.log('데이터베이스 연결 성공');
 })
