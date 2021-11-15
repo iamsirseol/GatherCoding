@@ -1,4 +1,5 @@
-const { user } = require('../models');
+const user = require('../models/user');
+const group = require('../models/group');
 
 // require('dotenv').config();
 const clientID = process.env.GITHUB_CLIENT_ID;

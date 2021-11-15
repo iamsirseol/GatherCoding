@@ -14,6 +14,6 @@ router.get('/userinfo', userinfoController.get);
 router.post('/signin', signinController.post);
 router.post('/oauth', oauthController.post);
 router.post('/signout', signoutController.post);
-router.get('/withdrawal', withdrawalController.get);
+router.delete('/withdrawal', withdrawalController.delete);
 
 module.exports = router;

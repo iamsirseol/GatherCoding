@@ -5,9 +5,10 @@
   
 .homeLogined-page {
     /* background : url('https://user-images.githubusercontent.com/75051059/141219381-c64490bf-907d-4929-8b1b-ad7891604a58.png'); */
+    background-color: aquamarine;
     position : relative;
+    top:50px;
     height : 100vh;
-    /* background-color: aquamarine; */
     margin-left: 100px;
     /* left:100px; */
     /* top : 150px; */
@@ -47,25 +48,3 @@ button:hover {
     margin-left: auto;
     margin-right: auto;
 }
-.homeLogined-room-box {
-    /* display:flex;
-    flex-direction: column;
-    border:1px gray solid;
-    position: absolute;
-    top : 160px;
-    background-color: greenyellow;
-    font-size: larger;
-    text-align: center; */
-}
-/* *{border:1px gray solid;} */
-.homeLogined-room-list .homeLogined-room {
-    margin: 20px;
-    /* justify-content: center; */
-    /* align-content: center; */
-    border-radius: 10px;
-    /* background-color: rgb(188, 255, 80); */
-    border : 1px gray solid;
-    padding : 10px;
-    width : 400px;
-}
-

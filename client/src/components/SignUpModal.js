@@ -3,74 +3,99 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from "axios";
 import {isShowSignUpModalHandler } from '../redux/actions/actions';
+import ImageUpload from './ImageUpload'
 
 import '../css/signUpModal.css'
 
 function SignUpModal() {
-    const [signUpId, setsignUpId] = useState('');
-    const [signUpPw, setsignUpPw] = useState('')
+    const [signUpId, setSignUpId] = useState(''); //
+    const [signUpPw, setSignUpPw] = useState(''); //
+    const [checkPw, setCheckPw] = useState(''); 
+    const [signUpNickname, setSignUpNickname] = useState(''); //
+    const [signUpUrl, setsignUpUrl] = useState(''); 
+    const [signUpImage, setSignUpImage] = useState('');
 
     const dispatch = useDispatch()
-    const closesignUpModalHandler = () => { dispatch(isShowSignUpModalHandler(false))};
+    const closeSignUpModalHandler = () => { dispatch(isShowSignUpModalHandler(false))};
 
     // for onChange input value id create로 이름 바꾸자. 일단 pr 먼저
     function changeIdValue (e) {
       e.preventDefault();
-      setsignUpId(e.target.value);
+      setSignUpId(e.target.value);
     }
-
     // for onChange input value pw
     function changePwValue (e) {
       e.preventDefault();
-      setsignUpPw(e.target.value);
+      setSignUpPw(e.target.value);
+    }
+    function checkPwValue (e) {
+        e.preventDefault();
+        setCheckPw(e.target.value);
+    }
+    function changeNicknameValue (e) {
+        e.preventDefault();
+        setSignUpNickname(e.target.value);
+    }
+    function changeUrlValue (e) {
+        e.preventDefault();
+        setsignUpUrl(e.target.value);
     }
 
-
-    function loginRequest(e){ // 로그인 요청 함수
+    function signUpRequest(e){ // 회원가입 요청 함수
         e.preventDefault();
+        const formData = new FormData();
+        formData.append('sign-up-id', signUpId)
+        formData.append('sign-up-pw', signUpPw)
+        formData.append('sign-up-nickname', signUpNickname)
+        formData.append('sign-up-url', signUpUrl)
+        formData.append('image', signUpImage);
+        for (let el of formData.entries()) {
+            console.log(el);
+          }
 
-        const body = {
-            // key는 내가 임의로 만든거에여, 백엔드 분들이랑 맞추자
-            email: signUpId,
-            password: signUpPw,
-            headrs: {
-                'contente-type': 'application/json'
-            }
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data',
+            },
+            withCredentials : true
         }
+        console.log(formData.get("image"))
 
-        axios.post(`https://localhost:4000/signin`, body)
-            .then(res => {
-                if(res.status === 200){ // 잘받아오면
-                    // dispatch()
-                    // const accessToken = 받아온값
-                    // accssToken을 요청해서 받아온 값을 dispatch 해서 정보로 담아둬야 댐 그리고 로그인 핸들러를 이용해서 로그인상태로 돌려 둠 그리고 로그인 모달 창도 끔
-                }
+        axios.post(`http://localhost:4000/users/signup`, formData, config)
+            .then((res) => {
+                // if(res.status === 201){ 잘받아오면
+                //     const { username, email, password, image, blog, current_location } = request;
+                // }
+                console.log(res.data)
             }).catch(err => {
-                if(err){
-                    // 어...로그인 실패했다고 떠야될듯
-                }
+                
             })
         
     }
     
     return (
-        <div className="login-modal">
-            <div className='login-modal-background' onClick={closesignUpModalHandler}></div>
-            <div className="login-modal-container">
-                <button className="login_close_btn" onClick={closesignUpModalHandler}>
+        <div className="-modal">
+            <div className='sign-up-modal-background' onClick={closeSignUpModalHandler}></div>
+            <div className="sign-up-modal-container">
+                <button className="sign-up_close_btn" onClick={closeSignUpModalHandler}>
                     <span>
                         <i></i>
                         <i></i>
                     </span>
                 </button>
-                <h2>Login</h2>
-                <div className="login-modal-form">
-                    <form onSubmit={loginRequest}>
-                        <input className="login-id" type="text" placeholder="ID" value={signUpId} onChange={(e) => changeIdValue(e)} />
-                        <input className="login-password" type="password" placeholder="PW" value={signUpPw} onChange={(e) => changePwValue(e)} />
-                        <button type="submit" className="login-btn">로그인하기</button>
+                <h2>Sign Up</h2>
+                <div className="sign-up-modal-form">
+                    <form onSubmit={signUpRequest}>
+                        <input className="sign-up-id" type="text" placeholder="email 입력" value={signUpId} onChange={(e) => changeIdValue(e)} />
+                        <input className="sign-up-password" type="password" placeholder="비밀번호" value={signUpPw} onChange={(e) => changePwValue(e)} />
+                        {/* 대문자 Capslock, 유효성 검사가 뜨는 디스패치...? */}
+                        <input className="check-password" type="password" placeholder="비밀번호 확인" value={checkPw}onChange={(e) => checkPwValue(e)} />
+                        <input className="sign-up-nickname" type="text" placeholder="닉네임" value={signUpNickname} onChange={(e) => changeNicknameValue(e)} />
+                        <input className="sign-up-url" type="text" placeholder="깃허브 주소" value={signUpUrl} onChange={(e) => changeUrlValue(e)} />
+                        <ImageUpload />
+                        <button type="submit" className="sign-up-btn">회원가입하기</button>
                     </form>
-                    <div className="social-login">
+                    <div className="social-sign-up">
                         <button>깃허브로 가입하기</button>
                         {/* <button><img src="img/icon_social_login(kakao).png" />카카오로 가입하기</button> */}
                     </div>

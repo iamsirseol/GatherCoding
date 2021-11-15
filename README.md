@@ -4,18 +4,20 @@
 
 
 <h2>서비스 기획 의도</h2>
-대개발의 시대에서 살아남기 위해서는 뭉쳐야만 살 수 있다.
-위드코로나의 시대 위험하지 않게 뭉칩시다.
+온라인 만남들이 다시 오프라인 만남으로 제자리를 찾아가는 위드코로나 시기이다.
 
-<h2>Tech Stack(architecture)</h2>
+개발자들이 지역 근처 다양한 개발자들과 만나 모각코 모임을 갖고 교류할 수 있는 플랫폼이 필요하다고 생각했다.
+
+`GatherCoding` 은 사용자들이 클릭만으로 모각코 모임을 만들고, 참여할 수 있는 플랫폼을 목표로 한다.
+
+
+<h2>Tech Stack</h2>
 <img src ="https://user-images.githubusercontent.com/75051059/141217047-508c0826-3a1f-4b24-93c3-666a56851d3a.png"/>
 
 
 
 <hr />
-<h2>Flow Chart</h2>
-<img src="https://user-images.githubusercontent.com/75051059/141221070-1681caac-f3e7-49b2-8ade-7e5f77376ecf.png">
-<hr />
+
 <h2>Team</h2>
 
 팀 소개
