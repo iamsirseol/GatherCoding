@@ -27,11 +27,10 @@ module.exports = {
                             const password = null;
                             const image = result.avatar_url;
                             const blog = result.html_url;
-                            const current_location = null;
                             user.findOne({ where: { email }})
                             .then((result) => {
                                 if(!result) {
-                                    user.create({ username, email, password, image, blog, current_location })
+                                    user.create({ username, email, password, image, blog })
                                     .then((userinfo) => {
                                         console.log(userinfo);
                                     })
