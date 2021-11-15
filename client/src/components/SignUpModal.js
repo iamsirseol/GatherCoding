@@ -44,30 +44,31 @@ function SignUpModal() {
     function signUpRequest(e){ // 회원가입 요청 함수
         e.preventDefault();
         const formData = new FormData();
-        formData.append('sign-up-email', signUpId)
-        formData.append('sign-up-email', signUpPw)
-        formData.append('sign-up-email', signUpNickname)
-        formData.append('sign-up-email', signUpUrl)
+        formData.append('sign-up-id', signUpId)
+        formData.append('sign-up-pw', signUpPw)
+        formData.append('sign-up-nickname', signUpNickname)
+        formData.append('sign-up-url', signUpUrl)
         formData.append('image', signUpImage);
+        for (let el of formData.entries()) {
+            console.log(el);
+          }
 
         const config = {
             headers: {
-                'content-type': 'multipart/form-data'
+                'content-type': 'multipart/form-data',
             },
-            withCredentials: true
+            withCredentials : true
         }
+        console.log(formData.get("image"))
 
-        axios.post(`https://localhost:4000/signUp`, formData, config)
-            .then(res => {
-                if(res.status === 201){ // 잘받아오면
-                    // dispatch()
-                    // const accessToken = 받아온값
-                    // accssToken을 요청해서 받아온 값을 dispatch 해서 정보로 담아둬야 댐 그리고 로그인 핸들러를 이용해서 로그인상태로 돌려 둠 그리고 로그인 모달 창도 끔
-                }
+        axios.post(`http://localhost:4000/users/signup`, formData, config)
+            .then((res) => {
+                // if(res.status === 201){ 잘받아오면
+                //     const { username, email, password, image, blog, current_location } = request;
+                // }
+                console.log(res.data)
             }).catch(err => {
-                if(err){
-                    // 어...로그인 실패했다고 떠야될듯
-                }
+                
             })
         
     }
@@ -85,13 +86,13 @@ function SignUpModal() {
                 <h2>Sign Up</h2>
                 <div className="sign-up-modal-form">
                     <form onSubmit={signUpRequest}>
-                        <input className="sign-up-id" type="text" placeholder="email 입력" value={signUpId} onChange={(e) => changeIdValue(e)} /><a>중복 확인</a>
+                        <input className="sign-up-id" type="text" placeholder="email 입력" value={signUpId} onChange={(e) => changeIdValue(e)} />
                         <input className="sign-up-password" type="password" placeholder="비밀번호" value={signUpPw} onChange={(e) => changePwValue(e)} />
                         {/* 대문자 Capslock, 유효성 검사가 뜨는 디스패치...? */}
                         <input className="check-password" type="password" placeholder="비밀번호 확인" value={checkPw}onChange={(e) => checkPwValue(e)} />
                         <input className="sign-up-nickname" type="text" placeholder="닉네임" value={signUpNickname} onChange={(e) => changeNicknameValue(e)} />
                         <input className="sign-up-url" type="text" placeholder="깃허브 주소" value={signUpUrl} onChange={(e) => changeUrlValue(e)} />
-                        <p>프로필 이미지</p><ImageUpload />
+                        <ImageUpload />
                         <button type="submit" className="sign-up-btn">회원가입하기</button>
                     </form>
                     <div className="social-sign-up">
