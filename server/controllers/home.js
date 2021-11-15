@@ -82,7 +82,7 @@ module.exports = {
         //     console.log(result);
         //     res.send(result);
         // })
-        const data = user.findAll();
+        // const data = user.findAll();
         const data = await group.findAll({
             where: {
                 region: region,

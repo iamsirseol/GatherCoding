@@ -3,7 +3,7 @@ const user = require('../models/user');
 const group = require('../models/group');
 const token = require('./token/index');
 
-module.exports = {  
+module.exports = {
   post: async (req, res) => {
     //-------------------------------------------------
     // 클라이언트 내용
@@ -14,19 +14,20 @@ module.exports = {
     // formData.append('blog', signUpUrl)
     // formData.append('image', signUpImage);
     //----------------------------------------------------
-    
-    
+
+
     // console.log(req.body);
-    // console.log(req.body['email'])
-    const data = await user.findOne({ where: { email } });
+    console.log(req.body['email'])
+    const username = req.body['username'];
+    const email = req.body['email'];
+    const password = req.body['password'];
+    const image = req.body['image'];
+    const blog = req.body['blog'];
+    const data = await user.findOne({ where: { email: email } });
     // console.log(data);
 
     if (!data) {
-      const username = req.body['username'];
-      const email = req.body['email'];
-      const password = req.body['password'];
-      const image = req.body['image'];
-      const blog = req.body['blog'];
+
       if (username && email && password && image && blog) {
         const userinfo = await user.create({
           username,
