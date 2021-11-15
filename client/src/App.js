@@ -1,7 +1,7 @@
 //라이브러리
 import HomeLogined from './pages/HomeLogined';
 import React ,{useEffect} from 'react'
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import axios from 'axios';
 import './css/reset.css';
 import './css/homePage.css';
@@ -28,6 +28,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import RoomInfo from './pages/RoomInfo';
 import { changeCity, changeLat, changeLon, changeRegion, isLoadingHandler } from './redux/actions/actions';
+import CreateRoom from './components/CreateRoom';
 
 
 
@@ -37,6 +38,7 @@ function App() {
   const isLogin = useSelector(state => state.isLoginReducer.isLogin)
   const isShowLoginModal = useSelector(state => state.isShowLoginModalReducer.isShowLoginModal)
   const isShowSignUpModal = useSelector(state => state.isShowSignUpModalReducer.isShowSignUpModal)
+  const isShowCreateRoomModal = useSelector(state => state.isShowCreateRoomModalReducer.isShowCreateRoomModal)
   const isLoading = useSelector(state => state.isLoadingReducer.isLoading)
   //shallowEqual : 이전값이 바뀌었을경우에만 렌더링함. useSelector에서 한번에 두 값 가져올때 사용
   const {region,city,lat,lon} = useSelector((state=>state.locationReducer),shallowEqual)
@@ -96,8 +98,10 @@ function App() {
         <Route path = '/roominfo'><RoomInfo /></Route>
         
       </Switch>
+      {console.log('모각코만들기모달',isShowCreateRoomModal)}
       {isShowLoginModal ? <LoginModal /> : null}
       {isShowSignUpModal ? <SignUpModal /> : null}
+      {isShowCreateRoomModal ? <CreateRoom /> : null}
     </div>
     // 위에 Link로 사용할 수 있게 페이지나 컴포넌트로 만들어두기
   );

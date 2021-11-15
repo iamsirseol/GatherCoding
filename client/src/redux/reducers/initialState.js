@@ -11,6 +11,9 @@ export const initialState = {
     isShowSignUpModal: {
         isShowSignUpModal: false
     },
+    isShowCreateRoomModal: {
+        isShowCreateRoomModal : false
+    },
     location : {
         region : '',
         city : '',

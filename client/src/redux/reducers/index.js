@@ -6,6 +6,7 @@ import {
     IS_LOADING,
     IS_SHOW_LOGIN_MODAL,
     IS_SHOW_SIGNUP_MODAL,
+    IS_SHOW_CREATE_ROOM_MODAL,
     CHANGE_LON,
     CHANGE_LAT,
     
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
     isLoadingReducer,
     isShowLoginModalReducer,
     isShowSignUpModalReducer,
+    isShowCreateRoomModalReducer,
     locationReducer,
 })
 
@@ -59,6 +61,16 @@ function isShowSignUpModalReducer(state = initialState.isShowSignUpModal, action
           });
         default: return state;
       }
+}
+
+function isShowCreateRoomModalReducer(state = initialState.isShowCreateRoomModal, action){
+  switch (action.type) {
+    case IS_SHOW_CREATE_ROOM_MODAL : 
+      return Object.assign({}, {
+        isShowCreateRoomModal : action.payload.isShowCreateRoomModal
+      });
+    default: return state;
+  }
 }
 
 function locationReducer(state = initialState.location, action){
