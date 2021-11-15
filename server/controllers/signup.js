@@ -1,4 +1,3 @@
-
 const user = require('../models/user');
 const group = require('../models/group');
 const token = require('./token/index');
@@ -18,15 +17,15 @@ module.exports = {
     
     // console.log(req.body);
     // console.log(req.body['email'])
+    let image = '/image/' + req.file.filename;
+    let username = req.body.username;
+    let password = req.body.password;
+    let email = req.body.email;
+    let blog = req.body.blog;
     const data = await user.findOne({ where: { email } });
     // console.log(data);
 
     if (!data) {
-      const username = req.body['username'];
-      const email = req.body['email'];
-      const password = req.body['password'];
-      const image = req.body['image'];
-      const blog = req.body['blog'];
       if (username && email && password && image && blog) {
         const userinfo = await user.create({
           username,
