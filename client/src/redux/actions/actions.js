@@ -3,6 +3,7 @@ export const IS_SHOW_LOGIN_MODAL = "IS_SHOW_LOGIN_MODAL";
 export const IS_SHOW_SIGNUP_MODAL = "IS_SHOW_SIGNUP_MODAL";
 export const CHANGE_CITY = "CHANGE_CITY";
 export const CHANGE_REGION = "CHANGE_REGION";
+export const IS_SHOW_IS_SIGNUP_MODAL = "IS_SHOW_IS_SIGNUP_MODAL"
 
 export function isLoginHandler (boolean) {
     return {
@@ -44,3 +45,11 @@ export function changeCity (city) {
         }
     }
 }
+export function isShowIsSignUpModalHandler (boolean) {
+    return {
+        type : IS_SHOW_IS_SIGNUP_MODAL,
+        payload : {
+            isShowIsSignUpModal : boolean
+        }
+    }
+};

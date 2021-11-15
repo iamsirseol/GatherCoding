@@ -5,6 +5,7 @@ import {
     IS_LOGIN, 
     IS_SHOW_LOGIN_MODAL,
     IS_SHOW_SIGNUP_MODAL,
+    IS_SHOW_IS_SIGNUP_MODAL,
     
 } from '../actions/actions';
 import { initialState } from './initialState';
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
     isShowLoginModalReducer,
     isShowSignUpModalReducer,
     locationReducer,
+    isShowIsSignUpModalReducer,
 })
 
 function isLoginReducer(state = initialState.isLogin, action) {
@@ -60,6 +62,16 @@ function locationReducer(state = initialState.location, action){
           }
         default : return state;
       }
+}
+
+function isShowIsSignUpModalReducer(state = initialState.isShowIsSignUpModal, action){
+  switch (action.type) {
+      case IS_SHOW_IS_SIGNUP_MODAL :
+        return Object.assign({}, {
+          isShowIsSignUpModal: action.payload.isShowIsSignUpModal
+        });
+        default: return state;
+    }
 }
 
 export default rootReducer;
