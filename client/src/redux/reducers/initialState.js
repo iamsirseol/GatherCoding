@@ -1,6 +1,6 @@
 export const initialState = {
     isLogin : {
-        isLogin : true
+        isLogin : false
     },
     isLoading : {
         isLoading : true
@@ -10,6 +10,15 @@ export const initialState = {
     },
     isShowSignUpModal: {
         isShowSignUpModal: false
+    },
+    isShowRoomOutModal: {
+        isShowRoomOutModal: false
+    },
+    isShowRoomInModal: {
+        isShowRoomInModal: false
+    },
+    isShowRoomInfoChangeModal: {
+        isShowRoomInfoChangeModal: false
     },
     isShowCreateRoomModal: {
         isShowCreateRoomModal : false
@@ -24,7 +33,12 @@ export const initialState = {
     },
     isShowIsSignUpModal : {
         isShowIsSignUpModal: false
+    },
+    isLoginAlert : {
+        isLoginAlert: false
+    },
+    isCurrentIdHandler:{
+        isCurrentIdHandler: ''
     }
-
 
 }

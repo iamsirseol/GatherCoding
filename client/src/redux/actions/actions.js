@@ -3,12 +3,17 @@ export const IS_LOADING = 'IS_LOADING';
 export const IS_SHOW_LOGIN_MODAL = "IS_SHOW_LOGIN_MODAL";
 export const IS_SHOW_SIGNUP_MODAL = "IS_SHOW_SIGNUP_MODAL";
 export const CHANGE_ADD = "CHANGE_ADD"
+export const IS_SHOW_ROOM_OUT_MODAL = "IS_SHOW_ROOM_OUT_MODAL";
+export const IS_SHOW_ROOM_IN_MODAL = "IS_SHOW_ROOM_IN_MODAL";
+export const IS_SHOW_ROOM_INFO_CHANGE_MODAL = "IS_SHOW_ROOM_INFO_CHANGE_MODAL";
 export const CHANGE_CITY = "CHANGE_CITY";
 export const CHANGE_REGION = "CHANGE_REGION";
 export const CHANGE_LAT = 'CHANGE_LAT';
 export const CHANGE_LON = 'CHANGE_LON';
 export const IS_SHOW_CREATE_ROOM_MODAL = "IS_SHOW_CREATE_ROOM_MODAL";
 export const IS_SHOW_IS_SIGNUP_MODAL = "IS_SHOW_IS_SIGNUP_MODAL"
+export const CURRENT_ID = "CURRENT_ID"
+export const IS_LOGIN_ALERT ="IS_LOGIN_ALERT"
 
 export function isLoginHandler (boolean) {
     return {
@@ -42,6 +47,32 @@ export function isShowSignUpModalHandler (boolean) {
         }
     }
 };
+
+export function isShowRoomOutModalHandler (boolean) {
+    return {
+        type : IS_SHOW_ROOM_OUT_MODAL,
+        payload : {
+            isShowRoomOutModal : boolean
+        }
+    }
+};
+export function isShowRoomInModalHandler (boolean) {
+    return {
+        type : IS_SHOW_ROOM_IN_MODAL,
+        payload : {
+            isShowRoomInModal : boolean
+        }
+    }
+};
+export function isShowRoomInfoChangeModalHandler (boolean) {
+    return {
+        type : IS_SHOW_ROOM_INFO_CHANGE_MODAL,
+        payload : {
+            isShowRoomInfoChangeModal : boolean
+        }
+    }
+};
+
 export function isShowCreateRoomModalHandler (boolean) {
     return {
         type : IS_SHOW_CREATE_ROOM_MODAL,
@@ -50,6 +81,7 @@ export function isShowCreateRoomModalHandler (boolean) {
         }
     }
 }
+
 export function changeRegion (region) {
     return {
         type : CHANGE_REGION,
@@ -97,6 +129,22 @@ export function isShowIsSignUpModalHandler (boolean) {
         type : IS_SHOW_IS_SIGNUP_MODAL,
         payload : {
             isShowIsSignUpModal : boolean
+        }
+    }
+};
+export function isLoginAlertHandler (boolean) {
+    return {
+        type : IS_LOGIN_ALERT,
+        payload : {
+            isLoginAlert : boolean
+        }
+    }
+};
+export function isCurrentId (id) {
+    return {
+        type : CURRENT_ID,
+        payload : {
+            isCurrentIdHandler : id
         }
     }
 };

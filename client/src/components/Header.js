@@ -3,7 +3,7 @@ import '../css/header.css'
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { isLoginHandler, isShowLoginModalHandler, isShowSignUpModalHandler } from '../redux/actions/actions'
+import { isLoginHandler, isShowLoginModalHandler, isShowSignUpModalHandler, isCurrentId } from '../redux/actions/actions'
 
 
 function Header() {
@@ -16,7 +16,12 @@ function Header() {
     // console.log(logoutHandler)
     const isLogin = useSelector(state => state.isLoginReducer.isLogin)
     const showLoginModalHandler = () => { dispatch(isShowLoginModalHandler(true))};
-    const logoutHandler = () => { dispatch(isLoginHandler(false)) };
+    const curLoginedId = (val) => {dispatch(isCurrentId(val))}
+    const logoutHandler = () => { 
+        dispatch(isLoginHandler(false)) 
+        window.sessionStorage.removeItem('email')
+        curLoginedId('')
+    };
     const showSignUpHandler = () => { dispatch(isShowSignUpModalHandler(true)) };
 
     // const toggleLoginButton = () => { // 로그인 일때랑 아닐때 불러오는 함수 변경

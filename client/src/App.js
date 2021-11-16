@@ -11,6 +11,10 @@ import Home from './pages/Home';
 
 import LoginModal from './components/LoginModal'
 import SignUpModal from './components/SignUpModal'
+
+import RoomOutModal from './components/RoomOutModal'
+import RoomInModal from './components/RoomInModal'
+import RoomInfoChangeModal from './components/RoomInfoChangeModal'
 import MyInfo from './pages/MyInfo'
 // import { useSelector, useDispatch } from 'react-redux';
 //리덕스
@@ -28,7 +32,7 @@ import FirstPage from './pages/FirstPage';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import RoomInfo from './pages/RoomInfo';
-import { changeAddress, changeCity, changeLat, changeLon, changeRegion, isLoadingHandler, isLoginHandler } from './redux/actions/actions';
+import { changeAddress, changeCity, changeLat, changeLon, changeRegion, isLoadingHandler, isLoginHandler, isCurrentId } from './redux/actions/actions';
 import CreateRoom from './components/CreateRoom';
 
 
@@ -40,22 +44,49 @@ function App() {
   const isLogin = useSelector(state => state.isLoginReducer.isLogin)
   const isShowLoginModal = useSelector(state => state.isShowLoginModalReducer.isShowLoginModal)
   const isShowSignUpModal = useSelector(state => state.isShowSignUpModalReducer.isShowSignUpModal)
+  const isShowRoomOutModal = useSelector(state => state.isShowRoomOutModalReducer.isShowRoomOutModal)
+  const isShowRoomInModal = useSelector(state => state.isShowRoomInModalReducer.isShowRoomInModal)
+  const isShowRoomInfoChangeModal = useSelector(state => state.isShowRoomInfoChangeModalReducer.isShowRoomInfoChangeModal)
+  const dispatch = useDispatch()
   const isShowCreateRoomModal = useSelector(state => state.isShowCreateRoomModalReducer.isShowCreateRoomModal)
   const isLoading = useSelector(state => state.isLoadingReducer.isLoading)
   //shallowEqual : 이전값이 바뀌었을경우에만 렌더링함. useSelector에서 한번에 두 값 가져올때 사용
-  const {region,city} = useSelector((state=>state.locationReducer),shallowEqual)
-
-  const dispatch = useDispatch()
+  const {region,city,lat,lon} = useSelector((state=>state.locationReducer),shallowEqual)
+  const loginHandler = (val) => {dispatch(isLoginHandler(val))}
+  const curLoginId = useSelector(state => state.isCurrentIdReducer.isCurrentIdHandler) // 로그인 한 유저의 현아이디
 
   // const realLoginHandler = (boolean) => { // 로그인 상태 기능
-  //   dispatch(isLoginHandler(boolean))
+  //   
   // }
+  const curLoginedId = (val) => {dispatch(isCurrentId(val))}
 
-  useEffect(() => {
+  useEffect(() => { // 혹시 몰라서 지워도 기능 및 콘솔 이상 없는지 확인
     
   }, [isLogin, isShowLoginModal])
 
+  useEffect(() => {
+    // curLoginedId(window.sessionStorage.getItem('email'))
+    console.log(curLoginId)
+    maintainLogin()
+  })
+
+  function maintainLogin(){
+    if(window.sessionStorage.getItem('email')){
+      loginHandler(true)
+    }else{
+      loginHandler(false)
+    }
+  }
+
   // const loginedId 
+  // useEffect(() => {
+  //   const maintainLogin = window.localStorage.getItem('')
+  //   if(!maintainLogin){
+  //     dispatch(isLoginHandler(true))
+  //   }else{
+      // dispatch(isCurrentId(??))
+  //   }
+  // })
 
 
 
@@ -116,11 +147,13 @@ function App() {
         <Route path = '/myroom'><HomeLogined /></Route>
         <Route path = '/roominfo'><RoomInfo /></Route>
         <Route path = '/myinfo'><MyInfo /></Route>
-        
       </Switch>
       {console.log('모각코만들기모달',isShowCreateRoomModal)}
       {isShowLoginModal ? <LoginModal /> : null}
       {isShowSignUpModal ? <SignUpModal /> : null}
+      {isShowRoomOutModal ? <RoomOutModal /> : null}
+      {isShowRoomInModal ? <RoomInModal /> : null}
+      {isShowRoomInfoChangeModal ? <RoomInfoChangeModal /> : null}
       {isShowCreateRoomModal ? <CreateRoom /> : null}
       </ThemeProvider>
     </div>

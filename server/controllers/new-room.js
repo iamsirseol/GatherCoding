@@ -17,9 +17,9 @@ module.exports = {
             } else {
                const newRoom = await group.create({
                     title, 
-                    description, 
+                    description,
                     population, 
-                    meeting_place, 
+                    meeting_place,
                     leader_id: accessTokenData.id, 
                     UserId: accessTokenData.id,
                     region: req.body.region, 
@@ -28,5 +28,5 @@ module.exports = {
                 res.status(201).json({data: newRoom, message: 'ok'});
             }
         }
-    },   
+    }
 };

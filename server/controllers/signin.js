@@ -14,10 +14,11 @@ module.exports = {
             } else {
                 console.log(data);
                 const accessToken = token.generateAccessToken(data.dataValues); 
+                const username = data.dataValues.username;
                 // console.log(accessToken);
-                res.status(200).json({ "data": { "accessToken": accessToken }, "message": "ok" });
+                res.status(200).json({ "data": { "accessToken": accessToken, "username": username}, "message": "ok" });
             }
-        }
+        }   
     },
     get: (req, res) => {
         res.send("Hello World");
