@@ -8,6 +8,8 @@ export const CHANGE_LAT = 'CHANGE_LAT';
 export const CHANGE_LON = 'CHANGE_LON';
 export const IS_SHOW_CREATE_ROOM_MODAL = "IS_SHOW_CREATE_ROOM_MODAL";
 export const IS_SHOW_IS_SIGNUP_MODAL = "IS_SHOW_IS_SIGNUP_MODAL"
+export const CURRENT_ID = "CURRENT_ID"
+export const IS_LOGIN_ALERT ="IS_LOGIN_ALERT"
 
 export function isLoginHandler (boolean) {
     return {
@@ -88,6 +90,22 @@ export function isShowIsSignUpModalHandler (boolean) {
         type : IS_SHOW_IS_SIGNUP_MODAL,
         payload : {
             isShowIsSignUpModal : boolean
+        }
+    }
+};
+export function isLoginAlertHandler (boolean) {
+    return {
+        type : IS_LOGIN_ALERT,
+        payload : {
+            isLoginAlert : boolean
+        }
+    }
+};
+export function isCurrentId (id) {
+    return {
+        type : CURRENT_ID,
+        payload : {
+            isCurrentIdHandler : id
         }
     }
 };

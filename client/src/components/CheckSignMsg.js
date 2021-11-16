@@ -1,6 +1,6 @@
 import React from 'react'
-import '../css/checkSignUpMsg.css'
-function CheckSignUpMsg({message}) {
+import '../css/checkSignMsg.css'
+function CheckSignMsg({message}) {
 
     return (
         <div className = 'check-sign-msg'>
@@ -9,4 +9,4 @@ function CheckSignUpMsg({message}) {
     )
 }
 
-export default CheckSignUpMsg
+export default CheckSignMsg

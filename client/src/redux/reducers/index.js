@@ -10,6 +10,8 @@ import {
     CHANGE_LON,
     CHANGE_LAT,
     IS_SHOW_IS_SIGNUP_MODAL,
+    CURRENT_ID,
+    IS_LOGIN_ALERT
     
 } from '../actions/actions';
 import { initialState } from './initialState';
@@ -24,6 +26,8 @@ const rootReducer = combineReducers({
     isShowCreateRoomModalReducer,
     locationReducer,
     isShowIsSignUpModalReducer,
+    isCurrentIdReducer,
+    isLoginAlertReducer
 })
 
 function isLoginReducer(state = initialState.isLogin, action) {
@@ -102,6 +106,26 @@ function isShowIsSignUpModalReducer(state = initialState.isShowIsSignUpModal, ac
       case IS_SHOW_IS_SIGNUP_MODAL :
         return Object.assign({}, {
           isShowIsSignUpModal: action.payload.isShowIsSignUpModal
+        });
+        default: return state;
+    }
+}
+
+function isLoginAlertReducer(state = initialState.isLoginAlert, action){
+  switch (action.type) {
+      case IS_LOGIN_ALERT:
+        return Object.assign({}, {
+          isLoginAlert: action.payload.isLoginAlert
+        });
+        default: return state;
+    }
+}
+
+function isCurrentIdReducer(state = initialState.isCurrentIdHandler, action){
+  switch (action.type) {
+      case CURRENT_ID :
+        return Object.assign({}, {
+          isCurrentIdHandler: action.payload.isCurrentIdHandler
         });
         default: return state;
     }

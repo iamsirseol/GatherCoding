@@ -12,7 +12,7 @@ module.exports = {
             if (!data) {
                 res.status(404).json('not authorized');
             } else {
-                console.log(data);
+                // console.log(data);
                 const accessToken = token.generateAccessToken(data.dataValues); 
                 // console.log(accessToken);
                 res.status(200).json({ "data": { "accessToken": accessToken }, "message": "ok" });
