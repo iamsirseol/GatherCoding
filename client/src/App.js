@@ -71,7 +71,12 @@ function App() {
     maintainLogin()
   })
 
-  useEffect(afterComponentRendering, []);
+  // useEffect(afterComponentRendering, []);
+  useEffect(()=> {
+    if(!window.sessionStorage.getItem('email')){
+      afterComponentRendering()
+    }
+  }, []);
 
   function maintainLogin(){
     if(window.sessionStorage.getItem('email')){
