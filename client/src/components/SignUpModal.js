@@ -4,7 +4,7 @@ import axios from "axios";
 import {isShowSignUpModalHandler, isShowIsSignUpModalHandler } from '../redux/actions/actions';
 import ImageUpload from './ImageUpload'
 import IsSignUp from './IsSignUp'
-import CheckSignUpMsg from './CheckSignUpMsg'
+import CheckSignMsg from './CheckSignMsg'
 import '../css/signUpModal.css'
 
 function SignUpModal() {
@@ -127,6 +127,7 @@ function SignUpModal() {
         })
         .then((res) => {
             setGetMember(true)
+            console.log(res)
         })
         .catch(err => {
             setGetMember(false)
@@ -147,12 +148,12 @@ function SignUpModal() {
                 <div className="sign-up-modal-form">
                     <form onSubmit={signUpRequest}>
                         <input className="sign-up-id" type="text" placeholder="email 입력" name="email" value={signUpId} onChange={(e) => changeIdValue(e)} />
-                        {!validEmail ? <CheckSignUpMsg message={'이메일을 입력해주세요'} /> : null}
+                        {!validEmail ? <CheckSignMsg message={'이메일을 입력해주세요'} /> : null}
                         <input className="sign-up-password" type="password" name="password" placeholder="비밀번호" value={signUpPw} onChange={(e) => changePwValue(e)} />
-                        {!validPw ? <CheckSignUpMsg message={'숫자, 영문, 특수문자 각 1자리 이상의 8~16 자리'} /> : null}
-                        <input className="check-password" type="password" placeholder="비밀번호 확인" value={checkPw}onChange={(e) => checkPwValue(e)} />{!samePw ?  <CheckSignUpMsg message={'비밀번호가 일치하지 않습니다.'} /> : null}
+                        {!validPw ? <CheckSignMsg message={'숫자, 영문, 특수문자 각 1자리 이상의 8~16 자리'} /> : null}
+                        <input className="check-password" type="password" placeholder="비밀번호 확인" value={checkPw}onChange={(e) => checkPwValue(e)} />{!samePw ?  <CheckSignMsg message={'비밀번호가 일치하지 않습니다.'} /> : null}
                         <input className="sign-up-nickname" type="text" name="username" placeholder="닉네임" value={signUpNickname} onChange={(e) => changeNicknameValue(e)} />
-                        {!signUpNickname ?  <CheckSignUpMsg message={'필수'} /> : null}
+                        {!signUpNickname ?  <CheckSignMsg message={'필수'} /> : null}
                         <input className="sign-up-url" type="text" name="blog" placeholder="깃허브 주소" value={signUpUrl} onChange={(e) => changeUrlValue(e)} />
                         <ImageUpload signUpImage={signUpImage} setSignUpImage ={setSignUpImage}/>
                         <button type="submit" className="sign-up-btn" disabled={
@@ -164,7 +165,7 @@ function SignUpModal() {
                     </div>
                 </div>
             </div>
-            {isShowIsSignUpModal ? <IsSignUp getMember={getMember} alert={getMember ? '회원가입을 축하드립니다. 로그인을 해주세요' : '다시 입력해주세요'}/> : null}
+            {isShowIsSignUpModal ? <IsSignUp getMember={getMember} alert={getMember ? '회원가입을 축하드립니다. 로그인을 해주세요' : '중복된 아이디 입니다.'}/> : null}
         </div>
     )
 }
