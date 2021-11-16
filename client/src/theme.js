@@ -1,7 +1,7 @@
-import { createMuiTheme } from "@material-ui/core"
+import { createTheme } from '@material-ui/core/styles'
 import { indigo as primary, pink as secondary } from "@material-ui/core/colors"
 
-export const theme = createMuiTheme({
+export const theme = createTheme({
   palette: {
     primary,
     secondary
