@@ -6,7 +6,7 @@ export const initialState = {
         isLoading : true
     },
     isShowLoginModal: {
-        isShowLoginModal : true
+        isShowLoginModal : false
     },
     isShowSignUpModal: {
         isShowSignUpModal: false
