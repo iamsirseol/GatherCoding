@@ -19,6 +19,7 @@ export const initialState = {
     },
     isShowRoomInfoChangeModal: {
         isShowRoomInfoChangeModal: false
+    },
     isShowCreateRoomModal: {
         isShowCreateRoomModal : false
     },

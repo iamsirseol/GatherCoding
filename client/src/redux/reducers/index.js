@@ -8,7 +8,7 @@ import {
     IS_SHOW_SIGNUP_MODAL,
     IS_SHOW_ROOM_OUT_MODAL,
     IS_SHOW_ROOM_IN_MODAL,
-    IS_SHOW_ROOM_INFO_CHANGE_MODAL
+    IS_SHOW_ROOM_INFO_CHANGE_MODAL,
     IS_SHOW_CREATE_ROOM_MODAL,
     CHANGE_LON,
     CHANGE_LAT,
@@ -103,6 +103,8 @@ function isShowRoomInfoChangeModalReducer(state = initialState.isShowRoomInfoCha
         });
       default: return state;
     }
+  }
+    
 function isShowCreateRoomModalReducer(state = initialState.isShowCreateRoomModal, action){
   switch (action.type) {
     case IS_SHOW_CREATE_ROOM_MODAL : 
@@ -163,6 +165,6 @@ function isCurrentIdReducer(state = initialState.isCurrentIdHandler, action){
         });
         default: return state;
     }
-}
+  }
 
 export default rootReducer;
