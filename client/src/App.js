@@ -71,7 +71,6 @@ function App() {
     maintainLogin()
   })
 
-  // useEffect(afterComponentRendering, []);
   useEffect(()=> {
     if(!window.sessionStorage.getItem('email')){
       afterComponentRendering()
@@ -153,11 +152,12 @@ function App() {
       }
     })
     .then((result) => {
-      closeLoginModalHandler();
       console.log(result.data.accessToken);
       token = result.data.accessToken;
       window.sessionStorage.setItem('email', token);
       maintainLogin();
+    }).then(() => {
+      closeLoginModalHandler();
     })
     .then(() => dispatch(setAccessToken(token)));
     // loginHandler(true);
@@ -166,7 +166,7 @@ function App() {
   function afterComponentRendering() {
     const url = new URL(window.location.href)
     const authorizationCode = url.searchParams.get('code')
-    console.log(authorizationCode)
+    // console.log(authorizationCode)
     if (authorizationCode) {
       // authorization server로부터 클라이언트로 리디렉션된 경우, authorization code가 함께 전달됩니다.
       // ex) http://localhost:3000/?code=5e52fb85d6a1ed46a51f

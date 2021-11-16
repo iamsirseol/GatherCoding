@@ -3,6 +3,8 @@ header {
     /* border : 1px gray solid; */
     padding : 5px;
     position :fixed;
+    top: 0;
+    left: 0;
     
     width : 100%;
     /* background-color: rgb(39, 173, 95); */

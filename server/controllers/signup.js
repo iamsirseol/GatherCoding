@@ -19,7 +19,7 @@ module.exports = {
 
     // console.log(req.body);
     // console.log(req.body['email'])
-    let image = '/image/' + req.file.filename;
+    let image = req.file.filename;
     let username = req.body.username;
     let password = req.body.password;
     let email = req.body.email;
