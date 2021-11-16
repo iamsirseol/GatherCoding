@@ -34,8 +34,8 @@ module.exports = {
                                     .then((result) => {
                                         if (!result) {
                                             user.create({ username, email, password, image, blog })
-                                                .then((userinfo) => {
-                                                    console.log(userinfo);
+                                                .then(() => {
+                                                    console.log('success');
                                                 })
                                             res.status(201).json({ accessToken: token });
                                         } else {
