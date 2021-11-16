@@ -16,6 +16,7 @@ module.exports = {
                 const accessToken = token.generateAccessToken(data.dataValues); 
                 const username = data.dataValues.username;
                 // console.log(accessToken);
+                res.cookie('accessToken', accessToken)
                 res.status(200).json({ "data": { "accessToken": accessToken, "username": username}, "message": "ok" });
             }
         }   

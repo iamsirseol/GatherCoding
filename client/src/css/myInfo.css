@@ -1,0 +1,17 @@
+.my-info-background{position: relative; top: 0; left: 0; margin-top: 100px;}
+.my-info-background .my-info-container{}
+.my-info-background .my-info-container > h2{text-align: center;}
+.my-info-background .my-info-update{}
+.my-info-background .my-info-form{display: flex; flex-wrap: wrap; flex-direction: column; align-items: center;}
+.my-info-background .my-info-form>input{width: 700px; border: none; border-bottom: 2px solid #666; padding: 10px 5px; box-sizing: border-box; margin-top: 3px;}
+.my-info-background .my-info-form .my-info-password{}
+.my-info-background .my-info-form .update-pw{}
+.my-info-background .my-info-form .check-update-pw{}
+.my-info-background .my-info-form .check-sign-msg{width: 700px} /* 좀 이따 msg에서 수정하셈 */
+.my-info-background .my-info-form .update-nick-name{}
+.my-info-background .my-info-form .update-url{}
+.my-info-background .my-info-form .update-image-box{}
+.my-info-background .my-info-form .update-image-box .update-input-blind{}
+.my-info-background .my-info-form .update-image-box .update-img-preview{}
+
+.my-info-background .my-info-form .update-btn{}

@@ -1,5 +1,7 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from "axios";
 import {isShowSignUpModalHandler, isShowIsSignUpModalHandler } from '../redux/actions/actions';
 
 import '../css/isSignUp.css'

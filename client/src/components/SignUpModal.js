@@ -106,7 +106,7 @@ function SignUpModal() {
         setsignUpUrl(e.target.value);
     }
 
-    async function signUpRequest(e){ // 회원가입 요청 함수
+    function signUpRequest(e){ // 회원가입 요청 함수
         console.log(validEmail && validPw  && samePw )
         e.preventDefault();
         openIsSignUpModalHandler()
@@ -157,7 +157,7 @@ function SignUpModal() {
                         <input className="sign-up-url" type="text" name="blog" placeholder="깃허브 주소" value={signUpUrl} onChange={(e) => changeUrlValue(e)} />
                         <ImageUpload signUpImage={signUpImage} setSignUpImage ={setSignUpImage}/>
                         <button type="submit" className="sign-up-btn" disabled={
-                            validEmail && validPw  && samePw ? false : true}>회원가입하기</button>
+                            validEmail && validPw  && samePw && signUpNickname ? false : true}>회원가입하기</button>
                     </form>
                     <div className="social-sign-up">
                         <button>깃허브로 가입하기</button>
@@ -165,7 +165,8 @@ function SignUpModal() {
                     </div>
                 </div>
             </div>
-            {isShowIsSignUpModal ? <IsSignUp getMember={getMember} alert={getMember ? '회원가입을 축하드립니다. 로그인을 해주세요' : '중복된 아이디 입니다.'}/> : null}
+            {isShowIsSignUpModal ? <IsSignUp getMember={getMember} alert={getMember ? '회원가입을 축하드립니다. 로그인을 해주세요' : '중복된 아이디 입니다.'}/> : null} 
+            {/* 21/11/16 이미지 필수 아니게 서버에서 바꿔주세요 라고 부탁하기 */}
         </div>
     )
 }

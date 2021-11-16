@@ -33,9 +33,9 @@ function Header() {
     //     }
     // } // 다시 지워도 되는지 확인할것
 
-    useEffect(() => {
-        // showLoginModalHandler()
-    },[isShowLoginModal])
+    // useEffect(() => {
+    //     // showLoginModalHandler()
+    // },[isShowLoginModal])
 
     return (
         <header>
