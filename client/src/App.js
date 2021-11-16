@@ -32,7 +32,7 @@ import FirstPage from './pages/FirstPage';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import RoomInfo from './pages/RoomInfo';
-import { changeCity, changeLat, changeLon, changeRegion, isLoadingHandler, isLoginHandler, isCurrentId } from './redux/actions/actions';
+import { changeCity, changeLat, changeLon, changeRegion, isLoadingHandler, isLoginHandler, isCurrentId, isShowLoginModalHandler } from './redux/actions/actions';
 import CreateRoom from './components/CreateRoom';
 
 // import Oauth from './components/Oauth'
@@ -52,6 +52,8 @@ function App() {
   //shallowEqual : 이전값이 바뀌었을경우에만 렌더링함. useSelector에서 한번에 두 값 가져올때 사용
   const {region,city,lat,lon} = useSelector((state=>state.locationReducer),shallowEqual)
   const loginHandler = (val) => {dispatch(isLoginHandler(val))}
+  const closeLoginModalHandler = () => { dispatch(isShowLoginModalHandler(false)) };
+  const openLoginModalHandler = () => { dispatch(isShowLoginModalHandler(true)) };
   const curLoginId = useSelector(state => state.isCurrentIdReducer.isCurrentIdHandler) // 로그인 한 유저의 현아이디
 
   // const realLoginHandler = (boolean) => { // 로그인 상태 기능
@@ -69,7 +71,11 @@ function App() {
     maintainLogin()
   })
 
-  useEffect(afterComponentRendering, []);
+  useEffect(()=> {
+    if(!window.sessionStorage.getItem('email')){
+      afterComponentRendering()
+    }
+  }, []);
 
   function maintainLogin(){
     if(window.sessionStorage.getItem('email')){
@@ -133,7 +139,7 @@ function App() {
   // const showLoginModalHandler = (e) => { dispatch(isShowLoginModalHandler(true))};
   // console.log(isLogin)
   // console.log(isShowLoginModal)
-  
+
   async function getAccessToken(authorizationCode) {
     let token;
     // let url = "http://localhost:4000/users/oauth";
@@ -146,16 +152,17 @@ function App() {
       }
     })
     .then((result) => {
-      console.log(result)
-      token = result.accessToken;
-      console.log(token);
+      console.log(result.data.accessToken);
+      token = result.data.accessToken;
       window.sessionStorage.setItem('email', token);
-
+      maintainLogin();
+    }).then(() => {
+      closeLoginModalHandler();
     })
     .then(() => dispatch(setAccessToken(token)));
     // loginHandler(true);
   }
-
+  
   function afterComponentRendering() {
     const url = new URL(window.location.href)
     const authorizationCode = url.searchParams.get('code')

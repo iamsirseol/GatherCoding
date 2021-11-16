@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -54,9 +55,10 @@ function LoginModal() {
         }
         return axios.post(`http://localhost:4000/users/signin`, body, conf)
             .then(res => {
+                // curLoginedId(res.data.user_email)
                 curLoginedId(loginId)
                 window.sessionStorage.setItem('email', loginId);
-                console.log(res.data.data.accessToken)
+                // console.log(window.sessionStorage.getItem('email'))
             }).then(res => {
                 loginHandler(true)
             }).then(res => {
@@ -84,6 +86,7 @@ function LoginModal() {
         // console.log(process.env.GITHUB_CLIENT_ID);
         const GITHUB_LOGIN_URL = `https://github.com/login/oauth/authorize?client_id=0b8485d8bd3f0461eae1`;
         window.location.assign(GITHUB_LOGIN_URL);
+        closeLoginModalHandler();
     }
 
     return (
@@ -116,4 +119,4 @@ function LoginModal() {
     )
 }
 
-export default LoginModal
+export default LoginModal;

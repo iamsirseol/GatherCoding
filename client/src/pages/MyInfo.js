@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import axios from "axios";
 import CheckSignMsg from '../components/CheckSignMsg'
-import ImageUpload from '../components/ImageUpload'
 import '../css/myInfo.css'
 function MyInfo() {
     const [loading, setLoading] = useState(true);
@@ -26,15 +25,20 @@ function MyInfo() {
 //   ></div>: <div className="img_preview" onClick={(e) => inputBtn(e, inputValue)}></div>} 끼에에에에에엑 사용할듯
 
     useEffect(() => {
-        const curUser = window.localStorage.getItem('email');
+        /*const curUser = window.sessionStorage.getItem('email');*/
         // 로딩 넣으면 좋을듯
         axios.get('http://localhost:4000/users/userinfo',{withCredentials : true})
             .then(res => {
-                console.log(res.data)
-                
+                console.log(res.data.data.image)
+                const blog = res.data.data.blog;
+                setUpdateUrl(blog)
+                const username = res.data.data.username;
+                setCurUserNickname(username)
+                const image = res.data.data.image;
+                setCurUserImage(image)
             })
             .catch(err => {
-
+                console.log('fail')// 에러창을 추후에 만들면 좋을듯 싶음
             })
     }, [])
 
@@ -89,9 +93,10 @@ function MyInfo() {
                         <input className="update-url" type="text" name="blog" placeholder="깃허브 주소" value={updateUrl} onChange={(e) => chageUrl(e)} />
                         <div className="update-image-box">
                             <input name="image" className="update-input-blind" ref={inputValue} type="file" onChange={(e) => inputFileHandler(inputValue, setCurUserImage)}/>
-                            {curUserImage ? <div className="update-img-preview" onClick={(e) => inputBtn(e, inputValue)} style={{ backgroundImage: `url('${URL.createObjectURL(curUserImage) }')`}}></div>: <div className="update-img-preview" onClick={(e) => inputBtn(e, inputValue)}></div>}
+                            {<img src={curUserImage} />}
                             <p>프로필 이미지</p>
                         </div>
+                        <button type="button" className="update-btn">정보변경하기</button>
                     </form>
                 </div>
             </div>
