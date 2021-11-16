@@ -8,7 +8,7 @@ const axios = require('axios');
 
 module.exports = {
     post: async (req, res) => {
-        console.log(req.body);
+        // console.log(req.body);
         const authorizationCode = req.body.authorizationCode;
         // console.log(authorizationCode);
         await axios.post(`https://github.com/login/oauth/access_token?client_id=${clientID}&client_secret=${clientSecret}&code=${authorizationCode}`)
@@ -22,7 +22,6 @@ module.exports = {
                 } else {
                     axios.get('https://api.github.com/user', { headers: { authorization: `token ${token}` } })
                         .then((result) => {
-                            console.log(result);
                             const username = result.data.login;
                             const email = result.data.email;
                             const password = null;
@@ -39,7 +38,7 @@ module.exports = {
                                                 })
                                             res.status(201).json({ accessToken: token });
                                         } else {
-                                            res.status(409).json({ data: null, message: 'This user already exists in the database' });
+                                            res.status(200).json({ accessToken: token });
                                         }
                                     });
                                 } else {
@@ -52,7 +51,7 @@ module.exports = {
                                                 })
                                             res.status(201).json({ accessToken: token });
                                         } else {
-                                            res.status(409).json({ data: null, message: 'This user already exists in the database' });
+                                            res.status(200).json({ accessToken: token });
                                         }
                                     });
                                 }
