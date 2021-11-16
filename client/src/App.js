@@ -28,12 +28,13 @@ import FirstPage from './pages/FirstPage';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import RoomInfo from './pages/RoomInfo';
-import { changeCity, changeLat, changeLon, changeRegion, isLoadingHandler, isLoginHandler } from './redux/actions/actions';
+import { changeAddress, changeCity, changeLat, changeLon, changeRegion, isLoadingHandler, isLoginHandler } from './redux/actions/actions';
 import CreateRoom from './components/CreateRoom';
 
 
 
-
+import { ThemeProvider } from "@material-ui/core/styles"
+import { theme } from "./theme"
 function App() {
   
   const isLogin = useSelector(state => state.isLoginReducer.isLogin)
@@ -42,7 +43,7 @@ function App() {
   const isShowCreateRoomModal = useSelector(state => state.isShowCreateRoomModalReducer.isShowCreateRoomModal)
   const isLoading = useSelector(state => state.isLoadingReducer.isLoading)
   //shallowEqual : 이전값이 바뀌었을경우에만 렌더링함. useSelector에서 한번에 두 값 가져올때 사용
-  const {region,city,lat,lon} = useSelector((state=>state.locationReducer),shallowEqual)
+  const {region,city} = useSelector((state=>state.locationReducer),shallowEqual)
 
   const dispatch = useDispatch()
 
@@ -76,7 +77,7 @@ function App() {
         
         
         
-        // console.log(res.data.documents)
+        dispatch(changeAddress(res.data.documents[0].address.address_name))
         dispatch(changeRegion(res.data.documents[0].address.region_1depth_name))
         dispatch(changeCity(res.data.documents[0].address.region_2depth_name)) 
         dispatch(isLoadingHandler(false))
@@ -102,6 +103,7 @@ function App() {
   // console.log(isShowLoginModal)
   return (
     <div>
+      <ThemeProvider theme={theme}>
       <Header />
       <Sidebar />
       {/* {isLogin ? <HomeLogined /> : <Home />} */}
@@ -120,6 +122,7 @@ function App() {
       {isShowLoginModal ? <LoginModal /> : null}
       {isShowSignUpModal ? <SignUpModal /> : null}
       {isShowCreateRoomModal ? <CreateRoom /> : null}
+      </ThemeProvider>
     </div>
     // 위에 Link로 사용할 수 있게 페이지나 컴포넌트로 만들어두기
   );

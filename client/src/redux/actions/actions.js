@@ -2,6 +2,7 @@ export const IS_LOGIN = 'IS_LOGIN';
 export const IS_LOADING = 'IS_LOADING';
 export const IS_SHOW_LOGIN_MODAL = "IS_SHOW_LOGIN_MODAL";
 export const IS_SHOW_SIGNUP_MODAL = "IS_SHOW_SIGNUP_MODAL";
+export const CHANGE_ADD = "CHANGE_ADD"
 export const CHANGE_CITY = "CHANGE_CITY";
 export const CHANGE_REGION = "CHANGE_REGION";
 export const CHANGE_LAT = 'CHANGE_LAT';
@@ -62,6 +63,14 @@ export function changeCity (city) {
         type : CHANGE_CITY,
         payload : {
             city
+        }
+    }
+}
+export function changeAddress (add) {
+    return {
+        type : CHANGE_ADD,
+        payload : {
+            add
         }
     }
 }

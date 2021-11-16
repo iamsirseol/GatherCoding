@@ -20,7 +20,7 @@ function RoomInfo() {
         <div className = 'roominfo-page'>
             <div className = 'roominfo-map'>
                 {/* <MapPick /> */}
-                <MapContainer />
+                <MapPick />
             </div>
             <div className='roominfo-info-div'>
                 <div className = 'roominfo-meeting-time'>

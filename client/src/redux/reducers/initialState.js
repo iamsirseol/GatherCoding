@@ -15,6 +15,7 @@ export const initialState = {
         isShowCreateRoomModal : false
     },
     location : {
+        add : '',
         region : '',
         city : '',
         lat:0,

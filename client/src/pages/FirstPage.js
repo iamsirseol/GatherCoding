@@ -10,6 +10,8 @@ import Loading from '../components/Loading';
 import CreateRoom from '../components/CreateRoom';
 import MapPick from '../components/MapPick';
 import MapContainer from '../components/MapContainer';
+import LandingPage from '../components/LandingPage';
+import Map from '../components/kakao/map/Map';
 
 
 function FirstPage() {
@@ -18,15 +20,15 @@ function FirstPage() {
     const isLoading = useSelector(state => state.isLoadingReducer.isLoading)
     //*
     return (
-        <div>
+        <>
             
             <Home />
             {/* {isLogin ? <HomeLogined /> : <RoomListPage />} */}
-            {/* {isLoading ? <Loading /> : <RoomListPage />} */}
+            {isLoading ? <Loading /> : <RoomListPage />}
             {/* <Loading /> */}
-            {<MapPick />}
+            {/* <div className = 'landing'>{<Map />}</div> */}
             
-        </div>
+        </>
     )
 }
 
