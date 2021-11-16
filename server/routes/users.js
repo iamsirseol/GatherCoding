@@ -16,6 +16,7 @@ const oauthController = require('../controllers/oauth');
 const signoutController = require('../controllers/signout');
 const withdrawalController = require('../controllers/withdrawal');
 const locationRegistrationController = require('../controllers/location-registration');
+const infoChangeController = require('../controllers/info-change');
 
 router.post('/signup', upload.single('image'), signupController.post);
 router.get('/userinfo', userinfoController.get);
@@ -24,5 +25,6 @@ router.post('/oauth', oauthController.post);
 router.post('/signout', signoutController.post);
 router.delete('/withdrawal', withdrawalController.delete);
 router.post('/location-registration', locationRegistrationController.post);
+router.put('/info-change', infoChangeController.put);
 
 module.exports = router;
