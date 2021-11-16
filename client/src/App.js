@@ -11,6 +11,10 @@ import Home from './pages/Home';
 
 import LoginModal from './components/LoginModal'
 import SignUpModal from './components/SignUpModal'
+
+import RoomOutModal from './components/RoomOutModal'
+import RoomInModal from './components/RoomInModal'
+import RoomInfoChangeModal from './components/RoomInfoChangeModal'
 import MyInfo from './pages/MyInfo'
 // import { useSelector, useDispatch } from 'react-redux';
 //리덕스
@@ -39,6 +43,10 @@ function App() {
   const isLogin = useSelector(state => state.isLoginReducer.isLogin)
   const isShowLoginModal = useSelector(state => state.isShowLoginModalReducer.isShowLoginModal)
   const isShowSignUpModal = useSelector(state => state.isShowSignUpModalReducer.isShowSignUpModal)
+  const isShowRoomOutModal = useSelector(state => state.isShowRoomOutModalReducer.isShowRoomOutModal)
+  const isShowRoomInModal = useSelector(state => state.isShowRoomInModalReducer.isShowRoomInModal)
+  const isShowRoomInfoChangeModal = useSelector(state => state.isShowRoomInfoChangeModalReducer.isShowRoomInfoChangeModal)
+  const dispatch = useDispatch()
   const isShowCreateRoomModal = useSelector(state => state.isShowCreateRoomModalReducer.isShowCreateRoomModal)
   const isLoading = useSelector(state => state.isLoadingReducer.isLoading)
   //shallowEqual : 이전값이 바뀌었을경우에만 렌더링함. useSelector에서 한번에 두 값 가져올때 사용
@@ -139,11 +147,13 @@ function App() {
         <Route path = '/myroom'><HomeLogined /></Route>
         <Route path = '/roominfo'><RoomInfo /></Route>
         <Route path = '/myinfo'><MyInfo /></Route>
-        
       </Switch>
       {console.log('모각코만들기모달',isShowCreateRoomModal)}
       {isShowLoginModal ? <LoginModal /> : null}
       {isShowSignUpModal ? <SignUpModal /> : null}
+      {isShowRoomOutModal ? <RoomOutModal /> : null}
+      {isShowRoomInModal ? <RoomInModal /> : null}
+      {isShowRoomInfoChangeModal ? <RoomInfoChangeModal /> : null}
       {isShowCreateRoomModal ? <CreateRoom /> : null}
     </div>
     // 위에 Link로 사용할 수 있게 페이지나 컴포넌트로 만들어두기

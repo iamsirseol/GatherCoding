@@ -6,13 +6,16 @@ import {
     IS_LOADING,
     IS_SHOW_LOGIN_MODAL,
     IS_SHOW_SIGNUP_MODAL,
+    IS_SHOW_ROOM_OUT_MODAL,
+    IS_SHOW_ROOM_IN_MODAL,
+    IS_SHOW_ROOM_INFO_CHANGE_MODAL
     IS_SHOW_CREATE_ROOM_MODAL,
     CHANGE_LON,
     CHANGE_LAT,
     IS_SHOW_IS_SIGNUP_MODAL,
     CURRENT_ID,
     IS_LOGIN_ALERT
-    
+
 } from '../actions/actions';
 import { initialState } from './initialState';
 
@@ -23,6 +26,9 @@ const rootReducer = combineReducers({
     isLoadingReducer,
     isShowLoginModalReducer,
     isShowSignUpModalReducer,
+    isShowRoomOutModalReducer,
+    isShowRoomInModalReducer,
+    isShowRoomInfoChangeModalReducer,
     isShowCreateRoomModalReducer,
     locationReducer,
     isShowIsSignUpModalReducer,
@@ -69,6 +75,34 @@ function isShowSignUpModalReducer(state = initialState.isShowSignUpModal, action
       }
 }
 
+function isShowRoomOutModalReducer(state = initialState.isShowRoomOutModal, action){
+  switch (action.type) {
+      case IS_SHOW_ROOM_OUT_MODAL:
+        return Object.assign({}, {
+          isShowRoomOutModal: action.payload.isShowRoomOutModal
+        });
+      default: return state;
+    }
+}
+
+function isShowRoomInModalReducer(state = initialState.isShowRoomInModal, action){
+  switch (action.type) {
+      case IS_SHOW_ROOM_IN_MODAL:
+        return Object.assign({}, {
+          isShowRoomInModal: action.payload.isShowRoomInModal
+        });
+      default: return state;
+    }
+}
+
+function isShowRoomInfoChangeModalReducer(state = initialState.isShowRoomInfoChangeModal, action){
+  switch (action.type) {
+      case IS_SHOW_ROOM_INFO_CHANGE_MODAL:
+        return Object.assign({}, {
+          isShowRoomInfoChangeModal: action.payload.isShowRoomInfoChangeModal
+        });
+      default: return state;
+    }
 function isShowCreateRoomModalReducer(state = initialState.isShowCreateRoomModal, action){
   switch (action.type) {
     case IS_SHOW_CREATE_ROOM_MODAL : 
