@@ -71,7 +71,11 @@ function App() {
     maintainLogin()
   })
 
-  useEffect(afterComponentRendering, []);
+  useEffect(()=> {
+    if(!window.sessionStorage.getItem('email')){
+      afterComponentRendering()
+    }
+  }, []);
 
   function maintainLogin(){
     if(window.sessionStorage.getItem('email')){
@@ -148,11 +152,12 @@ function App() {
       }
     })
     .then((result) => {
-      closeLoginModalHandler();
       console.log(result.data.accessToken);
       token = result.data.accessToken;
       window.sessionStorage.setItem('email', token);
       maintainLogin();
+    }).then(() => {
+      closeLoginModalHandler();
     })
     .then(() => dispatch(setAccessToken(token)));
     // loginHandler(true);

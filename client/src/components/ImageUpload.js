@@ -1,6 +1,4 @@
-import React,{ useState, useRef } from 'react'
-import { useSelector, useDispatch } from 'react-redux';
-import axios from "axios";
+import React,{ useRef } from 'react'
 
 import '../css/imageUpload.css'
 
