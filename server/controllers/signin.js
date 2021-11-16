@@ -16,12 +16,10 @@ module.exports = {
                 const accessToken = token.generateAccessToken(data.dataValues); 
                 const username = data.dataValues.username;
                 // console.log(accessToken);
-                res.status(200).json({ "data": { "accessToken": accessToken, "username": username}, "message": "ok" });
+                res.cookie("accessToken", accessToken) // {data: {accessToken: accessToken}} 에서 쿠키로 전달로 수정
+                res.status(200).json({"username": username, "message": "ok" });
             }
         }   
-    },
-    get: (req, res) => {
-        res.send("Hello World");
-    }   
+    }
 }
 

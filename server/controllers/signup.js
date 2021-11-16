@@ -28,7 +28,7 @@ module.exports = {
     // console.log(data);
 
     if (!data) {
-      if (username && email && password && image && blog) {
+      if (username && email && password) { // image & blog 필수입력에서 삭제
         const userinfo = await user.create({
           username,
           email,
@@ -38,15 +38,13 @@ module.exports = {
         });
         // console.log(userinfo);
         const accessToken = token.generateAccessToken(userinfo.dataValues);
-        res.status(201).json({ data: { accessToken: accessToken }, message: 'ok' });
+        res.cookie("accessToken", accessToken);
+        res.status(201).json({message: 'ok'});
       } else {
-        res.status(422).json({ data: null, message: 'You should enter all the required information' });
+        res.status(422).json({message: 'You should enter all the required information' });
       }
     } else {
-      res.status(409).json({ data: null, message: 'This user already exists in the database' })
+      res.status(409).json({message: 'This user already exists in the database' })
     }
   },
-  get: (req, res) => {
-    res.send("Hello World");
-  }
 };
