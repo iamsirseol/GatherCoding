@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -86,7 +85,6 @@ function LoginModal() {
         // console.log(process.env.GITHUB_CLIENT_ID);
         const GITHUB_LOGIN_URL = `https://github.com/login/oauth/authorize?client_id=0b8485d8bd3f0461eae1`;
         window.location.assign(GITHUB_LOGIN_URL);
-        closeLoginModalHandler();
     }
 
     return (
@@ -119,4 +117,4 @@ function LoginModal() {
     )
 }
 
-export default LoginModal;
+export default LoginModal
