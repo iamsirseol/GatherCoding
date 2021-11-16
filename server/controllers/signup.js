@@ -4,7 +4,7 @@ const user = require('../models/user');
 const group = require('../models/group');
 const token = require('./token/index');
 
-module.exports = {  
+module.exports = {
   post: async (req, res) => {
     //-------------------------------------------------
     // 클라이언트 내용
@@ -15,8 +15,8 @@ module.exports = {
     // formData.append('blog', signUpUrl)
     // formData.append('image', signUpImage);
     //----------------------------------------------------
-    
-    
+
+
     // console.log(req.body);
     // console.log(req.body['email'])
     let image = '/image/' + req.file.filename;
