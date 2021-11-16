@@ -35,8 +35,8 @@ import RoomInfo from './pages/RoomInfo';
 import { changeCity, changeLat, changeLon, changeRegion, isLoadingHandler, isLoginHandler, isCurrentId } from './redux/actions/actions';
 import CreateRoom from './components/CreateRoom';
 
-
-
+// import Oauth from './components/Oauth'
+import { setAccessToken } from './redux/actions/actions';
 
 function App() {
   
@@ -68,6 +68,8 @@ function App() {
     console.log(curLoginId)
     maintainLogin()
   })
+
+  useEffect(afterComponentRendering, []);
 
   function maintainLogin(){
     if(window.sessionStorage.getItem('email')){
@@ -131,6 +133,36 @@ function App() {
   // const showLoginModalHandler = (e) => { dispatch(isShowLoginModalHandler(true))};
   // console.log(isLogin)
   // console.log(isShowLoginModal)
+
+  async function getAccessToken(authorizationCode) {
+    let token;
+    // let url = "http://localhost:4000/users/oauth";
+
+    const response = await axios({
+      method: 'post',
+      url: "http://localhost:4000/users/oauth",
+      data: {
+        authorizationCode: authorizationCode
+      }
+    })
+    
+    console.log(response);
+    token = response;
+    dispatch(setAccessToken(token));
+
+  }
+
+  function afterComponentRendering() {
+    const url = new URL(window.location.href)
+    const authorizationCode = url.searchParams.get('code')
+    console.log(authorizationCode)
+    if (authorizationCode) {
+      // authorization server로부터 클라이언트로 리디렉션된 경우, authorization code가 함께 전달됩니다.
+      // ex) http://localhost:3000/?code=5e52fb85d6a1ed46a51f
+      return getAccessToken(authorizationCode)
+    }
+  }
+
   return (
     <div>
       <Header />
