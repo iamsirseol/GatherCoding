@@ -1,6 +1,6 @@
 
 .login-modal-background{position: fixed; top: 0; left: 0; background: #000000; opacity: 0.7; width: 100%; height: 100vh; z-index: 998;}
-.login-modal-container{position: fixed; top: 45%; left: 50%; z-index: 999; transform: translate(-50%, -50%); width: 500px; background: #fff; padding: 20px 80px; box-sizing: border-box;}
+.login-modal-container{position: fixed; top: 45%; left: 50%; z-index: 999;transform: translate(-50%, -50%); width: 500px; background: #fff; padding: 20px 80px; box-sizing: border-box;}
 .login-modal-container h2{text-align: center; margin-bottom: 25px;}
 .login-modal-container .login_close_btn{margin-right: 15px; width: 30px; display: block; position: relative; top: 10%; left: calc(100% - 23px); width: 23px; height: 23px;}
 .login-modal-container .login_close_btn:hover{background: none;}
@@ -14,6 +14,7 @@
 .login-modal-form form .login-password{width: 100%; border: none; border-bottom: 2px solid rgb(77, 77, 77); box-sizing: border-box; padding: 8px 10px; margin-top: 10px;}
 .login-modal-form form .login-btn{display: block; margin: 15px auto; background: rgb(255, 74, 42); width: 100%; padding: 10px; color: #fff;}
 .login-modal-form form .login-btn:hover{background: rgb(156, 31, 9)}
+.login-modal-form form .login-btn:disabled{background: #222222; cursor:unset;}
 .login-modal-form .social-login{}
 .login-modal-form .social-login button{width: 100%; background: #444444; padding: 10px; color: #fff;}
 .login-modal-form .social-login button:hover{background: #222222;}

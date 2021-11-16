@@ -41,7 +41,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/rooms', roomsRouter);
 
-
 sequelize.sync({ force: false, alter: true })
 
 .then(() => {
