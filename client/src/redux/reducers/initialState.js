@@ -1,6 +1,6 @@
 export const initialState = {
     isLogin : {
-        isLogin : true
+        isLogin : false
     },
     isLoading : {
         isLoading : true
@@ -23,7 +23,12 @@ export const initialState = {
     },
     isShowIsSignUpModal : {
         isShowIsSignUpModal: false
+    },
+    isLoginAlert : {
+        isLoginAlert: false
+    },
+    isCurrentIdHandler:{
+        isCurrentIdHandler: ''
     }
-
 
 }

@@ -28,7 +28,7 @@ import FirstPage from './pages/FirstPage';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import RoomInfo from './pages/RoomInfo';
-import { changeCity, changeLat, changeLon, changeRegion, isLoadingHandler, isLoginHandler } from './redux/actions/actions';
+import { changeCity, changeLat, changeLon, changeRegion, isLoadingHandler, isLoginHandler, isCurrentId } from './redux/actions/actions';
 import CreateRoom from './components/CreateRoom';
 
 
@@ -43,18 +43,43 @@ function App() {
   const isLoading = useSelector(state => state.isLoadingReducer.isLoading)
   //shallowEqual : 이전값이 바뀌었을경우에만 렌더링함. useSelector에서 한번에 두 값 가져올때 사용
   const {region,city,lat,lon} = useSelector((state=>state.locationReducer),shallowEqual)
+  const loginHandler = (val) => {dispatch(isLoginHandler(val))}
+  const curLoginId = useSelector(state => state.isCurrentIdReducer.isCurrentIdHandler) // 로그인 한 유저의 현아이디
 
   const dispatch = useDispatch()
 
   // const realLoginHandler = (boolean) => { // 로그인 상태 기능
-  //   dispatch(isLoginHandler(boolean))
+  //   
   // }
+  const curLoginedId = (val) => {dispatch(isCurrentId(val))}
 
-  useEffect(() => {
+  useEffect(() => { // 혹시 몰라서 지워도 기능 및 콘솔 이상 없는지 확인
     
   }, [isLogin, isShowLoginModal])
 
+  useEffect(() => {
+    // curLoginedId(window.sessionStorage.getItem('email'))
+    console.log(curLoginId)
+    maintainLogin()
+  })
+
+  function maintainLogin(){
+    if(window.sessionStorage.getItem('email')){
+      loginHandler(true)
+    }else{
+      loginHandler(false)
+    }
+  }
+
   // const loginedId 
+  // useEffect(() => {
+  //   const maintainLogin = window.localStorage.getItem('')
+  //   if(!maintainLogin){
+  //     dispatch(isLoginHandler(true))
+  //   }else{
+      // dispatch(isCurrentId(??))
+  //   }
+  // })
 
 
 
