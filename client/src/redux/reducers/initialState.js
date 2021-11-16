@@ -3,7 +3,7 @@ export const initialState = {
         isLogin : true
     },
     isLoading : {
-        isLoading : false
+        isLoading : true
     },
     isShowLoginModal: {
         isShowLoginModal : false
@@ -11,9 +11,19 @@ export const initialState = {
     isShowSignUpModal: {
         isShowSignUpModal: false
     },
+    isShowCreateRoomModal: {
+        isShowCreateRoomModal : false
+    },
     location : {
         region : '',
+        city : '',
+        lat:0,
+        lon:0,
         city : ''
+    },
+    isShowIsSignUpModal : {
+        isShowIsSignUpModal: false
     }
+
 
 }

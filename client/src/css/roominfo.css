@@ -82,9 +82,22 @@
 
 
 .roominfo-user-list {
-    background: rgb(115, 214, 245);
+    background: transparent;
     position : relative;
     top:50px;
     height:100vh;
     margin-left:100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.roominfo-exit-room {
+    margin-top: 100px;
+    width: 200px;
+    height: 30px;
+
+    border: 1px gray solid;
+    background: violet;
+    margin-bottom:100px;
 }

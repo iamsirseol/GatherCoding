@@ -19,7 +19,7 @@ function Sidebar() {
                     <span><button onClick = {showLoginModalHandler}>내 모임</button></span>
                     }
                     {/* //! */}
-                    <span><button onClick = {()=>window.open(userInfo.blog,'_blank')}>TIL 작성하기</button></span>
+                    <span><button onClick = {()=>window.open(userInfo[0].blog,'_blank')}>TIL 작성하기</button></span>
         </div>
     )
 }
