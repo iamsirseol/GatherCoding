@@ -34,6 +34,9 @@ module.exports = class Group extends Sequelize.Model {
             title: {
                 type: Sequelize.STRING(50)
             },
+            meeting_time: {
+                type: Sequelize.STRING(255)
+            },
             description: {
                 type: Sequelize.STRING(255)
             },

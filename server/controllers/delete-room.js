@@ -4,20 +4,48 @@ const token = require('./token');
 const { User } = require('../models');
 
 module.exports = {
-    delete: async (req, res) => {        
+    delete: async (req, res) => {
+    
         const groupList = await group.findAll({
-            include: user
+            include: [{
+                model: user,
+            }]
         });
-        console.log('ㅁㄴㅇㄹ@#$', groupList.Users);
-        res.end();
-        // if (!groupList) {
-        //     res.status(404).json('not found')
-        // } else if (groupList.Users.length === 0) {
-        //     groupList.destroy({
-        //         truncate: true
-        //     })
-        //     res.status(200).json('ok');
-        // }
-        // res.send("Hello World");
+        if (!groupList) {
+            res.status(404).json('not found');
+        } else {
+            for (let group of groupList) {
+                if (group.Users === undefined) {
+                    res.status(404).json('not found');
+                }
+                if (group.Users.length === 0) {
+                    group.destroy({
+                        truncate: true
+                    });
+                    res.status(200).json('ok');
+                }
+                if (group.Users.length > 0) {
+                    res.status(200).json({data: group.Users.length});
+                }
+            }
+        }
     }
 };
+// module.exports = {
+//     delete: async (req, res) => {
+//         const userEmail = req.body.userEmail;
+//         const roomTitle = req.body.title;
+
+//         const roomData = await group.findAll({
+//             where: {
+//                 title: roomTitle
+//             },
+//             include: {
+//                 model: user,
+//                 where: {
+//                     userEmail: userEmail
+//                 }
+//             }
+//         })
+//     }
+// };

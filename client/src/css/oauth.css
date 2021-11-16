@@ -1,0 +1,18 @@
+.oauth-background{position: fixed; top: 0; left: 0; background: #000000; opacity: 0.7; width: 100%; height: 100vh; z-index: 998;}
+.oauth-container{position: fixed; top: 45%; left: 50%; z-index: 999; transform: translate(-50%, -50%); width: 500px; background: #fff; padding: 20px 80px; box-sizing: border-box;}
+.oauth-container h2{text-align: center; margin-bottom: 25px;}
+.oauth-container .oauth_close_btn{margin-right: 15px; width: 30px; display: block; position: relative; top: 10%; left: calc(100% - 23px); width: 23px; height: 23px;}
+.oauth-container .oauth_close_btn:hover{background: none;}
+.oauth-container .oauth_close_btn span{display: inline-block;}
+.oauth-container .oauth_close_btn span i{  display: inline-block; width: 23px; height: 1px; background: #000; margin-bottom: 10px; position: absolute; top: 10px; left: 0;}
+.oauth-container .oauth_close_btn span i:first-child{transform: rotate(45deg);}
+.oauth-container .oauth_close_btn span i:last-child{transform: rotate(-45deg);}
+.oauth-form{width: 100%;}
+.oauth-form form{width: 100%;}
+.oauth-form form .oauth-id{width: 100%; border: none; border-bottom: 2px solid rgb(77, 77, 77); box-sizing: border-box; padding: 8px 10px;}
+.oauth-form form .oauth-password{width: 100%; border: none; border-bottom: 2px solid rgb(77, 77, 77); box-sizing: border-box; padding: 8px 10px; margin-top: 10px;}
+.oauth-form form .oauth-btn{display: block; margin: 15px auto; background: rgb(255, 74, 42); width: 100%; padding: 10px; color: #fff;}
+.oauth-form form .oauth-btn:hover{background: rgb(156, 31, 9)}
+/* .login-modal-form .social-login{} */
+/* .oauth-form .social-login button{width: 100%; background: #444444; padding: 10px; color: #fff;}
+.login-modal-form .social-login button:hover{background: #222222;} */
