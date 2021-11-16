@@ -12,6 +12,9 @@ function LoginModal() {
     const [loginId, setLoginId] = useState('');
     const [loginPw, setLoginPw] = useState('')
 
+    const isLogin = useSelector(state => state.isLoginReducer.isLogin)
+    // const loginHandler = dispatch(isLoginHandler(true));
+
     const closeLoginModalHandler = () => { dispatch(isShowLoginModalHandler(false))};
 
     // for onChange input value id
@@ -29,23 +32,20 @@ function LoginModal() {
 
     function loginRequest(e){ // 로그인 요청 함수
         e.preventDefault();
-
-        const body = {
-            // key는 내가 임의로 만든거에여, 백엔드 분들이랑 맞추자
-            email: loginId,
-            password: loginPw,
+        const body = {email: loginId, password: loginPw,}
+        const conf = {
             headrs: {
                 'contente-type': 'application/json'
-            }
+            },
+            withCredentials: true
         }
-
-        axios.post(`https://localhost:4000/signin`, body)
+        axios.post(`http://localhost:4000/users/signin`, body, conf)
             .then(res => {
-                if(res.status === 200){ // 잘받아오면
-                    // dispatch()
-                    // const accessToken = 받아온값
-                    // accssToken을 요청해서 받아온 값을 dispatch 해서 정보로 담아둬야 댐 그리고 로그인 핸들러를 이용해서 로그인상태로 돌려 둠 그리고 로그인 모달 창도 끔
-                }
+                // window.localStorage.setItem('email', res); 새로고침해도 저장용으로 찾은건데 아직 모름
+                closeLoginModalHandler()
+            }).then(res => {
+                console.log('asdfasd')
+                dispatch(isLoginHandler(true))
             }).catch(err => {
                 if(err){
                     // 어...로그인 실패했다고 떠야될듯

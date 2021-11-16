@@ -43,12 +43,12 @@ module.exports = class Group extends Sequelize.Model {
             meeting_place: {
                 type: Sequelize.STRING(50)
             },
-            leader_id: {
-                type: Sequelize.INTEGER
-            },
-            UserId: {
-                type: Sequelize.INTEGER
-            },
+            // leader_id: {
+            //     type: Sequelize.INTEGER
+            // },
+            // UserId: {
+            //     type: Sequelize.INTEGER
+            // },
             region: {
                 type: Sequelize.STRING(255)
             },
@@ -71,6 +71,8 @@ module.exports = class Group extends Sequelize.Model {
         
     }
     static leader(db) {
-        db.Group.belongsTo(db.User);
+        // Ship.belongsTo(Captain, { foreignKey: 'bossId' });
+        db.Group.belongsTo(db.User, { foreignKey: 'leader_id' });
+        // db.Group.belongsTo(db.User);
     }
 }
