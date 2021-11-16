@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import '../css/roominfo.css';
 import { userInfo } from '../components/dummy'
 import UserList from '../components/UserList';
+import MapPick from '../components/MapPick';
 import MapContainer from '../components/MapContainer';
 
 
 function RoomInfo() {
     const isLogin = useSelector(state => state.isLoginReducer.isLogin)
-
+    const { pathname } = useLocation();
+    useEffect(() => {
+        // 페이지 이동시 스크롤 맨 위로 오게한다.
+        window.scrollTo(0, 0);
+      }, [pathname]);
     return (
     <div>
         <div className = 'roominfo-page'>
             <div className = 'roominfo-map'>
+                {/* <MapPick /> */}
                 <MapContainer />
             </div>
             <div className='roominfo-info-div'>

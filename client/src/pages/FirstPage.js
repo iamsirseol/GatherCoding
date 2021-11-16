@@ -8,6 +8,8 @@ import { isShowLoginModalHandler } from '../redux/actions/actions';
 import RoomListPage from './RoomListPage';
 import Loading from '../components/Loading';
 import CreateRoom from '../components/CreateRoom';
+import MapPick from '../components/MapPick';
+import MapContainer from '../components/MapContainer';
 
 
 function FirstPage() {
@@ -20,9 +22,9 @@ function FirstPage() {
             
             <Home />
             {/* {isLogin ? <HomeLogined /> : <RoomListPage />} */}
-            {isLoading ? <Loading /> : <RoomListPage />}
+            {/* {isLoading ? <Loading /> : <RoomListPage />} */}
             {/* <Loading /> */}
-            {/* {<CreateRoom />} */}
+            {<MapPick />}
             
         </div>
     )

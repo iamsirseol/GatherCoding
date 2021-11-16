@@ -15,18 +15,15 @@ const MapContainer = () => {
         };
         const map = new kakao.maps.Map(container, options);
         //위도, 경도로 변환 및 마커표시
-        var markerPosition  = new kakao.maps.LatLng(lat, lon); 
-        var marker = new kakao.maps.Marker({
+        let markerPosition  = new kakao.maps.LatLng(lat, lon); 
+        let marker = new kakao.maps.Marker({
             position: markerPosition
         });
         marker.setMap(map);
 
     }, [lat,lon]);
     return (
-        <div className='kakao-map' style={{
-            width: '100%',
-            height: '300px'
-        }}></div>
+        <div className='kakao-map'></div>
     );
 }
 

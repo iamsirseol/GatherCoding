@@ -54,6 +54,6 @@ address,caption,cite,code,dfn,em,var{font-style:normal;font-weight:normal}
 }
 
 /* 카카오맵 */
-.kakao-map{width:100px;height: 240px;}
+.kakao-map{width:100%;height: 240px;}
 /* !지우지말기 */
 /* *{border : 1px gray solid};  */

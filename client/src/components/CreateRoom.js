@@ -5,6 +5,8 @@ import { isShowCreateRoomModalHandler } from '../redux/actions/actions';
 
 import '../css/createRoom.css';
 import MapPick from './MapPick';
+import SearchPlace from './SearchPlace';
+
 
 function CreateRoom() {
     const [roomTitle, setRoomTitle] = useState(''); //
