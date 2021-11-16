@@ -10,6 +10,10 @@ import Home from './pages/Home';
 
 import LoginModal from './components/LoginModal'
 import SignUpModal from './components/SignUpModal'
+
+import RoomOutModal from './components/RoomOutModal'
+import RoomInModal from './components/RoomInModal'
+import RoomInfoChangeModal from './components/RoomInfoChangeModal'
 // import { useSelector, useDispatch } from 'react-redux';
 //리덕스
 // import { isLoginHandler, isShowLoginModalHandler } from './redux/actions/actions';
@@ -34,10 +38,14 @@ function App() {
   const isLogin = useSelector(state => state.isLoginReducer.isLogin)
   const isShowLoginModal = useSelector(state => state.isShowLoginModalReducer.isShowLoginModal)
   const isShowSignUpModal = useSelector(state => state.isShowSignUpModalReducer.isShowSignUpModal)
+
+  const isShowRoomOutModal = useSelector(state => state.isShowRoomOutModalReducer.isShowRoomOutModal)
+  const isShowRoomInModal = useSelector(state => state.isShowRoomInModalReducer.isShowRoomInModal)
+  const isShowRoomInfoChangeModal = useSelector(state => state.isShowRoomInfoChangeModalReducer.isShowRoomInfoChangeModal)
   const dispatch = useDispatch()
   //*
-  
-  
+
+
 
   // const dispatch = useDispatch()
   // const logoutHandler = () => { dispatch(isLoginHandler(false)) };
@@ -54,13 +62,16 @@ function App() {
       {/* {console.log(isLogin)} */}
       {/* {console.log(isShowLoginModal)} */}
       <Switch>
-        <Route exact path = '/'><FirstPage /></Route>
-        <Route path = '/myroom'><HomeLogined /></Route>
-        <Route path = '/roominfo'><RoomInfo /></Route>
-        
+        <Route exact path='/'><FirstPage /></Route>
+        <Route path='/myroom'><HomeLogined /></Route>
+        <Route path='/roominfo'><RoomInfo /></Route>
+
       </Switch>
       {isShowLoginModal ? <LoginModal /> : null}
       {isShowSignUpModal ? <SignUpModal /> : null}
+      {isShowRoomOutModal ? <RoomOutModal /> : null}
+      {isShowRoomInModal ? <RoomInModal /> : null}
+      {isShowRoomInfoChangeModal ? <RoomInfoChangeModal /> : null}
     </div>
     // 위에 Link로 사용할 수 있게 페이지나 컴포넌트로 만들어두기
   );
