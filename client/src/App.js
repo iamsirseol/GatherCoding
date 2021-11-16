@@ -54,8 +54,6 @@ function App() {
   const loginHandler = (val) => {dispatch(isLoginHandler(val))}
   const curLoginId = useSelector(state => state.isCurrentIdReducer.isCurrentIdHandler) // 로그인 한 유저의 현아이디
 
-  const dispatch = useDispatch()
-
   // const realLoginHandler = (boolean) => { // 로그인 상태 기능
   //   
   // }
