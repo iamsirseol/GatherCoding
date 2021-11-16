@@ -1,6 +1,6 @@
 export const initialState = {
     isLogin : {
-        isLogin : true
+        isLogin : false
     },
     isLoading : {
         isLoading : true
@@ -18,12 +18,17 @@ export const initialState = {
         region : '',
         city : '',
         lat:0,
-        lon:0
+        lon:0,
         city : ''
     },
     isShowIsSignUpModal : {
         isShowIsSignUpModal: false
+    },
+    isLoginAlert : {
+        isLoginAlert: false
+    },
+    isCurrentIdHandler:{
+        isCurrentIdHandler: ''
     }
-
 
 }
