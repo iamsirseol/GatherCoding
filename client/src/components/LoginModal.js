@@ -51,9 +51,11 @@ function LoginModal() {
         }
         return axios.post(`http://localhost:4000/users/signin`, body, conf)
             .then(res => {
+                console.log(res)
                 // curLoginedId(res.data.user_email)
                 curLoginedId(loginId)
                 window.sessionStorage.setItem('email', loginId);
+                window.sessionStorage.setItem('token',)
                 // console.log(window.sessionStorage.getItem('email'))
             }).then(res => {
                 loginHandler(true)

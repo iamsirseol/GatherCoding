@@ -40,7 +40,7 @@ import CreateRoom from './components/CreateRoom';
 import { ThemeProvider } from "@material-ui/core/styles"
 import { theme } from "./theme"
 function App() {
-  
+  console.log(window.sessionStorage.getItem('email'))
   const isLogin = useSelector(state => state.isLoginReducer.isLogin)
   const isShowLoginModal = useSelector(state => state.isShowLoginModalReducer.isShowLoginModal)
   const isShowSignUpModal = useSelector(state => state.isShowSignUpModalReducer.isShowSignUpModal)
@@ -112,6 +112,10 @@ function App() {
         dispatch(changeRegion(res.data.documents[0].address.region_1depth_name))
         dispatch(changeCity(res.data.documents[0].address.region_2depth_name)) 
         dispatch(isLoadingHandler(false))
+        axios.post('http://localhost:4000/users/location-registration',{
+          
+          region,city,accessToken : window.sessionStorage.getItem('email')
+        })
     }
     ).catch(e=>console.log(e))
   }
