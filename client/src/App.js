@@ -138,18 +138,21 @@ function App() {
     let token;
     // let url = "http://localhost:4000/users/oauth";
 
-    const response = await axios({
+    await axios({
       method: 'post',
       url: "http://localhost:4000/users/oauth",
       data: {
         authorizationCode: authorizationCode
       }
     })
-    
-    console.log(response);
-    token = response;
-    dispatch(setAccessToken(token));
+    .then((result) => {
+      token = result.accessToken;
+      console.log(token);
+      window.sessionStorage.setItem('email', token);
 
+    })
+    .then(() => dispatch(setAccessToken(token)));
+    // loginHandler(true);
   }
 
   function afterComponentRendering() {
