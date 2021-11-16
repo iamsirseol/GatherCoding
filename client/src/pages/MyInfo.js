@@ -11,7 +11,7 @@ function MyInfo() {
     const [checkUpdatePw, setCheckUpdatePw] = useState(''); 
     const [curUserNickname, setCurUserNickname] = useState('');
     const [updateUrl, setUpdateUrl] = useState(''); 
-    const [curUserImage, setCurUserImage] = useState('');
+    const [curUserImage, setCurUserImage] = useState(null);
     
     const [validPw, setValidPw] = useState(false); // 유효성(문자, 숫자, 특수문자 각 하나씩)
     const [samePw, setSamePw] = useState(false); // 비번 확인용
@@ -29,7 +29,7 @@ function MyInfo() {
         // 로딩 넣으면 좋을듯
         axios.get('http://localhost:4000/users/userinfo',{withCredentials : true})
             .then(res => {
-                console.log(res.data.data.image)
+                // console.log(res.data.data.image)
                 const blog = res.data.data.blog;
                 setUpdateUrl(blog)
                 const username = res.data.data.username;

@@ -27,7 +27,7 @@ module.exports = {
             console.log(userData)
             // res.cookie();
             // password처리 일부로 안한것 해주시면 감사
-            res.status(200).json({message: 'ok', data: userData});
+            res.status(200).send({message: 'ok', data: userData});
             } catch(error) {
                 res.status(404).json('cannot find information');
             }

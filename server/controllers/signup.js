@@ -19,7 +19,7 @@ module.exports = {
 
     // console.log(req.body);
     // console.log(req.body['email'])
-    let image = req.file.filename;
+    let image = '/image/' + req.file.filename;
     let username = req.body.username;
     let password = req.body.password;
     let email = req.body.email;
@@ -34,8 +34,10 @@ module.exports = {
           email,
           password,
           blog,
-          image,
+          image: req.file.location,
         });
+        // const Img = req.file;
+        // console.log('s3 이미지 경로 :',Img.location);
         // console.log(userinfo);
         const accessToken = token.generateAccessToken(userinfo.dataValues);
         res.cookie("accessToken", accessToken);
