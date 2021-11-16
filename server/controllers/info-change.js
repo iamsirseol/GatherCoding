@@ -3,12 +3,6 @@ const group = require('../models/group');
 const token = require('./token');
 
 module.exports = {
-    post: (req, res) => {
-        res.send("Hello World");
-    },
-    get: (req, res) => {
-        res.send("Hello World");
-    },
     put: (req, res) => {
         const accessToken = req.body.accessToken;
         const username = req.body.username;
@@ -27,10 +21,10 @@ module.exports = {
                 }
             }).then((result) => {
                 console.log(result);
-                res.status(201).json({ data: null, message: 'successfully created' })
+                res.status(201).json({ message: 'successfully created' })
             }).catch((err) => {
                 console.log(err);
-                res.status(400).json({ data: null, message: 'bad request' });
+                res.status(400).json({ message: 'bad request' });
             })
         }
     }

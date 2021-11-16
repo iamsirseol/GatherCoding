@@ -31,21 +31,3 @@ module.exports = {
         }
     }
 };
-// module.exports = {
-//     delete: async (req, res) => {
-//         const userEmail = req.body.userEmail;
-//         const roomTitle = req.body.title;
-
-//         const roomData = await group.findAll({
-//             where: {
-//                 title: roomTitle
-//             },
-//             include: {
-//                 model: user,
-//                 where: {
-//                     userEmail: userEmail
-//                 }
-//             }
-//         })
-//     }
-// };

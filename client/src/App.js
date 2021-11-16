@@ -133,7 +133,7 @@ function App() {
   // const showLoginModalHandler = (e) => { dispatch(isShowLoginModalHandler(true))};
   // console.log(isLogin)
   // console.log(isShowLoginModal)
-
+  
   async function getAccessToken(authorizationCode) {
     let token;
     // let url = "http://localhost:4000/users/oauth";
@@ -146,6 +146,7 @@ function App() {
       }
     })
     .then((result) => {
+      console.log(result)
       token = result.accessToken;
       console.log(token);
       window.sessionStorage.setItem('email', token);

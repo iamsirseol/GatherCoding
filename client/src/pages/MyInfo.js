@@ -31,6 +31,7 @@ function MyInfo() {
         axios.get('http://localhost:4000/users/userinfo',{withCredentials : true})
             .then(res => {
                 console.log(res.data)
+                
             })
             .catch(err => {
 
