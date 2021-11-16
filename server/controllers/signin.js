@@ -17,7 +17,7 @@ module.exports = {
                 // console.log(accessToken);
                 res.status(200).json({ "data": { "accessToken": accessToken }, "message": "ok" });
             }
-        }
+        }   
     },
     get: (req, res) => {
         res.send("Hello World");
