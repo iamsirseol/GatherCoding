@@ -60,7 +60,7 @@ function CreateRoom() {
                         <input className="check-password" type="text" placeholder="인원(숫자만 입력하세요)" value={personNum}onChange={(e) => checkPersonNum(e)} />
                         <input className="create-room-nickname" type="text" placeholder="방 정보 입력" value={roomDesc} onChange={(e) => changeRoomDesc(e)} />
                         {/* 카카오지도 */}
-                        <Map />
+                        <Map title={roomTitle} meetingTime={meetingTime} population = {personNum} description={roomDesc}/>
                         {/* <MapContainer /> */}
                         {/* <LandingPage /> */}
                         {/* <button type="submit" className="create-room-btn">모각코 만들기</button> */}

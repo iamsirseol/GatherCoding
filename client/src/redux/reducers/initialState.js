@@ -45,6 +45,6 @@ export const initialState = {
     },
     isCurrentIdHandler:{
         isCurrentIdHandler: ''
-    }
+    },
 
 }
