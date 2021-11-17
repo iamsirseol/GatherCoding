@@ -1,13 +1,9 @@
 const express = require('express');
-var app = express();
+// var app = express();
 const router = express.Router();
-const multer = require('multer'); // 서버에 폼 데이터 형식을 업로드하려고 다운받으겁니다.
-const upload = multer({dest: './upload'})
-const form_data = multer();
-app.use('/image', express.static('./upload'))
-
-app.use(form_data.array());
-app.use(express.static('public'))
+// const multer = require('multer'); // 서버에 폼 데이터 형식을 업로드하려고 다운받으겁니다.
+const { upload } = require('../upload');
+const { update } = require('../update');
 
 const signupController = require('../controllers/signup');
 const userinfoController = require('../controllers/userinfo');
@@ -19,13 +15,12 @@ const locationRegistrationController = require('../controllers/location-registra
 const infoChangeController = require('../controllers/info-change');
 
 router.post('/signup', upload.single('image'), signupController.post);
-router.post('/userinfo', userinfoController.post);
+router.get('/userinfo', userinfoController.get);
 router.post('/signin', signinController.post);
 router.post('/oauth', oauthController.post);
 router.post('/signout', signoutController.post);
 router.delete('/withdrawal', withdrawalController.delete);
 router.post('/location-registration', locationRegistrationController.post);
-
-router.put('/info-change', infoChangeController.put);
+router.put('/info-change', upload.single('image'), infoChangeController.put);
 
 module.exports = router;

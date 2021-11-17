@@ -1,6 +1,7 @@
 
 export const userInfo = [
     {
+    id:1,
     username : '류준열',
     email : 'ryu9663@korea.com',
     image : 'https://t1.daumcdn.net/cfile/tistory/99AE233E5F8CDE7319',
@@ -32,6 +33,7 @@ export const userInfo = [
         }
     ]},
     {
+    id:2,
     username : '이윤환',
     email : 'lee@korea.com',
     image : 'https://t1.daumcdn.net/cfile/tistory/99AE233E5F8CDE7319',

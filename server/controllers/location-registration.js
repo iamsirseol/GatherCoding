@@ -100,7 +100,6 @@ const group = require('../models/group');
 //     //     res.send('success')
         // !
 const token = require('./token');
-const axios = require('axios');
 
 module.exports = {
     post: (req, res) => {
@@ -111,7 +110,7 @@ module.exports = {
         if (false) {
             // !region && !city
             res.status(400).json({ message: 'insufficient location information' });
-        } 
+        }
         else {
             if (accessToken.length <= 40) {
                 // 깃허브로 로그인한 사용자일 경우
@@ -208,9 +207,11 @@ module.exports = {
                                 })
                         }
 
-                    })
+                })
             }
+        
         }
+
     },
     get: async (req, res) => {
         res.send('success')

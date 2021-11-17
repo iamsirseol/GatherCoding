@@ -31,8 +31,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
     origin: ["http://localhost:3000"],
-    methods: ["GET", "POST", "OPTIONS", "DELETE"],
     credentials: true,
+    methods: ["GET", "POST", "OPTIONS", "DELETE", "PUT"],
   })
 );
 app.use(cookieParser());

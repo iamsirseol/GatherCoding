@@ -3,7 +3,8 @@ const token = require('./token/index');
 
 module.exports = {
     delete: async (req, res) => {
-        const tokenData = req.body.accessToken;
+        const tokenData = req.headers.authorization.split(' ')[1];
+
         const { email } = token.isAuthorized(tokenData);
         // const { username, email } = req.body;
         const userData = await user.findOne({
@@ -17,6 +18,5 @@ module.exports = {
             });
             res.status(200).json('Withdrawal safely');
         }
-        // res.send("Hello World");
-    }    
+    }
 };
