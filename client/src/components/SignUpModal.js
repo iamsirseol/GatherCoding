@@ -5,12 +5,14 @@ import { isShowSignUpModalHandler, isShowIsSignUpModalHandler } from '../redux/a
 import ImageUpload from './ImageUpload'
 import IsSignUp from './IsSignUp'
 import CheckSignMsg from './CheckSignMsg'
+import Loading from './Loading';
 import '../css/signUpModal.css'
 import { setAccessToken } from '../redux/actions/actions';
 import { withCookies, Cookies, useCookies } from 'react-cookie';
 
+
 function SignUpModal() {
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(null);
 
     const [signUpId, setSignUpId] = useState(''); //
     const [signUpPw, setSignUpPw] = useState(''); //
@@ -29,7 +31,9 @@ function SignUpModal() {
     const closeSignUpModalHandler = () => { dispatch(isShowSignUpModalHandler(false)) };
     const isShowIsSignUpModal = useSelector(state => state.isShowIsSignUpModalReducer.isShowIsSignUpModal);
     console.log(isShowIsSignUpModal)
-    const openIsSignUpModalHandler = () => { dispatch(isShowIsSignUpModalHandler(true)) }
+    const openIsSignUpModalHandler = (fnc) => { 
+        dispatch(isShowIsSignUpModalHandler(true)) 
+    }
 
 
 
@@ -37,6 +41,10 @@ function SignUpModal() {
     // console.log(cookies)
     // console.log('JWT : ', cookies.jwt)
     // console.log('액세스토큰 : ', cookies.jwt)
+
+    useEffect(() => {
+
+    }, [getMember])
 
     function conditionEmail(signUpId) {
         let regExp = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
@@ -116,9 +124,9 @@ function SignUpModal() {
     }
 
     function signUpRequest(e) { // 회원가입 요청 함수
+        
         console.log(validEmail && validPw && samePw)
         e.preventDefault();
-        openIsSignUpModalHandler()
         const formData = new FormData();
         formData.append('email', signUpId)
         formData.append('password', signUpPw)
@@ -128,9 +136,6 @@ function SignUpModal() {
         // for (let el of formData.entries()) {
         //     console.log(el);
         // }
-
-
-
         // axios.post(`http://localhost:4000/users/signup`, formData, {
         //     headers: {
         //         'content-type': 'multipart/form-data',
@@ -139,12 +144,22 @@ function SignUpModal() {
         // })
         axios.post(`http://localhost:4000/users/signup`, formData)
             .then((res) => {
-                setGetMember(true)
                 // console.log(cookies);
                 dispatch(setAccessToken(cookies.accessToken));
+            }).then(() => {
+                setGetMember(true)
+                // setTimeout(function(){
+                //     openIsSignUpModalHandler()
+                // }, 2000)
+            }).then(() => {
+                openIsSignUpModalHandler()
             })
             .catch(err => {
                 setGetMember(false)
+                // setTimeout(function(){
+                //     openIsSignUpModalHandler()
+                // }, 1000)
+                openIsSignUpModalHandler()
             })
     }
 

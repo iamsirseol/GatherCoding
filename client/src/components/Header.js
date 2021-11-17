@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { isLoginHandler, isShowLoginModalHandler, isShowSignUpModalHandler, isCurrentId } from '../redux/actions/actions'
+import axios from 'axios';
 
 
 function Header() {
@@ -18,9 +19,14 @@ function Header() {
     const showLoginModalHandler = () => { dispatch(isShowLoginModalHandler(true))};
     const curLoginedId = (val) => {dispatch(isCurrentId(val))}
     const logoutHandler = () => { 
-        dispatch(isLoginHandler(false)) 
-        window.sessionStorage.removeItem('email')
-        curLoginedId('')
+        dispatch(isLoginHandler(false)) // 로그인 상태 해제
+        window.sessionStorage.removeItem('email') // 새로고침시 로그인 유지 해제
+        curLoginedId('') // 그냥 혹시몰라서 아이디인가 email 저장한거 삭제
+
+        axios.post('http://localhost:4000/users/signout',{}, {withCredentials:true})
+        // .then(() => {
+
+        // })
     };
     const showSignUpHandler = () => { dispatch(isShowSignUpModalHandler(true)) };
 
