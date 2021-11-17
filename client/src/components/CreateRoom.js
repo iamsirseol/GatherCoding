@@ -4,7 +4,7 @@ import axios from 'axios';
 import { isShowCreateRoomModalHandler } from '../redux/actions/actions';
 
 import '../css/createRoom.css';
-import MapPick from './MapPick';
+import MapPick from './kakao/map/MapPick';
 import SearchPlace from './SearchPlace';
 import MapContainer from './MapContainer';
 import LandingPage from './LandingPage';

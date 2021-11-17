@@ -44,6 +44,7 @@ import { ThemeProvider } from "@material-ui/core/styles"
 import { theme } from "./theme"
 // ! 1. react-cookie import한다.
 import { withCookies, Cookies, useCookies } from 'react-cookie';
+import RoomPage from './pages/RoomPage';
 
 function App() {
   console.log(window.sessionStorage.getItem('email'))
@@ -215,7 +216,8 @@ function App() {
       <Switch>
         <Route exact path = '/'><FirstPage /></Route>
         <Route path = '/myroom'><HomeLogined /></Route>
-        <Route path = '/roominfo'><RoomInfo /></Route>
+        {/* <Route path = '/roominfo'><RoomInfo /></Route> */}
+        <Route path = '/roominfo/:id' component={RoomInfo}></Route>        
         <Route path = '/myinfo'><MyInfo /></Route>
       </Switch>
       {console.log('모각코만들기모달',isShowCreateRoomModal)}
