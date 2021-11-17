@@ -1,14 +1,14 @@
-
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from "axios";
-import { isLoginHandler, isShowLoginModalHandler, isCurrentId, isLoginAlertHandler } from '../redux/actions/actions';
+import { isLoginHandler, isShowLoginModalHandler, isCurrentId, isLoginAlertHandler, setAccessToken } from '../redux/actions/actions';
 import LoginAlert from './LoginAlert'
 // import CheckSignMsg from './CheckSignMsg'
 
 import '../css/loginModal.css'
-
+// ! 1. react-cookie import한다.
+import { withCookies, Cookies, useCookies } from 'react-cookie';
 // import Oauth from './Oauth';
 
 function LoginModal() {
@@ -26,7 +26,14 @@ function LoginModal() {
     const loginHandler = (val) => { dispatch(isLoginHandler(val)) }
     const curLoginedId = (val) => { dispatch(isCurrentId(val)) }
     const faliedLogin = () => { dispatch(isLoginAlertHandler(true)) }
-
+// !  2. cookies는 쿠키(name : value)들을 모아놓은 javascript object이다.
+const cookieAccessToken = useSelector(state=>state.accessTokenReducer.accessToken)
+  console.log(cookieAccessToken)
+  const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
+  console.log(cookies)
+//   console.log('JWT : ',cookies.jwt)
+//   console.log('액세스토큰 : ', cookieAccessToken)
+    // !
     // for onChange input value id
     function changeIdValue(e) {
         e.preventDefault();
@@ -55,9 +62,12 @@ function LoginModal() {
         }
         return axios.post(`http://localhost:4000/users/signin`, body, conf)
             .then(res => {
+                console.log(res)
                 // curLoginedId(res.data.user_email)
                 curLoginedId(loginId)
                 window.sessionStorage.setItem('email', loginId);
+                dispatch(setAccessToken(cookies.accessToken))
+                console.log(cookieAccessToken)
                 // console.log(window.sessionStorage.getItem('email'))
             }).then(res => {
                 loginHandler(true)
@@ -86,7 +96,6 @@ function LoginModal() {
         // console.log(process.env.GITHUB_CLIENT_ID);
         const GITHUB_LOGIN_URL = `https://github.com/login/oauth/authorize?client_id=0b8485d8bd3f0461eae1`;
         window.location.assign(GITHUB_LOGIN_URL);
-        closeLoginModalHandler();
     }
 
     return (
@@ -119,4 +128,4 @@ function LoginModal() {
     )
 }
 
-export default LoginModal;
+export default LoginModal

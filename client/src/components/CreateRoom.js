@@ -5,6 +5,11 @@ import { isShowCreateRoomModalHandler } from '../redux/actions/actions';
 
 import '../css/createRoom.css';
 import MapPick from './MapPick';
+import SearchPlace from './SearchPlace';
+import MapContainer from './MapContainer';
+import LandingPage from './LandingPage';
+import Map from './kakao/map/Map';
+
 
 function CreateRoom() {
     const [roomTitle, setRoomTitle] = useState(''); //
@@ -49,14 +54,16 @@ function CreateRoom() {
                 </button>
                 <h2>모각코 만들기</h2>
                 <div className="create-room-modal-form">
-                    <form >
+                    <form>
                         <input className="create-room-id" type="text" placeholder="방 제목 입력" value={roomTitle} onChange={(e) => changeRoomTitle(e)} />
                         <input className="create-room-password" type="text" placeholder="시간 입력" value={meetingTime} onChange={(e) => changeMeetingTime(e)} />
                         <input className="check-password" type="text" placeholder="인원(숫자만 입력하세요)" value={personNum}onChange={(e) => checkPersonNum(e)} />
                         <input className="create-room-nickname" type="text" placeholder="방 정보 입력" value={roomDesc} onChange={(e) => changeRoomDesc(e)} />
                         {/* 카카오지도 */}
-                        <MapPick />
-                        <button type="submit" className="create-room-btn">모각코 만들기</button>
+                        <Map />
+                        {/* <MapContainer /> */}
+                        {/* <LandingPage /> */}
+                        {/* <button type="submit" className="create-room-btn">모각코 만들기</button> */}
                     </form>
                     <div className="social-create-room">
                         

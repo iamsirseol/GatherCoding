@@ -4,11 +4,11 @@
 
 // require("dotenv").config();
 
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
-
 const express = require('express')
 const app = express()
+
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const port = process.env.HTTP_PORT || 4000;
 
 const indexRouter = require('./routes/index');
@@ -31,8 +31,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
     origin: ["http://localhost:3000"],
-    credentials: true,
     methods: ["GET", "POST", "OPTIONS", "DELETE"],
+    credentials: true,
   })
 );
 app.use(cookieParser());
@@ -53,3 +53,4 @@ sequelize.sync({ force: false, alter: true })
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
+

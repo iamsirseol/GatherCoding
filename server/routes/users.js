@@ -19,12 +19,13 @@ const locationRegistrationController = require('../controllers/location-registra
 const infoChangeController = require('../controllers/info-change');
 
 router.post('/signup', upload.single('image'), signupController.post);
-router.get('/userinfo', userinfoController.get);
+router.post('/userinfo', userinfoController.post);
 router.post('/signin', signinController.post);
 router.post('/oauth', oauthController.post);
 router.post('/signout', signoutController.post);
 router.delete('/withdrawal', withdrawalController.delete);
 router.post('/location-registration', locationRegistrationController.post);
+
 router.put('/info-change', infoChangeController.put);
 
 module.exports = router;
