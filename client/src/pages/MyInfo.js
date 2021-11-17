@@ -65,7 +65,7 @@ function MyInfo() {
     function updateInfoRequest(e){ // -------------업데이트 요청----------------
         e.preventDefault()
         const formData = new FormData();
-        const email = window.sessionStorage.getItem('email')
+        const email = window.sessionStorage.getItem('email') // github 가입 email 토큰이 들어감 이거를 그래서 해결하는 방법을 찾아야할거 같습니다.
         console.log(email)
 
         formData.append('email', email)
