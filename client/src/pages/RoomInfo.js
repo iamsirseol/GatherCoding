@@ -14,19 +14,19 @@ function RoomInfo() {
     useEffect(() => {
         // 페이지 이동시 스크롤 맨 위로 오게한다.
         window.scrollTo(0, 0);
-      }, [pathname]);
+    }, [pathname]);
     return (
-    <div>
-        <div className = 'roominfo-page'>
-            <div className = 'roominfo-map'>
-                {/* <MapPick /> */}
-                <MapPick />
-            </div>
-            <div className='roominfo-info-div'>
-                <div className = 'roominfo-meeting-time'>
-                    약속 시간 : 매주 월,수,금 20~22시
+        <div>
+            <div className='roominfo-page'>
+                <div className='roominfo-map'>
+                    {/* <MapPick /> */}
+                    <MapPick />
                 </div>
-              
+                <div className='roominfo-info-div'>
+                    <div className='roominfo-meeting-time'>
+                        약속 시간 : 매주 월,수,금 20~22시
+                    </div>
+
                     <div className='roominfo-info-outer'>
                         <div className='roominfo-info-inner'>
                             <h1>청주 모각코 모임</h1>
@@ -43,23 +43,24 @@ function RoomInfo() {
                     </div>
                     {/* 방장이면 */}
 
-                    <div className='roominfo-change-room-info'><button>모각코 방 정보 변경</button></div>
-
+                    {/* <div className='roominfo-change-room-info'>
+                        <button>모각코 방 정보 변경</button>
+                    </div> */}
+                    <button className='roominfo-change-room-info'>모각코 방 정보 변경</button>
 
                 </div>
 
             </div>
             <div className='roominfo-user-list'>
-                {/* {console.log(userInfo)} */}
                 <div className='user-item'>
                     {userInfo.map((user, i) => {
-                    const { image, username, blog } = user;
-                    console.log(image, username, blog);
-                    return (<div key={i}>
-                        <UserList image={image} username={username} blog={blog} />
-                    </div>
-                    )
-                })}
+                        const { image, username, blog } = user;
+                        console.log(image, username, blog);
+                        return (<div key={i}>
+                            <UserList image={image} username={username} blog={blog} />
+                        </div>
+                        )
+                    })}
                 </div>
                 <button className='roominfo-exit-room'>모각코 나가기</button>
             </div>
