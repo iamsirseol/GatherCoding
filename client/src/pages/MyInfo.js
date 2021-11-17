@@ -12,6 +12,7 @@ function MyInfo() {
     const [curUserNickname, setCurUserNickname] = useState('');
     const [updateUrl, setUpdateUrl] = useState(''); 
     const [curUserImage, setCurUserImage] = useState(null);
+    const [updateImage, setUpdateImage] = useState(null);
     
     const [validPw, setValidPw] = useState(false); // 유효성(문자, 숫자, 특수문자 각 하나씩)
     const [samePw, setSamePw] = useState(false); // 비번 확인용
@@ -61,15 +62,39 @@ function MyInfo() {
         setCurUserImage(e.target.value)
     }
 
-    function updateInfoRequest(){ // 업데이트 요청
+    function updateInfoRequest(e){ // -------------업데이트 요청----------------
+        e.preventDefault()
+        const formData = new FormData();
+        const email = window.sessionStorage.getItem('email')
+        console.log(email)
 
+        formData.append('email', email)
+        formData.append('password', curUserPw)
+        formData.append('changePassword', updatePw)
+        formData.append('blog', updateUrl)
+        formData.append('username', curUserNickname);
+        // formData.append('curImage', curUserImage); // 삭제용
+        formData.append('image', updateImage); // 업데이트용
+
+        axios.put('http://localhost:4000/users/info-change',formData ,{
+            headers: {
+                'content-type': 'multipart/form-data',
+            },
+            withCredentials : true
+        })
+            .then(res => {
+                console.log('유저 정보 업데이트 성공')
+            })
+            .catch(err => {
+                console.log('fail')// 에러창을 추후에 만들면 좋을듯 싶음
+            })
     }
 
     const inputValue = useRef(null);
 
     function inputFileHandler(inputValue, setCurUserImage) {
         const image = inputValue.current.files;
-        setCurUserImage(image[0])
+        setUpdateImage(image[0])
         console.log(curUserImage)
     }
 
@@ -84,7 +109,7 @@ function MyInfo() {
             <div className = 'my-info-container'>
                 <h2>{}님의 회원정보</h2>
                 <div className="my-info-update">
-                    <form className="my-info-form" onSubmit={updateInfoRequest}>
+                    <form className="my-info-form" onSubmit={(e) => updateInfoRequest(e)}>
                         <input className="my-info-password" type="password" name="password" placeholder="현재 비밀번호" value={curUserPw} onChange={(e) => userPwInfo(e)} />
                         {/* 비밀번호 일치 안함 떠야 되나 아 변경 누르기 눌렀을때 비밀번호를 확인해주세요 가 뜨면 되겠네 망할거ㄹㄴㅁㅁㄴㄹㅇ ㅇㄹㄴㅁ  */}
                         <input className="update-pw" type="password" name="password" placeholder="수정 비밀번호" value={updatePw} onChange={(e) => chagePwInfo(e)} />
@@ -93,10 +118,10 @@ function MyInfo() {
                         <input className="update-url" type="text" name="blog" placeholder="깃허브 주소" value={updateUrl} onChange={(e) => chageUrl(e)} />
                         <div className="update-image-box">
                             <input name="image" className="update-input-blind" ref={inputValue} type="file" onChange={(e) => inputFileHandler(inputValue, setCurUserImage)}/>
-                            {<img src={curUserImage} />}
+                            {updateImage ?<div className="update-img-preview" onClick={(e) => inputBtn(e, inputValue)} style={{ backgroundImage: `url('${URL.createObjectURL(updateImage) }')`}}></div> : <div className="update-img-preview" onClick={(e) => inputBtn(e, inputValue)}><img src={curUserImage} /></div>}
                             <p>프로필 이미지</p>
                         </div>
-                        <button type="button" className="update-btn">정보변경하기</button>
+                        <button type="submit" className="update-btn">정보변경하기</button>
                     </form>
                 </div>
             </div>
