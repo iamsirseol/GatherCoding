@@ -43,7 +43,7 @@ module.exports = class Group extends Sequelize.Model {
             population: {
                 type: Sequelize.INTEGER
             },
-            meetingPlace: {
+            meeting_place: {
                 type: Sequelize.STRING(50)
             },
             // leader_id: {
