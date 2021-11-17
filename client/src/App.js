@@ -142,7 +142,8 @@ function App() {
       axios.post('http://localhost:4000/users/location-registration',{
           region,city
           //! 3 .headers의 Authorization 에 accessToken을 넣어준다.
-        },{headers:{withCredentials:"true",Authorization : `Bearer ${cookies.accessToken}`, contentType:"application/json"}})
+        },{headers:{withCredentials:"true",Authorization : `Bearer ${cookies.accessToken}`, contentType:"application/json"}}
+        )
     }).then(res=>console.log(res))
     .catch(e=>console.log(e))
   }

@@ -14,7 +14,7 @@ module.exports = {
         
         // 확인용
         const accessToken = req.headers.authorization.split(' ')[1];
-        const username = req.body.username;
+        // const username = req.body.username;
         const email = req.body.email;
         
         // 변경용

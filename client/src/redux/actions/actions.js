@@ -13,9 +13,10 @@ export const CHANGE_REGION = "CHANGE_REGION";
 export const CHANGE_LAT = 'CHANGE_LAT';
 export const CHANGE_LON = 'CHANGE_LON';
 export const IS_SHOW_CREATE_ROOM_MODAL = "IS_SHOW_CREATE_ROOM_MODAL";
-export const IS_SHOW_IS_SIGNUP_MODAL = "IS_SHOW_IS_SIGNUP_MODAL"
-export const CURRENT_ID = "CURRENT_ID"
-export const IS_LOGIN_ALERT ="IS_LOGIN_ALERT"
+export const IS_SHOW_IS_SIGNUP_MODAL = "IS_SHOW_IS_SIGNUP_MODAL";
+export const CURRENT_ID = "CURRENT_ID";
+export const IS_LOGIN_ALERT ="IS_LOGIN_ALERT";
+export const MEETING_PLACE_HANDLER = "MEETING_PLACE_HANDLER";
 
 export function isLoginHandler (boolean) {
     return {
@@ -164,3 +165,9 @@ export function isCurrentId (id) {
         }
     }
 };
+export function meetingPlaceHandler (obj) {
+    return {
+        type : MEETING_PLACE_HANDLER,
+        payload : obj
+    }
+}
