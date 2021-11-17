@@ -100,7 +100,6 @@ const group = require('../models/group');
 //     //     res.send('success')
         // !
 const token = require('./token');
-const axios = require('axios');
 
 module.exports = {
     post: (req, res) => {
@@ -208,9 +207,9 @@ module.exports = {
                                 })
                         }
 
-                    })
-            }
+                })
         }
+
     },
     get: async (req, res) => {
         res.send('success')
