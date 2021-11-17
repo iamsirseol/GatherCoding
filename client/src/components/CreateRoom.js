@@ -53,8 +53,9 @@ function CreateRoom() {
                     </span>
                 </button>
                 <h2>모각코 만들기</h2>
+                {/* //! form태그를 불가피하게 div로 바꾼건데 문제있으면 바로 말씀해주세요 */}
                 <div className="create-room-modal-form">
-                    <form>
+                    <div className = 'form' >
                         <input className="create-room-id" type="text" placeholder="방 제목 입력" value={roomTitle} onChange={(e) => changeRoomTitle(e)} />
                         <input className="create-room-password" type="text" placeholder="시간 입력" value={meetingTime} onChange={(e) => changeMeetingTime(e)} />
                         <input className="check-password" type="text" placeholder="인원(숫자만 입력하세요)" value={personNum}onChange={(e) => checkPersonNum(e)} />
@@ -63,8 +64,8 @@ function CreateRoom() {
                         <Map title={roomTitle} meetingTime={meetingTime} population = {personNum} description={roomDesc}/>
                         {/* <MapContainer /> */}
                         {/* <LandingPage /> */}
-                        {/* <button type="submit" className="create-room-btn">모각코 만들기</button> */}
-                    </form>
+                        {/* <button className="create-room-btn">모각코 만들기</button> */}
+                    </div>
                     <div className="social-create-room">            
                     </div>
                     
