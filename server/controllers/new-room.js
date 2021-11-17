@@ -8,7 +8,10 @@ module.exports = {
     
     post: async (req, res) => {
         console.log(req.headers.authorization)
+
         console.log(req.body)
+
+
         const accessTokenData = token.isAuthorized(req.headers.authorization.split(' ')[1]);
         const { title, description, population, meeting_place, leader_id, UserId, region, city }
             = req.body;
