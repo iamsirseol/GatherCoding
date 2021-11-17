@@ -168,7 +168,7 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
           headers:{contentType:"application/json",withCredentials:"true",Authorization : `Bearer ${cookies.accessToken}`}
         })
       console.log(res.data.documents[0].address)
-    }).catch(e=>console.log(e))
+    }).catch(err=>console.log(err))
 });
 
     setMap(map)

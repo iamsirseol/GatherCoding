@@ -5,8 +5,13 @@ const token = require('./token/index');
 // 새로운 방을 db에 넣을 때 이미 db에 있는 방과 중복 확인 부탁드립니다.
 // 그러지 않으면 서버 켤 때마다 똑같은 레코드가 다시 추가되는 것 같습니다.
 module.exports = {
+    
     post: async (req, res) => {
         console.log(req.headers.authorization)
+
+        console.log(req.body)
+
+
         const accessTokenData = token.isAuthorized(req.headers.authorization.split(' ')[1]);
         const { title, description, population, meeting_place, leader_id, UserId, region, city }
             = req.body;

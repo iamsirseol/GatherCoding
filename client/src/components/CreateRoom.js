@@ -65,9 +65,7 @@ function CreateRoom() {
                         {/* <LandingPage /> */}
                         {/* <button type="submit" className="create-room-btn">모각코 만들기</button> */}
                     </form>
-                    <div className="social-create-room">
-                        
-                        
+                    <div className="social-create-room">            
                     </div>
                     
                 </div>
