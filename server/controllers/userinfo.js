@@ -35,7 +35,7 @@ module.exports = {
 
 
         // try {
-            const tokenData = req.body.accessToken;
+            const tokenData = req.headers.authorization.split(' ')[1];
             // console.log(tokenData);
             return await axios.get('https://api.github.com/user', { headers: { authorization: `token ${tokenData}` } })
             .then((result) => {

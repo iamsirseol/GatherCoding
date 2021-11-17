@@ -4,7 +4,7 @@ const token = require('./token');
 
 module.exports = {
     put: (req, res) => {
-        const accessToken = req.cookies.accessToken;
+        const accessToken = req.headers.authorization.split(' ')[1];
         const username = req.body.username;
         const password = req.body.password;
         const image = req.body.password;

@@ -6,7 +6,7 @@ const token = require('./token');
 module.exports = {
     post: (req, res) => {
         const city = req.query.city;
-        const accessToken = req.body.accessToken;
+        const accessToken = req.headers.authorization.split(' ')[1];
         const userEmail = token.isAuthorized(accessToken).email;
 
         group.findAll({

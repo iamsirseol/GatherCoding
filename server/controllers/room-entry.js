@@ -5,7 +5,7 @@ const { isAuthorized } = require('./token');
 
 module.exports = {
     post: async (req, res) => {
-        const accessToken = req.cookies.accessToken;
+        const accessToken = req.headers.authorization.split(' ')[1];
         const roomTitle = req.body.roomTitle;
         const userEmail = isAuthorized(accessToken).email;
 
