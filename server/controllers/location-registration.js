@@ -16,7 +16,7 @@ module.exports = {
         //     }
         // });
         if (!region || !city || !userinfo) {
-            res.status(400).json({ message: 'some user information is omitted' });
+            res.status(400).json({ data: null, message: 'some user information is omitted' });
         } else {
             const data = user.findOne({
                 where: {
@@ -25,7 +25,7 @@ module.exports = {
             })
                 .then((result) => {
                     if (!result) {
-                        res.status(400).json({ message: 'no such user in the database' })
+                        res.status(400).json({ data: null, message: 'no such user in the database' })
                     } else {
                         user.update({ current_region: region, current_city: city },
                             {
@@ -35,16 +35,19 @@ module.exports = {
                             })
                             .then((result) => {
                                 console.log(result);
-                                res.status(201).json({ message: 'created' });
+                                res.status(201).json({ data: null, message: 'created' });
                             })
                             .catch((err) => {
                                 console.log(err);
-                                res.status(400).json({ message: 'bad request' });
+                                res.status(400).json({ data: null, message: 'bad request' });
                             })
                     }
 
                 })
         }
 
+    },
+    get: async (req, res) => {
+        res.send('success')
     }
 };
