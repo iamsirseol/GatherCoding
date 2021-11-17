@@ -7,23 +7,24 @@ const token = require('./token/index');
 module.exports = {
     
     post: async (req, res) => {
-        console.log(req.headers.authorization)
+        console.log(req.headers.authorization.split(' ')[1])
 
         console.log(req.body)
 
 
         const accessTokenData = token.isAuthorized(req.headers.authorization.split(' ')[1]);
-        const { title, description, population, meeting_place, leader_id, UserId, region, city }
+        const { title, description, population, meetingPlace, leaderId, UserId, region, city }
             = req.body;
-        if (!title || !population || !meeting_place || !leader_id) {
+        // if (!title || !population || !meeting_place || !leader_id) {
+        if (!title || !population || !meetingPlace || !UserId) {
             res.status(422).json({data: null, message: 'insufficient parameters supplied'});
         } else {
             const newRoom = await group.create({
                 title, 
                 description,
                 population, 
-                meeting_place,
-                leader_id: accessTokenData.id, 
+                meetingPlace,
+                leaderId: accessTokenData.id, 
                 UserId: accessTokenData.id,
                 region: req.body.region, 
                 city: req.body.city
