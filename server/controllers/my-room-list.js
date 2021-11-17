@@ -4,7 +4,7 @@ const token = require('./token');
 // const jwt = require('jsonwebtoken');
 
 module.exports = {
-    post: (req, res) => {
+    get: (req, res) => {
         const city = req.query.city;
         const accessToken = req.headers.authorization.split(' ')[1];
         const userEmail = token.isAuthorized(accessToken).email;
@@ -30,7 +30,4 @@ module.exports = {
             res.status(404).json({ data: null, message: 'page not found' });
         })
     },
-    get: (req, res) => {
-        res.send("Hello World");
-    }    
 };
