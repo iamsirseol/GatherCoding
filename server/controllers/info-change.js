@@ -18,7 +18,7 @@ module.exports = {
         const email = req.body.email;
         
         // 변경용
-        const username = req.body.username;
+        // const username = req.body.username;
         const changePassword = req.body.changePassword
         const image = req.body.password;
         const blog = req.body.blog;
