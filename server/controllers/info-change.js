@@ -3,6 +3,7 @@ const group = require('../models/group');
 const token = require('./token');
 
 module.exports = {
+
     // 이거 만들때 고려 하는 방법이 잘못 된거 같습니다. 
     // 패스워드가 존재 할 경우에 user의 변경을 해주는게 아니라 user 의 이메일과 password 가 일치 하는 경우 수정 할 비밀번호로 비밀번호로 수정해주는게 맞다고 생각합니다.
     
@@ -12,7 +13,8 @@ module.exports = {
         // const accessToken = req.body.accessToken;
         
         // 확인용
-        const password = req.body.password;
+        const accessToken = req.headers.authorization.split(' ')[1];
+        const username = req.body.username;
         const email = req.body.email;
         
         // 변경용

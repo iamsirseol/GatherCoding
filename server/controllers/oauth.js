@@ -15,13 +15,14 @@ module.exports = {
             .then((result) => {
                 // const accessToken = result.data;
                 // console.log(authorizationCode);
-                console.log(result.data);
+                // console.log(result.data);
                 const token = result.data.split('&')[0].split('=')[1];
                 if (token === 'bad_verification_code') {
                     res.status(400).json('Bad Request');
                 } else {
                     axios.get('https://api.github.com/user', { headers: { authorization: `token ${token}` } })
                         .then((result) => {
+                            // console.log(result);
                             const username = result.data.login;
                             const email = result.data.email;
                             const password = null;

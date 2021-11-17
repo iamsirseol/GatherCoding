@@ -5,7 +5,7 @@ const { isAuthorized } = require('./token');
 
 module.exports = {
     post: async (req, res) => {
-        const accessToken = req.body.accessToken;
+        const accessToken = req.headers.authorization.split(' ')[1];
         const roomTitle = req.body.roomTitle;
         const userEmail = isAuthorized(accessToken).email;
 
@@ -39,8 +39,5 @@ module.exports = {
                 })
             }
         }
-    },
-    get: (req, res) => {
-        res.send("Hello World");
     }
 };
