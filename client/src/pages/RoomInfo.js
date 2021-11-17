@@ -22,6 +22,7 @@ function RoomInfo() {
                     {/* <MapPick /> */}
                     <MapPick />
                 </div>
+<<<<<<< HEAD
                 <div className='roominfo-info-div'>
                     <div className='roominfo-meeting-time'>
                         약속 시간 : 매주 월,수,금 20~22시
@@ -31,24 +32,36 @@ function RoomInfo() {
                         <div className='roominfo-info-inner'>
                             <h1>청주 모각코 모임</h1>
                             <div>
+=======
+              
+                <div className='roominfo-info-outer'>
+                    <div className='roominfo-info-inner'>
+                        <h1>청주 모각코 모임</h1>
+                        <div>
+>>>>>>> 6ffd0126ff4d6d5dfdcc5abae6c8d2b275a589f5
                                 코딩해야지 코딩해야지 반복하다 <br />
                                 결국 자버리는 분들 <br /><br />
                                 같이 코딩해요<br /><br />
                                 다같이 파이팅~~!
-                            </div>
-                        </div>
-                        <div className='roominfo-info-person'>
-                            인원수 : 2/8
                         </div>
                     </div>
+                    <div className='roominfo-info-person'>
+                            인원수 : 2/8
+                    </div>
+                </div>
                     {/* 방장이면 */}
 
+<<<<<<< HEAD
                     {/* <div className='roominfo-change-room-info'>
                         <button>모각코 방 정보 변경</button>
                     </div> */}
                     <button className='roominfo-change-room-info'>모각코 방 정보 변경</button>
+=======
+                <div className='roominfo-change-room-info'><button>모각코 방 정보 변경</button></div>
 
-                </div>
+>>>>>>> 6ffd0126ff4d6d5dfdcc5abae6c8d2b275a589f5
+
+            </div>
 
             </div>
             <div className='roominfo-user-list'>
