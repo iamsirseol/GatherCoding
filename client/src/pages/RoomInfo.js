@@ -52,7 +52,9 @@ function RoomInfo() {
 
             </div>
             <div className='roominfo-user-list'>
+                
                 <div className='user-item'>
+                    <div className='roominfo-user-list-title'>모임 구성원</div>
                     {userInfo.map((user, i) => {
                         const { image, username, blog } = user;
                         console.log(image, username, blog);

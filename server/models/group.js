@@ -46,12 +46,6 @@ module.exports = class Group extends Sequelize.Model {
             meeting_place: {
                 type: Sequelize.STRING(50)
             },
-            // leader_id: {
-            //     type: Sequelize.INTEGER
-            // },
-            // UserId: {
-            //     type: Sequelize.INTEGER
-            // },
             region: {
                 type: Sequelize.STRING(255)
             },

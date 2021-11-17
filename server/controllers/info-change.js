@@ -10,43 +10,43 @@ module.exports = {
     // -----------------------------------기존 이미지 파일에 delete요청도 해야돼연 aws 과금 돼여 저 돈 없어여 ㅋㅋㅋㅋㅋㅋ
     
     put: async (req, res) => {
-        // const accessToken = req.body.accessToken;
+        console.log(req.cookies, 'info-change확인용(1)');
+        // 1. 일반 로그인 사용자의 경우(oauth 아닌 경우)
         
-        // 확인용
-        const accessToken = req.headers.authorization.split(' ')[1];
-        const username = req.body.username;
-        const email = req.body.email;
-        
-        // 변경용
-        const username = req.body.username;
-        const changePassword = req.body.changePassword
-        const image = req.body.password;
-        const blog = req.body.blog;
-        const params = [password, email, username, changePassword, image, blog]
-        console.log(params)
+        const accessToken = req.cookies.accessToken.split(' ')[1];
+        const userInfo = token.isAuthorized(accessToken);
+        const email = userInfo.email;
+        console.log(userInfo, 'info-change 확인용(2)');
+        const newUsername = req.body.username;
+        const newPassword = req.body.changePassword;
+        // const newImage = req.body.image;
+        const newBlog = req.body.blog;
+        console.log(req.body, 'info-change확인용(3)');
+        console.log(req.file, 'info-change확인용(4)');
+        // const params = [password, email, username, changePassword, image, blog]
+        // console.log(params)
 
         // const data = token.isAuthorized(accessToken);
         // // let 
         // console.log(data);
         const validUser = await user.findOne({
             where : {
-                email,
-                password
+                email
             }
         })
         if (!validUser) {
-            res.status(400).json({ data: null, message: 'you should enter password' });
+            res.status(400).json({ data: null, message: 'no such user in the database' });
         } else {
             // console.log(req.file.key) // 업로드시 삭제해줄 애
             // console.log(req.file)
-            let img;
-            if(!req.file.location){
-                img = null
+            let newImage;
+            if(!req.file){
+                newImage = validUser.image;
             }else{
-                img = req.file.location
+                newImage = req.file.location
             }
-            console.log(img)
-            await user.update({ username: username, password: changePassword, image: img, blog: blog }, {
+            // console.log(img)
+            user.update({ username: newUsername, password: newPassword, image: newImage, blog: newBlog }, {
                 where: {
                     email: email
                 }
