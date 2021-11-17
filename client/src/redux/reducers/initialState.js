@@ -30,11 +30,12 @@ export const initialState = {
         accessToken: ''
     },
     location : {
+        add : '',
         region : '',
         city : '',
         lat:0,
         lon:0,
-        city : ''
+        meetingAdd :''
     },
     isShowIsSignUpModal : {
         isShowIsSignUpModal: false
@@ -44,6 +45,6 @@ export const initialState = {
     },
     isCurrentIdHandler:{
         isCurrentIdHandler: ''
-    }
+    },
 
 }

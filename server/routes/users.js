@@ -25,6 +25,7 @@ router.post('/oauth', oauthController.post);
 router.post('/signout', signoutController.post);
 router.delete('/withdrawal', withdrawalController.delete);
 router.post('/location-registration', locationRegistrationController.post);
+
 router.put('/info-change', infoChangeController.put);
 
 module.exports = router;

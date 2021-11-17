@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { 
+  CHANGE_ADD,
   CHANGE_CITY,
   CHANGE_REGION,
     IS_LOGIN, 
@@ -141,6 +142,10 @@ function accessTokenReducer(state = initialState.accessToken, action){
 
 function locationReducer(state = initialState.location, action){
     switch (action.type) {
+        case CHANGE_ADD :
+          return {
+            ...state,...action.payload
+          }
         case CHANGE_REGION :
           return {
             ...state,...action.payload

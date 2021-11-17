@@ -1,24 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import '../css/roominfo.css';
 import { userInfo } from '../components/dummy'
 import UserList from '../components/UserList';
+import MapPick from '../components/MapPick';
 import MapContainer from '../components/MapContainer';
 
 
 function RoomInfo() {
     const isLogin = useSelector(state => state.isLoginReducer.isLogin)
-
+    const { pathname } = useLocation();
+    useEffect(() => {
+        // 페이지 이동시 스크롤 맨 위로 오게한다.
+        window.scrollTo(0, 0);
+      }, [pathname]);
     return (
-        <div className='roominfo-container'>
-            <div className='roominfo-page'>
-                <div className='roominfo-map'>
-                    <MapContainer />
+    <div>
+        <div className = 'roominfo-page'>
+            <div className = 'roominfo-map'>
+                {/* <MapPick /> */}
+                <MapPick />
+            </div>
+            <div className='roominfo-info-div'>
+                <div className = 'roominfo-meeting-time'>
+                    약속 시간 : 매주 월,수,금 20~22시
                 </div>
-                <div className='roominfo-info-div'>
-                    <div className='roominfo-meeting-time'>
-                        약속 시간 : 매주 월,수,금 20~22시
-                    </div>
+              
                     <div className='roominfo-info-outer'>
                         <div className='roominfo-info-inner'>
                             <h1>청주 모각코 모임</h1>
