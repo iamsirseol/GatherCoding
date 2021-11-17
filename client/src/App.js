@@ -6,6 +6,9 @@ import axios from 'axios';
 import './css/reset.css';
 import './css/homePage.css';
 import Home from './pages/Home';
+// ! 리액트쿠키 우선 해놓음 나중에 안쓰면지우기
+
+
 // import Header from './components/Header'
 // import Sidebar from './components/Sidebar'
 
@@ -32,13 +35,15 @@ import FirstPage from './pages/FirstPage';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import RoomInfo from './pages/RoomInfo';
-import { changeAddress, changeCity, changeLat, changeLon, changeRegion, isLoadingHandler, isLoginHandler, isCurrentId } from './redux/actions/actions';
+import { changeAddress, changeCity, changeLat, changeLon, changeRegion, isLoadingHandler, isLoginHandler, isCurrentId, isShowLoginModalHandler, setAccessToken } from './redux/actions/actions';
 import CreateRoom from './components/CreateRoom';
 
-
+// import Oauth from './components/Oauth'
 
 import { ThemeProvider } from "@material-ui/core/styles"
 import { theme } from "./theme"
+// ! 1. react-cookie import한다.
+import { withCookies, Cookies, useCookies } from 'react-cookie';
 function App() {
   console.log(window.sessionStorage.getItem('email'))
   const isLogin = useSelector(state => state.isLoginReducer.isLogin)
@@ -53,8 +58,19 @@ function App() {
   //shallowEqual : 이전값이 바뀌었을경우에만 렌더링함. useSelector에서 한번에 두 값 가져올때 사용
   const {region,city,lat,lon} = useSelector((state=>state.locationReducer),shallowEqual)
   const loginHandler = (val) => {dispatch(isLoginHandler(val))}
+  const closeLoginModalHandler = () => { dispatch(isShowLoginModalHandler(false)) };
+  const openLoginModalHandler = () => { dispatch(isShowLoginModalHandler(true)) };
   const curLoginId = useSelector(state => state.isCurrentIdReducer.isCurrentIdHandler) // 로그인 한 유저의 현아이디
+  const cookieAccessToken = useSelector(state=>state.accessTokenReducer.accessToken)
 
+
+  // !  2. cookies는 쿠키(name : value)들을 모아놓은 javascript object이다.
+  
+  const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
+  console.log(cookies)
+  console.log('JWT : ',cookies.jwt)
+  console.log('액세스토큰 : ', cookieAccessToken)
+  // !
   // const realLoginHandler = (boolean) => { // 로그인 상태 기능
   //   
   // }
@@ -69,6 +85,8 @@ function App() {
     console.log(curLoginId)
     maintainLogin()
   })
+
+  useEffect(afterComponentRendering, []);
 
   function maintainLogin(){
     if(window.sessionStorage.getItem('email')){
@@ -106,28 +124,34 @@ function App() {
     )
     .then(res=>{
         
-        
+        console.log('JWT : ',cookies.jwt)
+        console.log('액세스토큰 : ', cookieAccessToken)
+        // dispatch(setAccessToken(cookies.accessToken))
         
         dispatch(changeAddress(res.data.documents[0].address.address_name))
         dispatch(changeRegion(res.data.documents[0].address.region_1depth_name))
         dispatch(changeCity(res.data.documents[0].address.region_2depth_name)) 
         dispatch(isLoadingHandler(false))
-        axios.post('http://localhost:4000/users/location-registration',{
-          
-          region,city,accessToken : window.sessionStorage.getItem('email')
-        })
-    }
-    ).catch(e=>console.log(e))
+        
+    })
+    .then(res=>{
+      axios.post('http://localhost:4000/users/location-registration',{
+          region,city
+          //! 3 .headers의 Authorization 에 accessToken을 넣어준다.
+        },{headers:{withCredentials:"true",Authorization : `Bearer ${cookies.accessToken}`, contentType:"application/json"}})
+    }).then(res=>console.log(res))
+    .catch(e=>console.log(e))
   }
   function onGeoError(){
       alert("위치권한을 확인해주세요");
   }
-  
+  function gtloc () {navigator.geolocation.getCurrentPosition(onGeoOk,onGeoError)}
   useEffect(()=>{
-      
+      gtloc()
       //!어떻게 빠르게 받아오지??
-        async function gtloc() { navigator.geolocation.getCurrentPosition(onGeoOk,onGeoError)}
-          gtloc()
+  
+  
+          
       
   },[region,city])
 
@@ -136,6 +160,40 @@ function App() {
   // const showLoginModalHandler = (e) => { dispatch(isShowLoginModalHandler(true))};
   // console.log(isLogin)
   // console.log(isShowLoginModal)
+
+  async function getAccessToken(authorizationCode) {
+    let token;
+    // let url = "http://localhost:4000/users/oauth";
+
+    await axios({
+      method: 'post',
+      url: "http://localhost:4000/users/oauth",
+      data: {
+        authorizationCode: authorizationCode
+      }
+    })
+    .then((result) => {
+      closeLoginModalHandler();
+      console.log(result.data.accessToken);
+      token = result.data.accessToken;
+      window.sessionStorage.setItem('email', token);
+      maintainLogin();
+    })
+    .then(() => dispatch(setAccessToken(token)));
+    // loginHandler(true);
+  }
+  
+  function afterComponentRendering() {
+    const url = new URL(window.location.href)
+    const authorizationCode = url.searchParams.get('code')
+    console.log(authorizationCode)
+    if (authorizationCode) {
+      // authorization server로부터 클라이언트로 리디렉션된 경우, authorization code가 함께 전달됩니다.
+      // ex) http://localhost:3000/?code=5e52fb85d6a1ed46a51f
+      return getAccessToken(authorizationCode)
+    }
+  }
+
   return (
     <div>
       <ThemeProvider theme={theme}>

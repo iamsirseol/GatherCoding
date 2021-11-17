@@ -2,47 +2,58 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from "axios";
-import { isLoginHandler, isShowLoginModalHandler, isCurrentId, isLoginAlertHandler } from '../redux/actions/actions';
+import { isLoginHandler, isShowLoginModalHandler, isCurrentId, isLoginAlertHandler, setAccessToken } from '../redux/actions/actions';
 import LoginAlert from './LoginAlert'
 // import CheckSignMsg from './CheckSignMsg'
 
 import '../css/loginModal.css'
+// ! 1. react-cookie import한다.
+import { withCookies, Cookies, useCookies } from 'react-cookie';
+// import Oauth from './Oauth';
 
 function LoginModal() {
     const dispatch = useDispatch()
 
     const [loginId, setLoginId] = useState('');
-    const [loginPw, setLoginPw] = useState('')
+    const [loginPw, setLoginPw] = useState('');
+    const [oauthClicked, setOauthClicked] = useState(false);
 
     const isLogin = useSelector(state => state.isLoginReducer.isLogin)
     const isSuccess = useSelector(state => state.isLoginAlertReducer.isLoginAlert)
     const curLoginId = useSelector(state => state.isCurrentIdReducer.isCurrentIdHandler)
 
-    const closeLoginModalHandler = () => { dispatch(isShowLoginModalHandler(false))};
-    const loginHandler = (val) => {dispatch(isLoginHandler(val))}
-    const curLoginedId = (val) => {dispatch(isCurrentId(val))}
-    const faliedLogin = () =>{ dispatch(isLoginAlertHandler(true)) }
-
+    const closeLoginModalHandler = () => { dispatch(isShowLoginModalHandler(false)) };
+    const loginHandler = (val) => { dispatch(isLoginHandler(val)) }
+    const curLoginedId = (val) => { dispatch(isCurrentId(val)) }
+    const faliedLogin = () => { dispatch(isLoginAlertHandler(true)) }
+// !  2. cookies는 쿠키(name : value)들을 모아놓은 javascript object이다.
+const cookieAccessToken = useSelector(state=>state.accessTokenReducer.accessToken)
+  
+  const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
+  console.log(cookies)
+//   console.log('JWT : ',cookies.jwt)
+//   console.log('액세스토큰 : ', cookieAccessToken)
+    // !
     // for onChange input value id
-    function changeIdValue (e) {
-      e.preventDefault();
-      setLoginId(e.target.value);
+    function changeIdValue(e) {
+        e.preventDefault();
+        setLoginId(e.target.value);
     }
 
     // for onChange input value pw
-    function changePwValue (e) {
-      e.preventDefault();
-      setLoginPw(e.target.value);
+    function changePwValue(e) {
+        e.preventDefault();
+        setLoginPw(e.target.value);
     }
 
     useEffect(() => {
         console.log(curLoginId)
         console.log(isLogin)
-    },[isLogin, curLoginId])
+    }, [isLogin, curLoginId])
 
-    async function loginRequest(e){ // 로그인 요청 함수
+    async function loginRequest(e) { // 로그인 요청 함수
         e.preventDefault();
-        const body = {email: loginId, password: loginPw,}
+        const body = { email: loginId, password: loginPw, }
         const conf = {
             headrs: {
                 'contente-type': 'application/json'
@@ -55,7 +66,7 @@ function LoginModal() {
                 // curLoginedId(res.data.user_email)
                 curLoginedId(loginId)
                 window.sessionStorage.setItem('email', loginId);
-                window.sessionStorage.setItem('token',)
+                dispatch(setAccessToken(cookies.accessToken))
                 // console.log(window.sessionStorage.getItem('email'))
             }).then(res => {
                 loginHandler(true)
@@ -65,7 +76,28 @@ function LoginModal() {
                 faliedLogin()
             })
     }
-    
+
+    // function oauthRequest(e) {
+    //     e.preventDefault();
+
+    //     setOauthClicked(true);
+    // }
+    function oauthRequest(e) { // 로그인 요청 함수
+        e.preventDefault();
+
+        // const body = {
+        //     email: oauthId,
+        //     password: oauthPw,
+        //     headers: {
+        //         'contente-type': 'application/json'
+        //     }
+        // }
+        // console.log(process.env.GITHUB_CLIENT_ID);
+        const GITHUB_LOGIN_URL = `https://github.com/login/oauth/authorize?client_id=0b8485d8bd3f0461eae1`;
+        window.location.assign(GITHUB_LOGIN_URL);
+        closeLoginModalHandler();
+    }
+
     return (
         <div className="login-modal">
             <div className='login-modal-background' onClick={closeLoginModalHandler}></div>
@@ -85,7 +117,7 @@ function LoginModal() {
                             loginId && loginPw ? false : true}>로그인하기</button>
                     </form>
                     <div className="social-login">
-                        <button>깃허브로 가입하기</button>
+                        <button onClick={oauthRequest}>깃허브로 가입하기</button>
                         {/* <button><img src="img/icon_social_login(kakao).png" />카카오로 가입하기</button> */}
                     </div>
                     {/* 컴포넌트로 할까 */}

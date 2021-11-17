@@ -4,7 +4,7 @@ const token = require('./token/index');
 
 module.exports = {
     get: async (req, res) => {
-        const tokenData = req.body.data.accessToken;
+        const tokenData = req.cookie.accessToken;
         const { email } = token.isAuthorized(tokenData);
         // const { username, email } = req.body;
         const userData = await user.findOne({
@@ -14,8 +14,8 @@ module.exports = {
         if (!userData) {
             res.status(404).json('cannot find information');
         } else {
-            res.status(200).json({ data: userData, message: 'ok'});
+            res.cookie("accessToken", accessToken);
+            res.status(200).json({message: 'ok'});
         }
-        // res.send("Hello World222");
     }
 };

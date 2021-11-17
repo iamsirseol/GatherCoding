@@ -23,6 +23,12 @@ export const initialState = {
     isShowCreateRoomModal: {
         isShowCreateRoomModal : false
     },
+    isShowOauth: {
+        isShowOauth: true
+    },
+    accessToken: {
+        accessToken: ''
+    },
     location : {
         add : '',
         region : '',

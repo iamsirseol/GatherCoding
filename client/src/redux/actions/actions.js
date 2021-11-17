@@ -6,6 +6,8 @@ export const CHANGE_ADD = "CHANGE_ADD"
 export const IS_SHOW_ROOM_OUT_MODAL = "IS_SHOW_ROOM_OUT_MODAL";
 export const IS_SHOW_ROOM_IN_MODAL = "IS_SHOW_ROOM_IN_MODAL";
 export const IS_SHOW_ROOM_INFO_CHANGE_MODAL = "IS_SHOW_ROOM_INFO_CHANGE_MODAL";
+export const IS_SHOW_OAUTH = "IS_SHOW_OAUTH";
+export const ACCESS_TOKEN = "ACCESS_TOKEN";
 export const CHANGE_CITY = "CHANGE_CITY";
 export const CHANGE_REGION = "CHANGE_REGION";
 export const CHANGE_LAT = 'CHANGE_LAT';
@@ -72,7 +74,6 @@ export function isShowRoomInfoChangeModalHandler (boolean) {
         }
     }
 };
-
 export function isShowCreateRoomModalHandler (boolean) {
     return {
         type : IS_SHOW_CREATE_ROOM_MODAL,
@@ -81,7 +82,22 @@ export function isShowCreateRoomModalHandler (boolean) {
         }
     }
 }
-
+export function isShowOauthHandler (boolean) {
+    return {
+        type : IS_SHOW_OAUTH,
+        payload : {
+            isShowOauth : boolean
+        }
+    }
+};
+export function setAccessToken(accessToken) {
+    return {
+        type : ACCESS_TOKEN,
+        payload: {
+            accessToken: accessToken
+        }
+    }
+}
 export function changeRegion (region) {
     return {
         type : CHANGE_REGION,

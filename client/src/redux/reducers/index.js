@@ -11,6 +11,8 @@ import {
     IS_SHOW_ROOM_IN_MODAL,
     IS_SHOW_ROOM_INFO_CHANGE_MODAL,
     IS_SHOW_CREATE_ROOM_MODAL,
+    IS_SHOW_OAUTH,
+    ACCESS_TOKEN,
     CHANGE_LON,
     CHANGE_LAT,
     IS_SHOW_IS_SIGNUP_MODAL,
@@ -31,6 +33,8 @@ const rootReducer = combineReducers({
     isShowRoomInModalReducer,
     isShowRoomInfoChangeModalReducer,
     isShowCreateRoomModalReducer,
+    isShowOauthReducer,
+    accessTokenReducer,
     locationReducer,
     isShowIsSignUpModalReducer,
     isCurrentIdReducer,
@@ -111,6 +115,26 @@ function isShowCreateRoomModalReducer(state = initialState.isShowCreateRoomModal
     case IS_SHOW_CREATE_ROOM_MODAL : 
       return Object.assign({}, {
         isShowCreateRoomModal : action.payload.isShowCreateRoomModal
+      });
+    default: return state;
+  }
+}
+
+function isShowOauthReducer(state = initialState.isShowOauth, action){
+  switch (action.type) {
+      case IS_SHOW_OAUTH:
+        return Object.assign({}, {
+          isShowOauth: action.payload.isShowOauth
+        });
+      default: return state;
+    }
+}
+
+function accessTokenReducer(state = initialState.accessToken, action){
+  switch (action.type) {
+    case ACCESS_TOKEN:
+      return Object.assign({}, {
+        accessToken: action.payload.accessToken
       });
     default: return state;
   }
