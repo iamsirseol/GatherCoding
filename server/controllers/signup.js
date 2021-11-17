@@ -38,7 +38,8 @@ module.exports = {
         });
         // console.log(userinfo);
         const accessToken = token.generateAccessToken(userinfo.dataValues);
-        res.cookie("accessToken", accessToken);
+        res.cookie('accessToken', accessToken, { expires: new Date(Date.now() + 900000) });
+        // res.append('Set-Cookie', accessToken);
         res.status(201).json({message: 'ok'});
       } else {
         res.status(422).json({message: 'You should enter all the required information' });

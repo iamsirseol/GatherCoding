@@ -38,6 +38,11 @@ function MyInfo() {
         /*const curUser = window.sessionStorage.getItem('email');*/
         // 로딩 넣으면 좋을듯
         const token = window.sessionStorage.getItem('email')
+
+
+        // const token = accessToken;
+
+
         // axios.post('/user', {
         //     firstName: 'Fred',
         //     lastName: 'Flintstone'
@@ -48,16 +53,28 @@ function MyInfo() {
         //   .catch(function (error) {
         //     console.log(error);
         //   });
-        return axios.post('http://localhost:4000/users/userinfo',{ accessToken: token })
+        console.log(token);
+        return axios.post('http://localhost:4000/users/userinfo', { accessToken: token })
             // .then(response => response.json())
             .then(res => {
-                console.log(res);
-                const blog = res.data.blog;
-                setUpdateUrl(blog)
-                const username = res.data.username;
-                setCurUserNickname(username)
-                const image = res.data.image;
-                setCurUserImage(image)
+                if (!res.data.data) {
+                    console.log(res);
+                    const blog = res.data.blog;
+                    setUpdateUrl(blog)
+                    const username = res.data.username;
+                    setCurUserNickname(username)
+                    const image = res.data.image;
+                    setCurUserImage(image)
+                } else {
+                    console.log(res);
+                    const blog = res.data.data.blog;
+                    setUpdateUrl(blog)
+                    const username = res.data.data.username;
+                    setCurUserNickname(username)
+                    const image = res.data.data.image;
+                    setCurUserImage(image)
+                }
+
             })
             .catch(err => {
                 console.log('fail')// 에러창을 추후에 만들면 좋을듯 싶음
