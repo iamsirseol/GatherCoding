@@ -69,7 +69,7 @@ function App() {
   const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
   console.log(cookies)
   console.log('JWT : ',cookies.jwt)
-  console.log('액세스토큰 : ', cookieAccessToken)
+  console.log('액세스토큰 : ', cookies.jwt)
   // !
   // const realLoginHandler = (boolean) => { // 로그인 상태 기능
   //   
@@ -86,7 +86,11 @@ function App() {
     maintainLogin()
   })
 
-  useEffect(afterComponentRendering, []);
+  useEffect(()=> {
+    if(!window.sessionStorage.getItem('email')){
+      afterComponentRendering()
+    }
+  }, []);
 
   function maintainLogin(){
     if(window.sessionStorage.getItem('email')){
@@ -125,7 +129,7 @@ function App() {
     .then(res=>{
         
         console.log('JWT : ',cookies.jwt)
-        console.log('액세스토큰 : ', cookieAccessToken)
+        console.log('액세스토큰 : ', cookies.jwt)
         // dispatch(setAccessToken(cookies.accessToken))
         
         dispatch(changeAddress(res.data.documents[0].address.address_name))
@@ -173,11 +177,12 @@ function App() {
       }
     })
     .then((result) => {
-      closeLoginModalHandler();
-      console.log(result.data.accessToken);
+      // console.log(result.data.accessToken);
       token = result.data.accessToken;
       window.sessionStorage.setItem('email', token);
       maintainLogin();
+    }).then(() => {
+      closeLoginModalHandler();
     })
     .then(() => dispatch(setAccessToken(token)));
     // loginHandler(true);
@@ -186,7 +191,7 @@ function App() {
   function afterComponentRendering() {
     const url = new URL(window.location.href)
     const authorizationCode = url.searchParams.get('code')
-    console.log(authorizationCode)
+    // console.log(authorizationCode)
     if (authorizationCode) {
       // authorization server로부터 클라이언트로 리디렉션된 경우, authorization code가 함께 전달됩니다.
       // ex) http://localhost:3000/?code=5e52fb85d6a1ed46a51f

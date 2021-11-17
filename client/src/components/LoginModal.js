@@ -28,7 +28,7 @@ function LoginModal() {
     const faliedLogin = () => { dispatch(isLoginAlertHandler(true)) }
 // !  2. cookies는 쿠키(name : value)들을 모아놓은 javascript object이다.
 const cookieAccessToken = useSelector(state=>state.accessTokenReducer.accessToken)
-  
+  console.log(cookieAccessToken)
   const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
   console.log(cookies)
 //   console.log('JWT : ',cookies.jwt)
@@ -67,6 +67,7 @@ const cookieAccessToken = useSelector(state=>state.accessTokenReducer.accessToke
                 curLoginedId(loginId)
                 window.sessionStorage.setItem('email', loginId);
                 dispatch(setAccessToken(cookies.accessToken))
+                console.log(cookieAccessToken)
                 // console.log(window.sessionStorage.getItem('email'))
             }).then(res => {
                 loginHandler(true)
@@ -95,7 +96,6 @@ const cookieAccessToken = useSelector(state=>state.accessTokenReducer.accessToke
         // console.log(process.env.GITHUB_CLIENT_ID);
         const GITHUB_LOGIN_URL = `https://github.com/login/oauth/authorize?client_id=0b8485d8bd3f0461eae1`;
         window.location.assign(GITHUB_LOGIN_URL);
-        closeLoginModalHandler();
     }
 
     return (

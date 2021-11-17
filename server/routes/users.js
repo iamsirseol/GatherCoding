@@ -19,7 +19,7 @@ const locationRegistrationController = require('../controllers/location-registra
 const infoChangeController = require('../controllers/info-change');
 
 router.post('/signup', upload.single('image'), signupController.post);
-router.get('/userinfo', userinfoController.get);
+router.post('/userinfo', userinfoController.post);
 router.post('/signin', signinController.post);
 router.post('/oauth', oauthController.post);
 router.post('/signout', signoutController.post);
