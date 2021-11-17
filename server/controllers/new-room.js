@@ -6,7 +6,8 @@ const token = require('./token/index');
 // 그러지 않으면 서버 켤 때마다 똑같은 레코드가 다시 추가되는 것 같습니다.
 module.exports = {
     post: async (req, res) => {
-        const accessTokenData = token.isAuthorized(req.body.accessToken);
+        console.log(req.headers.authorization)
+        const accessTokenData = token.isAuthorized(req.headers.authorization.split(' ')[1]);
         const { title, description, population, meeting_place, leader_id, UserId, region, city }
             = req.body;
         if (!accessTokenData) {
