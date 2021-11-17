@@ -39,6 +39,7 @@ const Map = ({ title ,meetingTime ,population, description }) => {
   const [meetingPlace,setMeetingPlace] = useState([region,city,add])
   const isLoading = useSelector(state => state.isLoadingReducer.isLoading)
   const [centerPosition,setCenterPosition] = useState([lat,lon])
+  const [createdRoom,setCreatedRoom] = useState(false)
   /**
    * 장소 검색
    * @param keyword 검색어
@@ -48,7 +49,7 @@ const Map = ({ title ,meetingTime ,population, description }) => {
   const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
   console.log(cookies)
   console.log('JWT : ',cookies.jwt)
-  console.log('액세스토큰 : ', cookies.jwt)
+  console.log('액세스토큰 : ', cookies.accessToken)
   // !
 
 
@@ -86,6 +87,38 @@ const Map = ({ title ,meetingTime ,population, description }) => {
 
 
   useEffect(() => {
+    console.log('만들기클릭했니?',createdRoom)
+    if(createdRoom===true){
+      axios.post('http://localhost:4000/rooms/new-room',{
+        title ,meetingTime ,population, description,
+        region:meetingPlace[0],
+        city : meetingPlace[1],
+        UserId : userInfo[0].id,
+        meeting_place:meetingPlace[2]
+      },{
+          headers:{contentType:"application/json",withCredentials:"true",Authorization : `Bearer ${cookies.accessToken}`}
+        })
+        .then(res=>{
+          dispatch(isLoadingHandler(true))
+          
+          history.push(`/roominfo/${res.data.data.id}`)
+          dispatch(isShowCreateRoomModalHandler(false))
+          console.log(res.data.data.id)
+          return res
+        })
+        .then(res=>{
+          const {id,title,description,population,UserId,region,city,meetingPlace} = res.data.data
+          console.log({id,title,description,population,UserId,region,city,meetingPlace})
+          console.log('여긴와?')
+
+        //   axios.get('http://localhost:4000/rooms/new-room',{id,title,description,population,UserId,region,city,meetingPlace},
+        //     {headers:{withCredentials:"true", Authorization : `Bearer ${cookies.accessToken}`, contentType:"application/json"}}
+        // ).then(res=>{
+        // })
+        dispatch(isLoadingHandler(false))
+      }) 
+      setCreatedRoom(false)
+    }
     console.log("effect")
     const container = document.getElementById("map") //지도를 담을 영역의 DOM 레퍼런스
     console.log('여기왔니')
@@ -186,37 +219,43 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
       console.log(meetingPlace)
       return false
     })
-    .catch(err=>console.log(err))
+    .catch(err=>console.log(err))  
 });
+    
     setMap(map)
     setPending(false)
-  }, [meetingPlace])
+  }, [meetingPlace,createdRoom])
+
+
   const sendRoomInfo = (e) => {
     console.log(meetingPlace)
-    axios.post('http://localhost:4000/rooms/new-room',{
-        title ,meetingTime ,population, description,
-        region:meetingPlace[0],
-        city : meetingPlace[1],
-        UserId : userInfo[0].id,
-        meetingPlace:meetingPlace[2]
-      },{
-          headers:{contentType:"application/json",withCredentials:"true",Authorization : `Bearer ${cookies.accessToken}`}
-        })
-        .then(res=>{
-
-        //   // history.push("/roominfo")
-        //   // dispatch(isShowCreateRoomModalHandler(false))
-          console.log(res);
-          dispatch(isLoadingHandler(true))
-          return res
-        }).then(res=>{
-          // !axios.get('http://localhost:4000/rooms/new-room',
-            //! {headers:{withCredentials:"true",Authorization : `Bearer ${cookies.accessToken}`, contentType:"application/json"}}
-        //! ).then(res=>{
-          console.log(res.data)
-        // !})
-        dispatch(isLoadingHandler(true))
-      })
+    setCreatedRoom(true)
+    // console.log(createdRoom)
+    // axios.post('http://localhost:4000/rooms/new-room',{
+    //     title ,meetingTime ,population, description,
+    //     region:meetingPlace[0],
+    //     city : meetingPlace[1],
+    //     UserId : userInfo[0].id,
+    //     meetingPlace:meetingPlace[2]
+    //   },{
+    //       headers:{contentType:"application/json",withCredentials:"true",Authorization : `Bearer ${cookies.accessToken}`}
+    //     })
+    //     .then(res=>{
+          
+    //       dispatch(isLoadingHandler(true))
+          
+    //       // history.push("/roominfo")
+    //       // dispatch(isShowCreateRoomModalHandler(false))
+    //       // console.log(res)
+    //     })
+    //     .then(res=>{
+    //       axios.get('http://localhost:4000/rooms/new-room',
+    //         {headers:{withCredentials:"true",Authorization : `Bearer ${cookies.accessToken}`, contentType:"application/json"}}
+    //     ).then(res=>{
+    //       console.log(res.data)
+    //     })
+    //     dispatch(isLoadingHandler(false))
+    //   })
       
 
   }
