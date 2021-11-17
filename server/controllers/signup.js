@@ -34,13 +34,23 @@ module.exports = {
 
     if (!data) {
       if (username && email && password) { // image & blog 필수입력에서 삭제
+        let img;
+        // console.log(req.file.key) // 업로드시 삭제해줄 애
+        // console.log(req.file)
+        if(!req.file.location){
+          img = null
+        }else{
+          img = req.file.location
+        }
         const userinfo = await user.create({
           username,
           email,
           password,
           blog,
-          image,
+          image: img,
         });
+        // const Img = req.file;
+        // console.log('s3 이미지 경로 :',Img.location);
         // console.log(userinfo);
         const accessToken = token.generateAccessToken(userinfo.dataValues);
         res.cookie("accessToken", accessToken);

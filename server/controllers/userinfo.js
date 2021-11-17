@@ -17,8 +17,9 @@ module.exports = {
 }
 // ==========================================================================        
 const axios = require('axios');
+
 module.exports = {
-    post: async (req, res) => {
+    get: async (req, res) => {
         // const tokenData = req.cookies.accessToken;
         // const { email } = token.isAuthorized(tokenData);
         // // const { username, email } = req.body;
@@ -49,19 +50,20 @@ module.exports = {
             .catch((err) => {
                 console.log(err);
                 res.status(400).json('Bad request');
+        //========================================
+        try {
+            const tokenData = req.cookies.accessToken;
+            const { email } = token.isAuthorized(tokenData);
+            // const { username, email } = req.body;
+            const userData = await user.findOne({
+                where: { email }
             })
-            // const { email } = token.isAuthorized(tokenData);
-            // // const { username, email } = req.body;
-            // // console.log(email);
-            // const userData = await user.findOne({
-            //     where: { email }
-            // })
-            // // console.log(userData)
-            // // res.cookie();
-            // // password처리 일부로 안한것 해주시면 감사
-            // res.status(200).json({message: 'ok', data: userData});
-            // } catch(error) {
-            //     res.status(404).json('cannot find information');
-            // }
+            console.log(userData)
+            // res.cookie();
+            // password처리 일부로 안한것 해주시면 감사
+            res.status(200).send({message: 'ok', data: userData});
+            } catch(error) {
+                res.status(404).json('cannot find information');
+            }
     }
 };
