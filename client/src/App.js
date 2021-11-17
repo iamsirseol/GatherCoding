@@ -156,8 +156,8 @@ function App() {
   
   
           
-      
-  },[region,city])
+     // * 위치, 로그인, 로그아웃시 useEffect실행
+  },[region,city,isLogin])
 
   // const dispatch = useDispatch()
   // const logoutHandler = () => { dispatch(isLoginHandler(false)) };
