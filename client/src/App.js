@@ -152,7 +152,7 @@ function App() {
       }
     })
     .then((result) => {
-      console.log(result.data.accessToken);
+      // console.log(result.data.accessToken);
       token = result.data.accessToken;
       window.sessionStorage.setItem('email', token);
       maintainLogin();
