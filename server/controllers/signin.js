@@ -12,14 +12,14 @@ module.exports = {
             if (!data) {
                 res.status(404).json('not authorized');
             } else {
-                console.log(data);
-                const accessToken = token.generateAccessToken(data.dataValues); 
-                const username = data.dataValues.username;
+                // console.log(data.username);
+                const accessToken = token.generateAccessToken(data.toJSON()); 
+                const username = data.username;
                 // console.log(accessToken);
                 res.cookie("accessToken", accessToken) // {data: {accessToken: accessToken}} 에서 쿠키로 전달로 수정
                 res.status(200).json({"username": username, "message": "ok" });
             }
         }   
     }
-}
+};
 
