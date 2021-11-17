@@ -210,11 +210,11 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
           dispatch(isLoadingHandler(true))
           return res
         }).then(res=>{
-          axios.get('http://localhost:4000/rooms/new-room',
-            {headers:{withCredentials:"true",Authorization : `Bearer ${cookies.accessToken}`, contentType:"application/json"}}
-        ).then(res=>{
+          // !axios.get('http://localhost:4000/rooms/new-room',
+            //! {headers:{withCredentials:"true",Authorization : `Bearer ${cookies.accessToken}`, contentType:"application/json"}}
+        //! ).then(res=>{
           console.log(res.data)
-        })
+        // !})
         dispatch(isLoadingHandler(true))
       })
       
