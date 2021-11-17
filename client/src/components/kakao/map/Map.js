@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react"
 import { useSelector,shallowEqual } from 'react-redux';
 import { makeStyles } from "@material-ui/core/styles"
-import { Link } from "react-router-dom";
+import { userInfo } from "../../dummy";
 import axios from "axios";
 import AppBar from "../appbar/AppBar"
 import LinearProgress from "@material-ui/core/LinearProgress"
+// ! 1. react-cookie import한다.
+import { withCookies, Cookies, useCookies } from 'react-cookie';
 const useStyles = makeStyles(theme => ({
   
   map: {
@@ -22,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const Map = () => {
+const Map = ({ title ,meetingTime ,population, description }) => {
   const {lat,lon, add} = useSelector((state=>state.locationReducer),shallowEqual)
   const [pending, setPending] = useState(true)
   const [map, setMap] = useState(null)
@@ -33,7 +35,15 @@ const Map = () => {
    * 장소 검색
    * @param keyword 검색어
    */
+  // !  2. cookies는 쿠키(name : value)들을 모아놓은 javascript object이다.
   
+  const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
+  console.log(cookies)
+  console.log('JWT : ',cookies.jwt)
+  console.log('액세스토큰 : ', cookies.jwt)
+  // !
+
+
   const searchPlace = keyword => {
     setPending(true)
     const places = new kakao.maps.services.Places()
@@ -91,8 +101,8 @@ const Map = () => {
     // });
     // 마커가 지도 위에 표시되도록 설정합니다
     marker.setMap(map);
-
-var iwContent = '<div style="padding:5px;"> <a href = "http://localhost:3000/roominfo">방정보들을 입력하고 클릭하시면 모각코가 생성됩니다.</a> <br/></ㅇ>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+    
+var iwContent = '<div style="padding:5px;"> <a href = "http://localhost:3000/roominfo">마커</a> <br/></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
     iwPosition = new kakao.maps.LatLng(lat,lon); //인포윈도우 표시 위치입니다
     // iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
@@ -111,6 +121,20 @@ kakao.maps.event.addListener(marker, 'click', function() {
   console.log('hello')
 
 });
+// // ! 마우스 올리면 메시지 보임->지도먼저 보이고-> 방정보 생성으로 가자
+// function displayInfowindow(marker, title) {
+//   var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+
+//   infowindow.setContent(content);
+//   infowindow.open(map, marker);
+// }
+// kakao.maps.event.addListener(marker, 'mouseover', function() {
+//   displayInfowindow(marker, '마커를 클릭하면 방이 생성됩니다.');
+// });
+// * 마우스 내리면 메시지 사라짐
+// kakao.maps.event.addListener(marker, 'mouseout', function() {
+//   infowindow.close();
+// });
 // * 맵에 클릭이벤트 등록
 kakao.maps.event.addListener(map, 'click', function(mouseEvent) {       
   
@@ -135,9 +159,16 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
     ,{headers:{Authorization:`KakaoAK ${process.env.REACT_APP_REST_API}`}}
     )
     .then(res=>{
-
+      axios.post('http://localhost:4000/rooms/new-room',{
+        title ,meetingTime ,population, description,
+        region:res.data.documents[0].address.region_1depth_name,
+        city : res.data.documents[0].address.region_2depth_name,
+        UserId : userInfo[0].id
+      },{
+          headers:{contentType:"application/json",withCredentials:"true",Authorization : `Bearer ${cookies.accessToken}`}
+        })
       console.log(res.data.documents[0].address)
-    }).catch(e=>console.log(e))
+    }).catch(err=>console.log(err))
 });
 
     setMap(map)
