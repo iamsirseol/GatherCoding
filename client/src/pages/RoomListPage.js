@@ -38,7 +38,7 @@ function RoomListPage() {
                     </div>
                     <div className='roomListPage-create-meeting'>
                         {isLogin? <button 
-                                    className='roomListPage-create-meeting btn'
+                                    className='roomListPage-create-meeting-btn'
                                     onClick = {showCreateRoomModalHandler}
                                     >모각코 만들기</button>
                         : <button 

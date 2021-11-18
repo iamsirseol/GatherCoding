@@ -44,6 +44,8 @@ import { ThemeProvider } from "@material-ui/core/styles"
 import { theme } from "./theme"
 // ! 1. react-cookie import한다.
 import { withCookies, Cookies, useCookies } from 'react-cookie';
+import RoomPage from './pages/RoomPage';
+
 function App() {
   console.log(window.sessionStorage.getItem('email'))
   const isLogin = useSelector(state => state.isLoginReducer.isLogin)
@@ -127,7 +129,7 @@ function App() {
     ,{headers:{Authorization:`KakaoAK ${process.env.REACT_APP_REST_API}`}}
     )
     .then(res=>{
-        
+        console.log(res)
         console.log('JWT : ',cookies.jwt)
         console.log('액세스토큰 : ', cookies.jwt)
         // dispatch(setAccessToken(cookies.accessToken))
@@ -152,6 +154,7 @@ function App() {
   }
   function gtloc () {navigator.geolocation.getCurrentPosition(onGeoOk,onGeoError)}
   useEffect(()=>{
+    // if(!isLogin) 
       gtloc()
       //!어떻게 빠르게 받아오지??
   
@@ -213,7 +216,8 @@ function App() {
       <Switch>
         <Route exact path = '/'><FirstPage /></Route>
         <Route path = '/myroom'><HomeLogined /></Route>
-        <Route path = '/roominfo'><RoomInfo /></Route>
+        {/* <Route path = '/roominfo'><RoomInfo /></Route> */}
+        <Route path = '/roominfo/:id' component={RoomInfo}></Route>        
         <Route path = '/myinfo'><MyInfo /></Route>
       </Switch>
       {console.log('모각코만들기모달',isShowCreateRoomModal)}

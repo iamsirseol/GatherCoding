@@ -1,5 +1,4 @@
 header {
-    
     /* border : 1px gray solid; */
     padding : 5px;
     position :fixed;
@@ -35,8 +34,17 @@ header .header-right{
    
 }
 header .header-right button {
+    margin-top: -10px;
+    background: #a8a1a194;
     margin-right : 10px;
-    border : 1px gray solid;
-    border-radius: 10px;
+    /* border : 1px gray solid; */
+    /* border-radius: 10px; */
     padding : 5px;
+    border: none;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    font-weight: 400;
+    transition: all .3s;
 }
+
+header .header-right:first-child button:hover{margin-top: 10px;}

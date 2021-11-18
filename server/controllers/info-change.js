@@ -31,12 +31,11 @@ module.exports = {
         // console.log(data);
         const validUser = await user.findOne({
             where : {
-                email,
-                password
+                email
             }
         })
         if (!validUser) {
-            res.status(400).json({ data: null, message: 'you should enter password' });
+            res.status(400).json({ data: null, message: 'no such user in the database' });
         } else {
             // console.log(req.file.key) // 업로드시 삭제해줄 애
             console.log(req.file)
@@ -46,8 +45,8 @@ module.exports = {
             }else{
                 img = req.file.location // 링크를 db 넣기위한 값
             }
-            console.log(img)
-            await user.update({ username: username, password: changePassword, image: img, blog: blog }, {
+            // console.log(img)
+            user.update({ username: username, password: changePassword, image: img, blog: blog }, {
                 where: {
                     email: email
                 }

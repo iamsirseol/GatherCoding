@@ -25,6 +25,7 @@
 
 
 const Sequelize = require('sequelize');
+// const UserGroup = require('./user_group')
 
 module.exports = class User extends Sequelize.Model {
     static init(sequelize) {
@@ -62,7 +63,7 @@ module.exports = class User extends Sequelize.Model {
         });
     }
     static associate(db) {
-        db.User.belongsToMany(db.Group, { through: 'UserGroup' });
+        db.User.belongsToMany(db.Group, { through: db.UserGroup });
 
     }
     static leader(db) {

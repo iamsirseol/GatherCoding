@@ -14,17 +14,18 @@
 
 }
 .sidebar button {
-    width : 80px;
+    background: #a8a1a194;
+    width : 100px;
     height : 40px;
-    border-radius: 10px;
-    margin-left: auto;
+    margin-left: -20px;
     margin-right: auto;
     margin-top : 10px;
     border :1px solid gray;
     cursor: pointer;
+    transition: margin .3s;
 }
 .sidebar button:hover {
-    
+    margin-left: -10px;
     cursor: pointer;
-    background-color: rgba(0,0,0,0.1);
+    background-color: #a8a1a194
 }
