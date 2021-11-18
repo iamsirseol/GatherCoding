@@ -6,6 +6,8 @@ module.exports = {
         res.send("Hello World");
     },
     get: async (req, res) => {
+        console.log('씨티',req.query.city)
+        console.log('도',req.query.region)
         const region = req.query.region;
         const city = req.query.city;
         if (!region || !city) {
@@ -53,7 +55,7 @@ module.exports = {
             //         res.send(result);
             //     })
             // const jane = user.create({})
-            group.findAll({
+            const myRoom = await group.findAll({
                 where: {
                     region: region,
                     city: city
@@ -62,10 +64,12 @@ module.exports = {
                     model: user,
                 }]
             })
+            
                 .then((result) => {
                     if (result.length === 0) {
                         res.status(200).json({ data: null, message: 'no room in this location' })
                     } else {
+                        console.log(result.length)
                         res.status(200).json({ data: result, message: 'ok' });
                     }
                 })
