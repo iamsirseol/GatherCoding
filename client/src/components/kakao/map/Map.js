@@ -102,8 +102,8 @@ const Map = ({ title ,meetingTime ,population, description }) => {
         .then(res=>{
           dispatch(isLoadingHandler(true))
           
-          // history.push(`/roominfo/${res.data.data.id}`)
-          // dispatch(isShowCreateRoomModalHandler(false))
+          history.push(`/roominfo/${res.data.data.id}`)
+          dispatch(isShowCreateRoomModalHandler(false))
           console.log(res.data.data.id)
           return res
         })
