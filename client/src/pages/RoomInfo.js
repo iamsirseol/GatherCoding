@@ -55,7 +55,10 @@ function RoomInfo({ match }) {
                         <div className='roominfo-info-inner'>
                             <h1>{roomInforma.title}</h1>
                             <div>
-                                {roomInforma.description}
+                                코딩해야지 코딩해야지 반복하다 <br />
+                                결국 자버리는 분들 <br /><br />
+                                같이 코딩해요<br /><br />
+                                다같이 파이팅~~!
                         </div>
                     </div>
                     <div className='roominfo-info-person'>
@@ -73,7 +76,9 @@ function RoomInfo({ match }) {
 
             </div>
             <div className='roominfo-user-list'>
+                
                 <div className='user-item'>
+                    <div className='roominfo-user-list-title'>모임 구성원</div>
                     {userInfo.map((user, i) => {
                         const { image, username, blog } = user;
                         // console.log(image, username, blog);

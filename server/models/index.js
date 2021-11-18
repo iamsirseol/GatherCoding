@@ -40,6 +40,7 @@
 const Sequelize = require('sequelize');
 const User = require('./user');
 const Group = require('./group');
+const UserGroup = require('./user_group');
 
 const env = process.env.NODE_ENV || 'development';
 const config = require('../config/config')[env];
@@ -51,9 +52,11 @@ db.sequelize = sequelize;
 
 db.User = User;
 db.Group = Group;
+db.UserGroup = UserGroup;
 
 User.init(sequelize);
 Group.init(sequelize);
+UserGroup.init(sequelize);
 
 User.associate(db);
 Group.associate(db);
