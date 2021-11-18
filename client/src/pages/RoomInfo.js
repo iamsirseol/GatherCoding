@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 // import { useSelector } from 'react-redux';
 import { useSelector, useDispatch } from 'react-redux';
 import '../css/roominfo.css';
-import { userInfo } from '../components/dummy'
+// import { userInfo } from '../components/dummy'
 import UserList from '../components/UserList';
 import MapPick from '../components/kakao/map/MapPick';
 import MapContainer from '../components/MapContainer';
@@ -17,11 +17,12 @@ function RoomInfo({ match }) {
     const {id} = match.params
     const roomId = parseInt(id,10)
     const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
-    const [roomInforma,setRoomInforam] = useState({})
-    console.log(cookies)
-    console.log('JWT : ',cookies.jwt)
-    console.log('액세스토큰 : ', cookies.accessToken)
-
+    const [roomInforma,setRoomInforma] = useState({})
+    const [userInfo,setUserInfo] = useState([])
+    // console.log(cookies)
+    // console.log('JWT : ',cookies.jwt)
+    // console.log('액세스토큰 : ', cookies.accessToken)
+    console.log(roomInforma)
     const isLogin = useSelector(state => state.isLoginReducer.isLogin)
     const isShowRoomInModal = useSelector(state => state.isShowRoomInModalReducer.isShowRoomInModal);
     const currentUserList = useSelector(state => state.currentUserListReducer);
@@ -39,10 +40,21 @@ function RoomInfo({ match }) {
             headers:{contentType:"application/json",withCredentials:"true",Authorization : `Bearer ${cookies.accessToken}`}
         }
         ).then(res=>{
-            const {UserId,city,description,id,leader_id,meeting_place,meeting_time,population,region,title} = res.data.data
-            const roomInformation = {UserId,city,description,id,leader_id,meeting_place,meeting_time,population,region,title}
-            setRoomInforam(roomInformation)
-            console.log(roomInformation)
+            console.log(res.data.data.title)
+            // const {UserId,city,description,id,leader_id,meeting_place,meeting_time,population,region,title} = res.data.data
+            // const roomInformation = {UserId,city,description,id,leader_id,meeting_place,meeting_time,population,region,title}
+            setRoomInforma({...roomInforma,...res.data.data})
+            console.log(roomInforma)
+            return res.data.data.title
+        }).then(title=>{
+            axios.post('http://localhost:4000/rooms/room-entry',
+            {roomTitle:title},
+            {headers:{withCredentials:"true", Authorization : `Bearer ${cookies.accessToken}`, contentType:"application/json"}}
+            ).then(res=>{
+                setUserInfo(res.data.data)
+
+        
+            })
         })
 
     }, [pathname]);
@@ -50,7 +62,7 @@ function RoomInfo({ match }) {
     const roomInRequest = function() {
         dispatch(isShowRoomInModalHandler(true));
     }
-
+    console.log(roomInforma.title)
     return (
         <div>
             <div className='roominfo-page'>
@@ -67,12 +79,9 @@ function RoomInfo({ match }) {
                         <div className='roominfo-info-inner'>
                             <h1>{roomInforma.title}</h1>
                             <div>
-                                코딩해야지 코딩해야지 반복하다 <br />
-                                결국 자버리는 분들 <br /><br />
-                                같이 코딩해요<br /><br />
-                                다같이 파이팅~~!
+                                {roomInforma.description}
+                            </div>
                         </div>
-                    </div>
                     <div className='roominfo-info-person'>
                             {"(조인테이블에서 인원구해오기)명"}/{roomInforma.population}
                     </div>
@@ -91,21 +100,22 @@ function RoomInfo({ match }) {
                 
                 <div className='user-item'>
                     <div className='roominfo-user-list-title'>모임 구성원</div>
-                    {/* {userInfo.map((user, i) => {
+                    {userInfo.map((user, i) => {
                         const { image, username, blog } = user;
                         // console.log(image, username, blog);
                         return (<div key={i}>
                             <UserList image={image} username={username} blog={blog} />
                         </div>
                         )
-                    })} */}
-                    {currentUserList.map((item, i) => {
+                    })}
+                    {/* {currentUserList.map((item, i) => {
                         const { image, username, blog } = item;
                         return (<div key={i}>
                             <UserList image={image} username={username} blog={blog} />
                             </div>)
-                    })}
+                    })} */}
                 </div>
+                
                 <button className='roominfo-exit-room'>모각코 나가기</button>
                 <button className='roominfo-enter-room' onClick={roomInRequest}>모각코 참여하기</button>
             </div>
