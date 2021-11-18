@@ -90,7 +90,8 @@ const Map = ({ title ,meetingTime ,population, description }) => {
     console.log('만들기클릭했니?',createdRoom)
     if(createdRoom===true){
       axios.post('http://localhost:4000/rooms/new-room',{
-        title ,meetingTime ,population, description,
+        title ,population, description,
+        meeting_time : meetingTime,
         region:meetingPlace[0],
         city : meetingPlace[1],
         UserId : userInfo[0].id,
@@ -101,8 +102,8 @@ const Map = ({ title ,meetingTime ,population, description }) => {
         .then(res=>{
           dispatch(isLoadingHandler(true))
           
-          history.push(`/roominfo/${res.data.data.id}`)
-          dispatch(isShowCreateRoomModalHandler(false))
+          // history.push(`/roominfo/${res.data.data.id}`)
+          // dispatch(isShowCreateRoomModalHandler(false))
           console.log(res.data.data.id)
           return res
         })

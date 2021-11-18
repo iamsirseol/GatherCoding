@@ -28,6 +28,7 @@ function CreateRoom() {
     //약속시간
     function changeMeetingTime (e) {
       e.preventDefault();
+      console.log(e.target.value)
       setMeetingTime(e.target.value);
     }
     //인원
@@ -57,7 +58,7 @@ function CreateRoom() {
                 <div className="create-room-modal-form">
                     <div className = 'form' >
                         <input className="create-room-id" type="text" placeholder="방 제목 입력" value={roomTitle} onChange={(e) => changeRoomTitle(e)} />
-                        <input className="create-room-password" type="text" placeholder="시간 입력" value={meetingTime} onChange={(e) => changeMeetingTime(e)} />
+                        <input className="create-room-password" type="text" placeholder="ex)매주 월요일 오후3시" value={meetingTime} onChange={(e) => changeMeetingTime(e)} />
                         <input className="check-password" type="text" placeholder="인원(숫자만 입력하세요)" value={personNum}onChange={(e) => checkPersonNum(e)} />
                         <input className="create-room-nickname" type="text" placeholder="방 정보 입력" value={roomDesc} onChange={(e) => changeRoomDesc(e)} />
                         {/* 카카오지도 */}
