@@ -12,7 +12,7 @@ export const userInfo = [
             title : '제천 고등학생 코딩연합??',
             population : 3,
             currentPopulation : 1,
-            gather_location : '제천 제일고',
+            meeting_place : '제천 제일고',
             leader : '짱구',
             location_address : '충북 제천시',
             //우선 약속시간 text로 받자
@@ -24,7 +24,7 @@ export const userInfo = [
             title : '제천 코딩학원??',
             population : 3,
             currentPopulation : 1,
-            gather_location : '제천 시립도서관',
+            meeting_place : '제천 시립도서관',
             leader : '설동혁',
             location_address : '충북 제천시',
             promise : '매주 월,수,금 20~22시',
@@ -44,7 +44,7 @@ export const userInfo = [
             title : '제천 고등학생 코딩연합??',
             population : 3,
             currentPopulation : 1,
-            gather_location : '제천 제일고',
+            meeting_place : '제천 제일고',
             leader : '짱구',
             location_address : '충북 제천시' 
         },
@@ -60,7 +60,7 @@ export const groups = [
         population : 8,
         description : '',
         currentPopulation : 2,
-        gather_location : '상당산성 꼭대기',
+        meeting_place : '상당산성 꼭대기',
         leader : '류준열',
         location_address : '충북 청주시'
     },
@@ -69,7 +69,7 @@ export const groups = [
         population : 3,
         description : '',
         currentPopulation : 2,
-        gather_location : '김천터미널',
+        meeting_place : '김천터미널',
         leader : '설동혁',
         location_address : '경북 김천시'
     },
@@ -78,7 +78,7 @@ export const groups = [
         population : 9,
         description : '',
         currentPopulation : 5,
-        gather_location : '정북동토성 소나무 옆',
+        meeting_place : '정북동토성 소나무 옆',
         leader : '이윤환',
         location_address : '충북 청주시' 
     },
@@ -87,7 +87,7 @@ export const groups = [
         population : 20,
         description : '',
         currentPopulation : 14,
-        gather_location : '충북대 중문 스타벅스',
+        meeting_place : '충북대 중문 스타벅스',
         leader : '양예솔',
         location_address : '충북 청주시' 
     },
@@ -96,7 +96,7 @@ export const groups = [
         population : 3,
         description : '',
         currentPopulation : 1,
-        gather_location : '제천 시민회관',
+        meeting_place : '제천 시민회관',
         leader : '류준열',
         location_address : '충북 제천시' 
     },
@@ -105,7 +105,7 @@ export const groups = [
         population : 3,
         description : '',
         currentPopulation : 1,
-        gather_location : '제천 제일고',
+        meeting_place : '제천 제일고',
         leader : '짱구',
         location_address : '충북 제천시',
         // !
@@ -118,7 +118,7 @@ export const groups = [
         population : 3,
         description : '',
         currentPopulation : 1,
-        gather_location : '제천 시립도서관',
+        meeting_place : '제천 시립도서관',
         leader : '설동혁',
         location_address : '충북 제천시' ,
         user : [userInfo[0] ]

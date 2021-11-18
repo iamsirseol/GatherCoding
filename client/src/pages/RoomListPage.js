@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import dotenv from "dotenv";
 import axios from 'axios';
@@ -21,9 +21,15 @@ function RoomListPage() {
     const isLogin = useSelector(state => state.isLoginReducer.isLogin)//로긴상태
     const showCreateRoomModalHandler = () => { dispatch(isShowCreateRoomModalHandler(true))};
     const closeCreateRoomModalHandler = () => { dispatch(isShowCreateRoomModalHandler(false)) }
-    const {region,city} = useSelector(state=>state.locationReducer)
-    
-   
+    const {region,city,add} = useSelector(state=>state.locationReducer)
+    const [myRoomList,setMyRoomList] = useState([])
+    // console.log(region,city)
+   useEffect(()=>{
+       axios.get(`http://localhost:4000/rooms/local-room-list/`,
+       {params:{city:city,region:region}}).then(res=>{
+           setMyRoomList(res.data.data)
+       })
+   },[region,city])
     
     return (
         <div className = 'roomListPage-page'>
@@ -46,8 +52,9 @@ function RoomListPage() {
                                 onClick = {showLoginModalHandler} >모각코 만들기</button>}
                     </div>    
                     <div className = 'common-room-component-list'>
+                        
                         {/* <RoomList /> */}
-                        {groups.filter(el=>el.location_address.split(' ')[1]===city)
+                        {myRoomList!==null ? myRoomList.filter(el=>el.city===city&&el.region===region)
                         .map((group,idx) => {
                             return (
                                 <div className = 'common-room-box' key ={idx}>
@@ -57,6 +64,8 @@ function RoomListPage() {
                                 </div>    
                             )
                             })
+                        :
+                        <div>{city}에 생성된 모각코모임이 없습니다.</div>
                         }
                     </div>                            
                 </div>
