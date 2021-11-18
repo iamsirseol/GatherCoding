@@ -1,6 +1,7 @@
 import React, { useEffect,useState } from 'react';
 import { useLocation } from "react-router-dom";
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import '../css/roominfo.css';
 import { userInfo } from '../components/dummy'
 import UserList from '../components/UserList';
@@ -9,6 +10,7 @@ import MapContainer from '../components/MapContainer';
 import axios from 'axios';
 import { withCookies, Cookies, useCookies } from 'react-cookie';
 import MapInRoom from '../components/kakao/map/MapInRoom';
+import { isShowRoomInModalHandler } from '../redux/actions/actions';
 
 function RoomInfo({ match }) {
     // console.log(roomId)
@@ -21,7 +23,12 @@ function RoomInfo({ match }) {
     console.log('액세스토큰 : ', cookies.accessToken)
 
     const isLogin = useSelector(state => state.isLoginReducer.isLogin)
+    const isShowRoomInModal = useSelector(state => state.isShowRoomInModalReducer.isShowRoomInModal);
+    const currentUserList = useSelector(state => state.currentUserListReducer);
+    console.log(currentUserList);
     const { pathname } = useLocation();
+    const dispatch = useDispatch();
+
     useEffect(() => {
         // 페이지 이동시 스크롤 맨 위로 오게한다.
         window.scrollTo(0, 0);
@@ -39,6 +46,11 @@ function RoomInfo({ match }) {
         })
 
     }, [pathname]);
+
+    const roomInRequest = function() {
+        dispatch(isShowRoomInModalHandler(true));
+    }
+
     return (
         <div>
             <div className='roominfo-page'>
@@ -79,16 +91,23 @@ function RoomInfo({ match }) {
                 
                 <div className='user-item'>
                     <div className='roominfo-user-list-title'>모임 구성원</div>
-                    {userInfo.map((user, i) => {
+                    {/* {userInfo.map((user, i) => {
                         const { image, username, blog } = user;
                         // console.log(image, username, blog);
                         return (<div key={i}>
                             <UserList image={image} username={username} blog={blog} />
                         </div>
                         )
+                    })} */}
+                    {currentUserList.map((item, i) => {
+                        const { image, username, blog } = item;
+                        return (<div key={i}>
+                            <UserList image={image} username={username} blog={blog} />
+                            </div>)
                     })}
                 </div>
                 <button className='roominfo-exit-room'>모각코 나가기</button>
+                <button className='roominfo-enter-room' onClick={roomInRequest}>모각코 참여하기</button>
             </div>
         </div>
     )
