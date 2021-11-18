@@ -3,6 +3,7 @@ const group = require('../models/group');
 const token = require('./token');
 const { User } = require('../models');
 const db = require('../models');
+const UserGroup = require('../models/user_group');
 // module.exports = {
 //     delete: async (req, res) => {
 
@@ -49,7 +50,7 @@ module.exports = {
             }
         });
         console.log(selectedGroup);
-        console.log(selectedGroup.dataValues.Users);
+        // console.log(selectedGroup.dataValues.Users);
         if (selectedGroup) {
             const selectedGroupId = selectedGroup.dataValues.id;
             const userIdToDelete = selectedGroup.dataValues.Users[0].dataValues.id;
