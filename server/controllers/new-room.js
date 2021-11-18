@@ -17,6 +17,7 @@ module.exports = {
         // console.log('이메일',email)
         // console.log('액새스토큰복호화',accessTokenData)
 
+        
         const newRoom = await group.findOne({
             where : { id :  req.params.id }
         })
@@ -57,11 +58,11 @@ module.exports = {
     post: async (req, res) => {
         console.log(req.headers.authorization.split(' ')[1])
 
-        console.log(req.body)
+        console.log('리코그바디',req.body)
 
 
         const accessTokenData = token.isAuthorized(req.headers.authorization.split(' ')[1]);
-        const { title, description, population, meeting_place, leader_id, UserId, region, city } = req.body;
+        const { title, description, population, meeting_place, meeting_time, leader_id, UserId, region, city } = req.body;
         // if (!title || !population || !meeting_place || !leader_id) {
         if (!title || !population || !meeting_place || !UserId) {
             res.status(422).json({data: null, message: 'insufficient parameters supplied'});
@@ -71,6 +72,7 @@ module.exports = {
                 description,
                 population, 
                 meeting_place,
+                meeting_time,
                 leaderId: accessTokenData.id, 
                 UserId: accessTokenData.id,
                 region, 
@@ -87,7 +89,8 @@ module.exports = {
                     UserId:newRoom.dataValues.UserId, 
                     region:newRoom.dataValues.region,
                     city:newRoom.dataValues.city,
-                    meeting_place:newRoom.dataValues.meetingPlace 
+                    meeting_place:newRoom.dataValues.meetingPlace ,
+                    meeting_time:newRoom.dataValues.meeting_time
                 }, message: 'ok'});
         }
     }

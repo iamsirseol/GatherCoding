@@ -216,7 +216,9 @@ function App() {
       <Switch>
         <Route exact path = '/'><FirstPage /></Route>
         <Route path = '/myroom'><HomeLogined /></Route>
+        {/* //! db에 있는 roomlist 연결하게 되면 220번줄 수정하기 */}
         {/* <Route path = '/roominfo'><RoomInfo /></Route> */}
+        {/* // ! */}
         <Route path = '/roominfo/:id' component={RoomInfo}></Route>        
         <Route path = '/myinfo'><MyInfo /></Route>
       </Switch>
