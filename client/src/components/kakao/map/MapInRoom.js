@@ -1,0 +1,58 @@
+import React, { useEffect } from 'react';
+import { useSelector,shallowEqual } from 'react-redux';
+
+
+const MapInRoom = ({meeting_place}) => {
+    const {lat,lon} = useSelector((state=>state.locationReducer),shallowEqual)
+    const { kakao } = window;
+  
+    
+    useEffect(() => {
+        const container = document.querySelector('.kakao-map');
+        const options = {
+            center: new kakao.maps.LatLng(lat, lon),
+            level: 3
+        };
+        const map = new kakao.maps.Map(container, options);
+        const geocoder = new kakao.maps.services.Geocoder();
+        geocoder.addressSearch(meeting_place, function(result, status) {
+
+            // 정상적으로 검색이 완료됐으면 
+             if (status === kakao.maps.services.Status.OK) {
+                console.log(result)
+                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+        
+                // 결과값으로 받은 위치를 마커로 표시합니다
+                var marker = new kakao.maps.Marker({
+                    map: map,
+                    position: coords
+                });
+                marker.setMap(map);   
+                // 인포윈도우로 장소에 대한 설명을 표시합니다
+                var infowindow = new kakao.maps.InfoWindow({
+                    content: '<div style="width:150px;text-align:center;padding:6px 0;">'+meeting_place+'</div>'
+                });
+                infowindow.open(map, marker);
+        
+                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                map.setCenter(coords);
+            } 
+
+        // 위도, 경도로 변환 및 마커표시
+         
+    
+    // }); 
+    // let markerPosition  = new kakao.maps.LatLng(lat, lon); 
+    //     let marker = new kakao.maps.Marker({
+    //         position: markerPosition
+        });
+           
+        
+
+    }, [meeting_place]);
+    return (
+        <div className='kakao-map'></div>
+    );
+}
+
+export default MapInRoom;

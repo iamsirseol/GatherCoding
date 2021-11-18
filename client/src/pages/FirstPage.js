@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import RoomListPage from './RoomListPage';
 import Loading from '../components/Loading';
 import CreateRoom from '../components/CreateRoom';
-import MapPick from '../components/MapPick';
+import MapPick from '../components/kakao/map/MapPick';
 import MapContainer from '../components/MapContainer';
 import LandingPage from '../components/LandingPage';
 import Map from '../components/kakao/map/Map';

@@ -1,35 +1,59 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import '../css/roominfo.css';
 import { userInfo } from '../components/dummy'
 import UserList from '../components/UserList';
-import MapPick from '../components/MapPick';
+import MapPick from '../components/kakao/map/MapPick';
 import MapContainer from '../components/MapContainer';
+import axios from 'axios';
+import { withCookies, Cookies, useCookies } from 'react-cookie';
+import MapInRoom from '../components/kakao/map/MapInRoom';
 
+function RoomInfo({ match }) {
+    // console.log(roomId)
+    const {id} = match.params
+    const roomId = parseInt(id,10)
+    const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
+    const [roomInforma,setRoomInforam] = useState({})
+    console.log(cookies)
+    console.log('JWT : ',cookies.jwt)
+    console.log('액세스토큰 : ', cookies.accessToken)
 
-function RoomInfo() {
     const isLogin = useSelector(state => state.isLoginReducer.isLogin)
     const { pathname } = useLocation();
     useEffect(() => {
         // 페이지 이동시 스크롤 맨 위로 오게한다.
         window.scrollTo(0, 0);
+        //db에서 방id랑 맞는 정보가져와야함. 방id는 roomId, 방을 만드는게 아니라 들어가는거
+        console.log('왔나요')
+        axios.get(`http://localhost:4000/rooms/new-room/${roomId}`,
+        {
+            headers:{contentType:"application/json",withCredentials:"true",Authorization : `Bearer ${cookies.accessToken}`}
+        }
+        ).then(res=>{
+            const {UserId,city,description,id,leader_id,meeting_place,meeting_time,population,region,title} = res.data.data
+            const roomInformation = {UserId,city,description,id,leader_id,meeting_place,meeting_time,population,region,title}
+            setRoomInforam(roomInformation)
+            console.log(roomInformation)
+        })
+
     }, [pathname]);
     return (
         <div>
             <div className='roominfo-page'>
                 <div className='roominfo-map'>
                     {/* <MapPick /> */}
-                    <MapPick />
+                    <MapInRoom meeting_place={roomInforma.meeting_place}/>
                 </div>
                 <div className='roominfo-info-div'>
                     <div className='roominfo-meeting-time'>
-                        약속 시간 : 매주 월,수,금 20~22시
+                        약속 시간 : {roomInforma.meeting_time}
                     </div>
 
                     <div className='roominfo-info-outer'>
                         <div className='roominfo-info-inner'>
-                            <h1>청주 모각코 모임</h1>
+                            <h1>{roomInforma.title}</h1>
                             <div>
                                 코딩해야지 코딩해야지 반복하다 <br />
                                 결국 자버리는 분들 <br /><br />
@@ -38,7 +62,7 @@ function RoomInfo() {
                         </div>
                     </div>
                     <div className='roominfo-info-person'>
-                            인원수 : 2/8
+                            {"(조인테이블에서 인원구해오기)명"}/{roomInforma.population}
                     </div>
                 </div>
                     {/* 방장이면 */}
@@ -57,7 +81,7 @@ function RoomInfo() {
                     <div className='roominfo-user-list-title'>모임 구성원</div>
                     {userInfo.map((user, i) => {
                         const { image, username, blog } = user;
-                        console.log(image, username, blog);
+                        // console.log(image, username, blog);
                         return (<div key={i}>
                             <UserList image={image} username={username} blog={blog} />
                         </div>

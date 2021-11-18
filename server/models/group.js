@@ -64,7 +64,7 @@ module.exports = class Group extends Sequelize.Model {
         });
     }
     static associate(db) {
-        db.Group.belongsToMany(db.User, { through: 'UserGroup' });
+        db.Group.belongsToMany(db.User, { through: db.UserGroup });
         
     }
     static leader(db) {

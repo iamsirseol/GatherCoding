@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MapPick from "./MapPick";
+import MapPick from "./kakao/map/MapPick";
 
 const SearchPlace = () => {
   const [inputText, setInputText] = useState("");

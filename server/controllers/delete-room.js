@@ -49,14 +49,58 @@ module.exports = {
             }
         });
         console.log(selectedGroup);
-        user.removeGroup(selectedGroup.dataValues.id)
-            .then((result) => {
-                console.log(result);               
-                res.json('success'); 
+        console.log(selectedGroup.dataValues.Users);
+        if (selectedGroup) {
+            const selectedGroupId = selectedGroup.dataValues.id;
+            const userIdToDelete = selectedGroup.dataValues.Users[0].dataValues.id;
+            UserGroup.destroy({
+                where: {
+                    GroupId: selectedGroupId,
+                    UserId: userIdToDelete
+                }
             })
-            .catch((err) => {
-                console.log(err);
-                res.json("failed")
-            })
+                .then((result) => {
+                    console.log(result);
+                    group.findOne({
+                        where: {
+                            id: selectedGroupId
+                        },
+                        include: {
+                            model: user
+                        }
+                    })
+                        .then((result) => {
+                            console.log(result.dataValues.Users);
+                            // 방에 남은 인원이 0명이면
+                            if (result.dataValues.Users.length === 0) {
+                                group.destroy({
+                                    where: {
+                                        id: selectedGroupId
+                                    }
+                                })
+                                    .then((result) => {
+                                        res.json({ data: { currentPopulation: 0 }, message: 'room deleted' });
+                                    })
+                                    .catch((err) => {
+                                        console.log(err);
+                                        res.json('error3');
+                                    })
+                            } else {
+                                // 방에 남은 인원이 0명이 아니면
+                                res.json({ data: { currentPopulation: result.dataValues.Users.length }, message: 'room exit success' });
+                            }
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            res.json('error4')
+                        })
+                })
+                .catch((err) => {
+                    console.log(err);
+                    res.json("error1")
+                })
+        } else {
+            res.json({ data: null, message: 'no such room in the database' });
+        }
     }
 };
