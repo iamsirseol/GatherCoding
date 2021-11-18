@@ -3,18 +3,6 @@
     text-decoration: none;
     border : 1px gray solid;
 } */
-<<<<<<< HEAD
-* {
-    margin: 0;
-    padding: 0;
-}
-
-.roominfo-container {
-    height: 90%;
-    border: 1px saddlebrown solid;
-}
-=======
->>>>>>> 6ffd0126ff4d6d5dfdcc5abae6c8d2b275a589f5
 .roominfo-page {
     border: 1px saddlebrown solid;
     border-bottom: burlywood;
@@ -25,22 +13,11 @@
     top:50px;
     height : 50%;
     margin-left:100px;
-<<<<<<< HEAD
-    margin-right: 2rem;
-    margin-bottom: 0rem;
-    align-items: center;
-    
-}
-.roominfo-page .roominfo-map {
-    border: 1px saddlebrown solid;
-    background:burlywood;
-=======
     
     
 }
 .roominfo-page .roominfo-map {
     background: yellow;
->>>>>>> 6ffd0126ff4d6d5dfdcc5abae6c8d2b275a589f5
     /* position : sticky; */
     top : 50px;
     width:100%;
@@ -48,98 +25,24 @@
     
 }
 .roominfo-page .roominfo-info-div {
-<<<<<<< HEAD
-    border: 1px solid;
-    border-color:saddlebrown;
-    background:peru;
-    /* margin-left: 20rem;
-    margin-right: 20rem; */
-    width: 60%;
-    height : 500px;
-=======
     background: red;
     
     height : 55%;
->>>>>>> 6ffd0126ff4d6d5dfdcc5abae6c8d2b275a589f5
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .roominfo-page .roominfo-info-div .roominfo-meeting-time {
-<<<<<<< HEAD
-    border: 1px saddlebrown solid;
-    background: burlywood;
-    width : 500px;
-    height: 50px;
-    margin-top: 20px;
-    margin-bottom: 3rem;;
-    padding-top:10px;
-=======
     background: violet;
     width : 600px;
     height: 40px;
     margin-top: 20px;
     padding-top:8px;
->>>>>>> 6ffd0126ff4d6d5dfdcc5abae6c8d2b275a589f5
     text-align: center;
 
 }
 
 .roominfo-page .roominfo-info-div .roominfo-info-outer {
-<<<<<<< HEAD
-   
-    width : 600px;
-    height: 320px;
-    margin:0;
-    
-    /* margin-bottom: 0rem; */
-    padding: 0;
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* justify-content: stretch; */
-}
-
-.roominfo-page .roominfo-info-div .roominfo-info-outer .roominfo-info-inner {
-    /* padding:0;
-    margin:0; */
-    border: 1px saddlebrown solid;
-    background: burlywood;
-    width : 500px;
-    height: 300px;
-    margin: 0;
-    /* overflow-y: auto; */
-    text-align: center;
-}
-
-.roominfo-page .roominfo-info-div .roominfo-info-person {
-    border: 1px saddlebrown solid;
-    background: burlywood;
-    width:100px;
-    /* height:40px; */
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    text-align: center;
-}
-
-.roominfo-page .roominfo-info-div .roominfo-change-room-info {
-   
-    
-    width: 100%;
-    height: 4rem;
-    text-align: center;
-    /* display: flex; */
-    align-items: center;
-    /* justify-content: center; */
-}
-
-.roominfo-page .roominfo-info-div .roominfo-change-room-info button {
-    background-color:chocolate;
-    width : 100%;
-=======
     width : 600px;
     height: 250px;
     margin-top: 10px;
@@ -178,7 +81,6 @@
 .roominfo-change-room-info button {
     background: rgb(177, 162, 135);
     width:100px;
->>>>>>> 6ffd0126ff4d6d5dfdcc5abae6c8d2b275a589f5
     height: 100%;
     margin:auto;
 }
@@ -191,35 +93,6 @@
 }
 
 .roominfo-user-list {
-<<<<<<< HEAD
-    padding:0;
-    border: 1px saddlebrown solid;
-    border-top: burlywood;
-    background: burlywood;
-    position : relative;
-    top:50px;
-    height:50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left:100px;
-    margin-right: 2rem;
-    /* margin-bottom: 0rem; */
-}
-
-.roominfo-user-list .user-item {
-   padding: 4rem 0rem 4rem 0rem;
-   background-color: peru;
-   /* width: 800px; */
-   width: 60%;
-   /* margin-left: 20rem;
-   margin-right: 20rem; */
-   display: flex;
-   flex-direction: column;
-   justify-content:space-between;
-   align-items: center;
-   
-=======
     background: rgb(99, 202, 216);
     position : relative;
     top:50px;
@@ -228,7 +101,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
->>>>>>> 6ffd0126ff4d6d5dfdcc5abae6c8d2b275a589f5
 }
 
 .roominfo-user-list .user-item div {
@@ -247,13 +119,4 @@
     background: chocolate;
     margin-bottom:100px;
 }
-<<<<<<< HEAD
-
-.roominfo-user-list .roominfo-exit-room:hover {
-    background-color:sienna;
-    color: white;
-}
-/* *{background: none !important;} */
-=======
 *{border : 1px gray solid;}
->>>>>>> 6ffd0126ff4d6d5dfdcc5abae6c8d2b275a589f5
