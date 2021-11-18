@@ -3,7 +3,7 @@ import React from 'react'
 
 import '../css/room.css';
 function Room({onClick, group, idx}) {
-    console.log(group)
+    // console.log(group)
     return (
     <>
             <button onClick = {onClick} className = 'roomListPage-room' key = {idx}>
