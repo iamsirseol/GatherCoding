@@ -1,4 +1,4 @@
 .image-upload-box{width: 100%; text-align: center; display: flex; margin-top: 30px;}
 .image-upload-box .input-blind{display: none;}
-.image-upload-box .img_preview{width: 100px; height: 100px; background-size: contain; display: block; background-color: #ddd; cursor: pointer;}
+.image-upload-box .img_preview{width: 100px; height: 100px; background-size: contain; display: block; background-color: #ddd; cursor: pointer; background-repeat: no-repeat; background-position: center;;}
 .image-upload-box>p{width: calc(100% - 100px); line-height: 100px; box-sizing: border-box;}

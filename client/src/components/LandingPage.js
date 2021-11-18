@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import MapContainer from './MapContainer';
-import MapPick from './MapPick';
+import MapPick from './kakao/map/MapPick';
 
 
 function LandingPage() {

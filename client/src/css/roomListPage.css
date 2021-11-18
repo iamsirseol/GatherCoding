@@ -4,7 +4,6 @@
     position : relative;
     /* top:50px; */
     height : 100vh;
-    margin-left: 100px;
     /* left:100px; */
     
 }
@@ -12,15 +11,16 @@
 
 
 .roomListPage-body {
-    
     display : flex;
-    flex-direction: row;   
+    flex-direction: row;  
+    width: 100%; 
 }
 .roomListPage-body .roomListPage-main {
+    width: 100%;
     /* ! 초록색 바탕이랑 간격 */
     /* margin-top: 50px; */
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
     /* !주석해제하면 방들 세로정렬됨 - 반응형 */
     /* display: flex; */
     /* flex-direction: column; */
@@ -33,24 +33,27 @@
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
+    margin-top: 0;
     margin-bottom: 10px;
     padding : 5px;
     /* background-color: darkgreen; */
 }
+.roomListPage-main .roomListPage-create-meeting > .roomListPage-create-meeting-btn{
+    display: block; margin: 0 auto;
+}
 
 .roomListPage-main .roomListPage-room-location {
     
-    padding : 30px ;
+    padding : 20px 30px;
     font-size: larger;
     text-align: center;
     /* background-color: aqua; */
-    width : 600px;
+    width : 100%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
-    height : 100px;
-    border : 1px gray solid;
+    /* margin-top: 10px; */
+    height : 70px;
+    /* border : 1px gray solid; */
     
 }
 .roomListPage-room-list {
@@ -59,9 +62,8 @@
 
 .roomListPage-room-location .roomListPage-room-location-locbox {
     
-    top : 10px;
     display: flex;
-    margin : auto;
+    margin :0 auto;
     justify-content: space-evenly;
     width: 300px;
     height : 30px;
@@ -88,14 +90,23 @@
 }
 
 /* 버튼 호버 */
-button {
-    border : 1px gray solid;
+.roomListPage-main .roomListPage-create-meeting button {
+    border : none;
+    color: #fff;
+    background: cornflowerblue;
+    padding: 8px 5px;
+    border-radius: 13px;
+    box-shadow: 4px 4px 4px rgb(85, 85, 85);
+    transition: box-shadow .1s ,transform .1s;
 }
 
-button:hover {
-    
+.roomListPage-main .roomListPage-create-meeting button:hover {
+    transform: translate(3px,3px);
+    box-shadow: none;
     cursor: pointer;
-    background-color: rgba(0,0,0,0.1);
+}
+.roomListPage-main .roomListPage-create-meeting button:active{
+    background: rgb(57, 94, 161)
 }
 
 

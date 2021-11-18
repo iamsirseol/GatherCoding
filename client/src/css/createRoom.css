@@ -8,6 +8,18 @@
 .create-room-modal-container .create-room_close_btn span i:first-child{transform: rotate(45deg);}
 .create-room-modal-container .create-room_close_btn span i:last-child{transform: rotate(-45deg);}
 .create-room-modal-form{width: 100%;}
+.create-room-modal-form .form{width: 100%;}
+.create-room-modal-form .form .create-room-id{width: 100%; border: none; border-bottom: 2px solid rgb(77, 77, 77); box-sizing: border-box; padding: 8px 8px 6px;}
+.create-room-modal-form .form .create-room-password{width: 100%; border: none; border-bottom: 2px solid rgb(77, 77, 77); box-sizing: border-box; padding: 8px 8px 6px; margin-top: 10px}
+.create-room-modal-form .form .check-password{width: 100%; border: none; border-bottom: 2px solid rgb(77, 77, 77); box-sizing: border-box; padding: 8px 8px 6px; margin-top: 10px}
+.create-room-modal-form .form .create-room-nickname{width: 100%; border: none; border-bottom: 2px solid rgb(77, 77, 77);  box-sizing: border-box; padding: 8px 8px 6px; margin-top: 10px}
+.create-room-modal-form .form .create-room-url{width: 100%; border: none; border-bottom: 2px solid rgb(77, 77, 77);  box-sizing: border-box; padding: 8px 8px 6px; margin-top: 10px}
+.create-room-modal-form .form .create-room-btn{display: block; margin: 15px auto; background: rgb(255, 74, 42); width: 100%; padding: 10px; color: #fff;}
+.create-room-modal-form .form .create-room-btn:hover{background: rgb(156, 31, 9)}
+.create-room-modal-form .social-create-room{}
+.create-room-modal-form .social-create-room button{width: 100%; background: #444444; padding: 10px; color: #fff;}
+.create-room-modal-form .social-create-room button:hover{background: #222222;}
+/* .create-room-modal-form{width: 100%;}
 .create-room-modal-form form{width: 100%;}
 .create-room-modal-form form .create-room-id{width: 100%; border: none; border-bottom: 2px solid rgb(77, 77, 77); box-sizing: border-box; padding: 8px 8px 6px;}
 .create-room-modal-form form .create-room-password{width: 100%; border: none; border-bottom: 2px solid rgb(77, 77, 77); box-sizing: border-box; padding: 8px 8px 6px; margin-top: 10px}
@@ -18,4 +30,4 @@
 .create-room-modal-form form .create-room-btn:hover{background: rgb(156, 31, 9)}
 .create-room-modal-form .social-create-room{}
 .create-room-modal-form .social-create-room button{width: 100%; background: #444444; padding: 10px; color: #fff;}
-.create-room-modal-form .social-create-room button:hover{background: #222222;}
+.create-room-modal-form .social-create-room button:hover{background: #222222;} */

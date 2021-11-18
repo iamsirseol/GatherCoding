@@ -3,110 +3,173 @@
     text-decoration: none;
     border : 1px gray solid;
 } */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.roominfo-container {
+    height: 90%;
+    border: 1px whitesmoke solid;
+}
 .roominfo-page {
-    border: 1px saddlebrown solid;
-    border-bottom: burlywood;
+    border: 1px whitesmoke solid;
+    border-bottom: whitesmoke;
     display: flex;
     flex-direction: column;
-    background: yellowgreen;
+    background:whitesmoke;
     position : relative;
     top:50px;
-    height : 50%;
+    height : 50rem;
     margin-left:100px;
-    
+    margin-right: 2rem;
+    margin-bottom: 0rem;
+    align-items: center;
     
 }
 .roominfo-page .roominfo-map {
-    background: yellow;
+    border: 1px whitesmoke solid;
+    background:rgb(135, 195, 222);
     /* position : sticky; */
     top : 50px;
     width:100%;
-    height : 35%;
+    height : 28%;
     
 }
 .roominfo-page .roominfo-info-div {
-    background: red;
+    border: 1px solid;
+    border-color:whitesmoke;
+    background:rgb(56, 139, 187);
+    /* margin-left: 20rem;
+    margin-right: 20rem; */
+    margin-top: 3rem;
     
-    height : 55%;
+    width: 60%;
+    height : 30rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .roominfo-page .roominfo-info-div .roominfo-meeting-time {
-    background: violet;
-    width : 600px;
-    height: 40px;
+    border: 1px gray solid;
+    background: rgb(135, 195, 222);
+    width : 500px;
+    height: 50px;
     margin-top: 20px;
-    padding-top:8px;
+    margin-bottom: 3rem;;
+    padding-top:10px;
     text-align: center;
 
 }
 
 .roominfo-page .roominfo-info-div .roominfo-info-outer {
+   
     width : 600px;
-    height: 250px;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.roominfo-page .roominfo-info-div .roominfo-info-inner {
-    background: wheat;
-    width : 300px;
-    height: 200px;
-    margin: auto;
-    overflow-y: auto;
+    height: 320px;
+    margin:0;
     
+    /* margin-bottom: 0rem; */
+    padding: 0;
     
-}
-
-.roominfo-page .roominfo-info-div .roominfo-info-person {
-    background: turquoise;
-    width:100px;
-    height:40px;
-    margin-left:auto;
-    margin-right: auto;
-    margin-top: 10px;
-    padding-top:8px;
-    text-align: center;
-}
-
-.roominfo-page .roominfo-change-room-info {
-    display: flex;
-    width : 600px;
-    height: 40px;
-    margin:auto;
-}
-
-.roominfo-change-room-info button {
-    background: rgb(177, 162, 135);
-    width:100px;
-    height: 100%;
-    margin:auto;
-}
-.user-item {
-    display: flex;
-    flex-direction: column;
-    background: blue;
-    
-    margin: auto;
-}
-
-.roominfo-user-list {
-    background: rgb(99, 202, 216);
-    position : relative;
-    top:50px;
-    height:100vh;
-    margin-left:100px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* justify-content: stretch; */
+}
+
+.roominfo-page .roominfo-info-div .roominfo-info-outer .roominfo-info-inner {
+    /* padding:0;
+    margin:0; */
+    border: 1px gray solid;
+    background: rgb(135, 195, 222);
+    width : 500px;
+    height: 300px;
+    margin: 0;
+    /* overflow-y: auto; */
+    text-align: center;
+}
+
+.roominfo-page .roominfo-info-div .roominfo-info-person {
+    border: 1px gray solid;
+    background: rgb(135, 195, 222);
+    width:100px;
+    /* height:40px; */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-align: center;
+}
+
+.roominfo-page .roominfo-info-div .roominfo-change-room-info {
+   
+    
+    width: 100%;
+    height: 4rem;
+    text-align: center;
+    /* display: flex; */
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.roominfo-page .roominfo-info-div .roominfo-change-room-info{
+    border: gray;
+    background-color:rgb(27, 83, 121);
+    width : 100%;
+    height: 100%;
+}
+
+.roominfo-page .roominfo-info-div .roominfo-change-room-info:hover {
+    background-color:rgb(16, 19, 59);
+    color: white;
+    width : 100%;
+    height: 100%;
+}
+
+.roominfo-user-list {
+    padding:0;
+    border: 1px whitesmoke solid;
+    border-top: whitesmoke;
+    background: whitesmoke;
+    position : relative;
+    top:50px;
+    height:50rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left:100px;
+    margin-right: 2rem;
+    /* margin-bottom: 0rem; */
+}
+
+.roominfo-user-list .user-item {
+   border: 1px gray solid;
+   padding: 4rem 0rem 4rem 0rem;
+   background-color: rgb(56, 139, 187);
+   /* width: 800px; */
+   width: 60%;
+   /* margin-left: 20rem;
+   margin-right: 20rem; */
+   display: flex;
+   flex-direction: column;
+   justify-content:space-between;
+   align-items: center;
+   
+}
+
+.roominfo-user-list .user-item .roominfo-user-list-title {
+    background: rgb(56, 139, 187);
+    margin-top: 0;
+    margin-bottom: 1rem;
+    height: 3rem;
+    font-size:x-large;
+    font-weight:500;
 }
 
 .roominfo-user-list .user-item div {
     margin:0;
     padding: 0;
-    background-color: burlywood;
+    background-color: rgb(135, 195, 222);
    
  }
 .roominfo-user-list .roominfo-exit-room {
@@ -116,7 +179,11 @@
     height: 4rem;
 
     border: 1px gray solid;
-    background: chocolate;
+    background: rgb(27, 83, 121);
     margin-bottom:100px;
 }
-*{border : 1px gray solid;}
+
+.roominfo-user-list .roominfo-exit-room:hover {
+    background-color:rgb(16, 19, 59);
+    color: white;
+}

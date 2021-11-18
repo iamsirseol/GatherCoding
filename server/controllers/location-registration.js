@@ -100,14 +100,14 @@ const group = require('../models/group');
 //     //     res.send('success')
         // !
 const token = require('./token');
-
+const axios = require('axios');
 module.exports = {
     post: (req, res) => {
         const accessToken = req.headers.authorization.split(' ')[1]
         // const accessToken = req.cookies.accessToken
         const region = req.body.region;
         const city = req.body.city;
-        console.log('마ㅣㅇ러미ㅏㅇㄴ러ㅏㅣㅁㄴㅇ',region, city,accessToken)
+        // console.log('마ㅣㅇ러미ㅏㅇㄴ러ㅏㅣㅁㄴㅇ',region, city,accessToken)
         if (false) {
             // !region && !city
             res.status(400).json({ message: 'insufficient location information' });
@@ -182,7 +182,7 @@ module.exports = {
             } else {
                 // 일반 사용자일 경우
                 const userData = token.isAuthorized(accessToken);
-                console.log('유저인포',userData);
+                // console.log('유저인포',userData);
                 user.findOne({
                     where: {
                         email: userData.email
@@ -199,7 +199,7 @@ module.exports = {
                                     }
                                 })
                                 .then((result) => {
-                                    console.log('여기오면 성공', result);
+                                    // console.log('여기오면 성공', result);
                                     res.status(201).json({ message: 'created' });
                                 })
                                 .catch((err) => {

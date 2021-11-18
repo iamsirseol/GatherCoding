@@ -45,7 +45,7 @@ function Header() {
 
     return (
         <header>
-            <Link to = '/'><img className = 'page-logo' src = 'https://user-images.githubusercontent.com/75051059/141219381-c64490bf-907d-4929-8b1b-ad7891604a58.png'/></Link>    
+            {/* <Link to = '/'><img className = 'page-logo' src = 'https://user-images.githubusercontent.com/75051059/141219381-c64490bf-907d-4929-8b1b-ad7891604a58.png'/></Link>     */}
             <div className = 'header-right'>
                 {isLogin ? 
                 <>  

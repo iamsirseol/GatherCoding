@@ -1,10 +1,11 @@
 /* Home page */
-.home-container{margin-left:100px;width: 100%; height: 80vh;}
-.home-view{width: 100%; background: #00ADB5; height: inherit; box-sizing: border-box; position: relative;}
+.home-container{width: 100%; height: 100vh; } /*이미지 좀 이쁜걸로 바꾸거나 휑한 부분 채워보자*/
+.home-view{width: 100%; background-size: cover; height: inherit; box-sizing: border-box; position: relative; top: 0; left: 0;; background: url(../images/main_bg.png) no-repeat  0/cover;}
 .home-view > img{display: block; margin: 0 auto; width: 70%;}
 /* Home page typewriter */
-.typewriter{margin: 0 auto; width: min-content;}
+.typewriter{margin: 0 auto; width: min-content; position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%);}
 .typewriter h2{overflow: hidden; border-right: 2px solid #f08080; white-space: nowrap; letter-spacing: 1.5px; animation: typing 2.5s steps(30) 2s 1 normal both, blink-caret .5s steps(30) infinite normal; color: #fff; font-size: 40px; text-align: center;}
+.home-view > h3{position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%); width: 100%; text-align: center; color: #fff;}
 /* animation: name duration timing-function delay iteration-count direction fill-mode; */
 @keyframes typing{
   from{width: 0}
@@ -14,9 +15,17 @@
   from, to{border-color: transparent;}
   50%{border-color: #f08080;}
 }
+.home-mouse{position: relative; top: 78%; left: calc(50% + 18px); transition: top .3s; transform: translate(-50%, -50%); width: 73px; height: 200px; cursor: pointer;}
+.home-mouse>div{display: inline-block}
+.home-mouse >div div{  display: inline-block; width: 50px; height: 2px; background: #fff; position: absolute; bottom: 0; left: 0;}
+.home-mouse>div div:first-child{transform: rotate(45deg) translateX(-50%);}
+.home-mouse>div div:nth-child(2){transform: rotate(90deg) translate(-50%); left: -75px; width: 200px;}
+.home-mouse>div div:last-child{transform: rotate(-45deg)  translateX(50%);}
+.home-mouse:hover{top: 81%;}
+.home-mouse > p{position: absolute; top: 105%; left: -10px; font-size: 12px; font-weight: 700; color: #fff; width: 250px;}
 
-.home-view >.home-sign-box{position: absolute; bottom: 0; width: inherit; display: flex; box-sizing: border-box; padding: 5%;}
-.home-view >.home-sign-box > div/*Link 일수도있음*/{border: 3px solid #fff; text-align: center; padding: 10px 20px 10px 20px; box-sizing: border-box; color: #fff}
+/* .home-view >.home-sign-box{position: absolute; bottom: 0; width: inherit; display: flex; box-sizing: border-box; padding: 5%;}
+.home-view >.home-sign-box > div{border: 3px solid #fff; text-align: center; padding: 10px 20px 10px 20px; box-sizing: border-box; color: #fff}
 .home-view >.home-sign-box > div:hover{cursor: pointer; transition: all .3s; border-color: #f08080; color: #f08080}
 .home-view >.home-sign-box > .home-signin{}
-.home-view >.home-sign-box > .home-signup{margin-left: 5%;}
+.home-view >.home-sign-box > .home-signup{margin-left: 5%;} */
