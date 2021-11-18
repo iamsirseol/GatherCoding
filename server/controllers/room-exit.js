@@ -35,7 +35,7 @@ const UserGroup = require('../models/user_group');
 
 
 module.exports = {
-    delete: async (req, res) => {
+    patch: async (req, res) => {
         const userId = req.body.email;
         const roomTitle = req.body.title;
         const selectedGroup = await group.findOne({
