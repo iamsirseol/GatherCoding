@@ -17,7 +17,7 @@ module.exports = {
         const email = req.body.email;
         
         // 변경용
-        // const username = req.body.username;
+        const username = req.body.username;
         const changePassword = req.body.changePassword
         const image = req.body.image;
         const blog = req.body.blog;
@@ -46,7 +46,7 @@ module.exports = {
                 img = req.file.location // 링크를 db 넣기위한 값
             }
             // console.log(img)
-            user.update({ username: newUsername, password: newPassword, image: newImage, blog: newBlog }, {
+            user.update({ username: username, password: changePassword, image: img, blog: blog }, {
                 where: {
                     email: email
                 }
