@@ -61,7 +61,7 @@ UserGroup.init(sequelize);
 User.associate(db);
 Group.associate(db);
 
-User.leader(db);
-Group.leader(db);
+// User.leader(db);
+// Group.leader(db);
 
 module.exports = db;

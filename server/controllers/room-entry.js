@@ -5,7 +5,7 @@ const { isAuthorized } = require('./token');
 
 module.exports = {
     post: async (req, res) => {
-        const accessToken = req.cookies.accessToken.split(' ')[1];
+        const accessToken = req.cookies.accessToken;
         // console.log(req.cookies, 'room-entry확인용');
         // const accessToken = req.body.accessToken;
         const roomTitle = req.body.roomTitle;
@@ -33,7 +33,20 @@ module.exports = {
                 newMember.addGroup(selectedRoom)
                 .then((result) => {
                     console.log(result);
-                    res.status(200).json({ data: result, message: 'ok' });
+                    console.log(selectedRoom);
+                    user.findAll({
+                        include: {
+                            model: group,
+                            where: {
+                                id: selectedRoom.dataValues.id
+                            }
+                        }
+                    })
+                    .then((result) => {
+                        console.log(result);
+                        res.status(200).json({ data: result, message: 'ok' });
+                    })
+                    
                 })
                 .catch((err) => {
                     console.log(err);
