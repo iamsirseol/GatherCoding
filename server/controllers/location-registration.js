@@ -100,10 +100,11 @@ const group = require('../models/group');
 //     //     res.send('success')
         // !
 const token = require('./token');
-
+const axios = require('axios');
 module.exports = {
     post: (req, res) => {
         const accessToken = req.headers.authorization.split(' ')[1]
+        // const accessToken = req.cookies.accessToken
         const region = req.body.region;
         const city = req.body.city;
         console.log('마ㅣㅇ러미ㅏㅇㄴ러ㅏㅣㅁㄴㅇ',region, city,accessToken)

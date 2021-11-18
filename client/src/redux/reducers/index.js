@@ -17,7 +17,8 @@ import {
     CHANGE_LAT,
     IS_SHOW_IS_SIGNUP_MODAL,
     CURRENT_ID,
-    IS_LOGIN_ALERT
+    IS_LOGIN_ALERT,
+    MEETING_PLACE_HANDLER
 
 } from '../actions/actions';
 import { initialState } from './initialState';
@@ -38,7 +39,8 @@ const rootReducer = combineReducers({
     locationReducer,
     isShowIsSignUpModalReducer,
     isCurrentIdReducer,
-    isLoginAlertReducer
+    isLoginAlertReducer,
+    meetingPlaceReducer,
 })
 
 function isLoginReducer(state = initialState.isLogin, action) {
@@ -193,6 +195,14 @@ function isCurrentIdReducer(state = initialState.isCurrentIdHandler, action){
           isCurrentIdHandler: action.payload.isCurrentIdHandler
         });
         default: return state;
+    }
+  }
+  
+  function meetingPlaceReducer(state = initialState.meetingPlace,action){
+    switch (action.type) {
+      case MEETING_PLACE_HANDLER :
+        return {...state,...action.payload}
+      default : return state
     }
   }
 

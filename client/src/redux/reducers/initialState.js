@@ -46,5 +46,7 @@ export const initialState = {
     isCurrentIdHandler:{
         isCurrentIdHandler: ''
     },
+    meetingPlace : {meetRegion:'',meetCity:'',meetAdd:''}
+    
 
 }

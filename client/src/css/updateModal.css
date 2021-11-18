@@ -1,0 +1,9 @@
+.update-modal-background{position: fixed; top: 0; left: 0; background: #000000; opacity: .7; width: 100%; height: 100vh; z-index: 1000;}
+.update-modal-container{position: fixed; top: 45%; left: 50%; z-index: 1001; transform: translate(-50%, -50%); width: 550px; background: #fff; padding: 20px 80px; box-sizing: border-box}
+.update-modal-container>p{}
+.update-modal-container .update-modal-close-btn{margin-right: 15px; width: 30px; display: block; position: relative; top: 10%; left: calc(100% - 23px); width: 23px; height: 23px;}
+.update-modal-container .update-modal-close-btn:hover{background: none;}
+.update-modal-container .update-modal-close-btn > span{display: inline-block;}
+.update-modal-container .update-modal-close-btn > span > i{  display: inline-block; width: 23px; height: 1px; background: #000; margin-bottom: 10px; position: absolute; top: 10px; left: 0;}
+.update-modal-container .update-modal-close-btn > span > i:first-child{transform: rotate(45deg);}
+.update-modal-container .update-modal-close-btn > span > i:last-child{transform: rotate(-45deg);}

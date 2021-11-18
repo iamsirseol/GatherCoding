@@ -35,12 +35,12 @@ function RoomInfo() {
                                 결국 자버리는 분들 <br /><br />
                                 같이 코딩해요<br /><br />
                                 다같이 파이팅~~!
-                            </div>
-                        </div>
-                        <div className='roominfo-info-person'>
-                            인원수 : 2/8
                         </div>
                     </div>
+                    <div className='roominfo-info-person'>
+                            인원수 : 2/8
+                    </div>
+                </div>
                     {/* 방장이면 */}
 
                     {/* <div className='roominfo-change-room-info'>
@@ -48,7 +48,7 @@ function RoomInfo() {
                     </div> */}
                     <button className='roominfo-change-room-info'>모각코 방 정보 변경</button>
 
-                </div>
+            </div>
 
             </div>
             <div className='roominfo-user-list'>

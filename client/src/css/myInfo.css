@@ -14,6 +14,9 @@
 .my-info-background .my-info-form .update-image-box .update-input-blind{display: none;}
 .my-info-background .my-info-form .update-image-box .update-img-preview{width: 100px; height: 100px; background-size: contain; cursor: pointer; margin: 10px auto;}
 .my-info-background .my-info-form .update-image-box .update-img-preview > img{width: 100%; height: 100%;}
-.update-image-box>p{width: calc(100% - 100px); line-height: 100px; box-sizing: border-box;}
+.update-image-box>p{text-align: center}
 
-.my-info-background .my-info-form .update-btn{width: 200px; border: none; border-bottom: 2px solid #666; padding: 10px 5px; box-sizing: border-box; margin-top: 3px;}
+.my-info-background .my-info-form .update-btn{width: 200px; border: none; padding: 10px 5px; box-sizing: border-box; margin-top: 20px; background: #cc6b6b; color: #fff; font-size: 15px}
+.my-info-background .my-info-form .update-btn:hover{background: #a52f2f}
+.my-info-background .my-info-form .update-btn:disabled{background: #555; cursor: unset;}
+.my-info-background .update-alert{text-align: center; margin-top: 10px; font-size: 13px; color: #e42c2c;}
